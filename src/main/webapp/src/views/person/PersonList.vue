@@ -49,7 +49,7 @@
             </el-table>
             <br/>
             <div style="text-align: right" v-if="total > 0">
-              <el-pagination small layout="sizes,prev, pager, next" :current-page="page" :total="total" @current-change="(curr) => {this.page = curr ; this.refresh();}"
+              <el-pagination small layout="total,sizes,prev, pager, next" :current-page="page" :total="total" @current-change="(curr) => {this.page = curr ; this.refresh();}"
                :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}" :page-size="size"></el-pagination>
             </div>
         <PersonDialog ref="dialog" :refresh="refresh"></PersonDialog>

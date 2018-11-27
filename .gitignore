@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+target
+erp_laozhang.iml
+logs
+/.classpath
+/.project
+/.settings/
+/.springBeans
+/target

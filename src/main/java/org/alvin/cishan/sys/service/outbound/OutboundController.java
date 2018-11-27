@@ -14,7 +14,7 @@ import java.util.List;
 * @date : 2018-11-27 14:04:59
 **/
 @RestController
-@RequestMapping("outbound")
+@RequestMapping("api/outbound")
 public class OutboundController {
 
 	@SuppressWarnings("unused")

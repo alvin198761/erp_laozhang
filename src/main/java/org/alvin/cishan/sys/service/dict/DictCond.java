@@ -32,7 +32,8 @@ public class DictCond extends BaseCondition {
 		add(id, " AND t.id = ? ");
 		add(type, " AND t.type = ? ");
 		add(name, " AND t.name LIKE ? ", 3);
-		// add(ids, "AND t.id IN ");");
+		// add(ids, "AND t.id IN "); 
+		add(types, "AND t.type IN ");
 	}
 
 	//feilds
@@ -45,4 +46,6 @@ public class DictCond extends BaseCondition {
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类
+
+	private List<Integer> types; //类型
 }

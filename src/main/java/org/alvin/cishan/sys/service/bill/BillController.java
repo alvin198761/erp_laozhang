@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 * @date : 2018-11-27 14:04:59
 **/
 @RestController
-@RequestMapping("bill")
+@RequestMapping("api/bill")
 public class BillController {
 
 	@SuppressWarnings("unused")

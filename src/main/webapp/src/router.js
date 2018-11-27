@@ -1,20 +1,17 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "./views/Home.vue";
 
-import AdminSysUser from './components/sys/adminsysuser/AdminSysUserList.vue';
-import AdminDept from './components/sys/admindept/AdminDeptList.vue';
-import AdminRole from './components/sys/adminrole/AdminRoleList.vue';
-import AdminFunc from './components/sys/adminfunc/AdminFuncList.vue';
-
-// import CharityEventList from './views/charityevent/CharityEventList.vue';
-// import CategoryList from './views/category/CategoryList.vue';
-// import CharityList from './views/charity/CharityList.vue';
-// import DiffList from './views/charity/DiffList.vue';
-// import EventTypeList from './views/dict/EventTypeList.vue';
-// import CharityTypeList from './views/dict/CharityTypeList.vue';
-// import DiffTypeList from './views/dict/DiffTypeList.vue';
-// import ResTypeList from './views/dict/ResTypeList.vue';
+import InboundList from './views/inbound/InboundList.vue';
+import AddressList from './views/address/AddressList.vue';
+import BillList from './views/bill/BillList.vue';
+import Company from './views/dict/Company.vue';
+import OutboundList from './views/outbound/OutboundList.vue';
+import ProductList from './views/product/ProductList.vue';
+import QuoteList from './views/quote/QuoteList.vue';
+import TicketList from './views/ticket/TicketList.vue';
+import VendorList from './views/vendor/VendorList.vue';
+import CustomerList from './views/customer/CustomerList.vue';
 
 Vue.use(Router)
 
@@ -25,29 +22,38 @@ export default new Router({
             path: '/',
             component: Home,
             name: '首页',
-            redirect: '/event',
+            redirect: '/inbound',
             children: [
                 {
-                    path: 'settings', component: Home, name: '设置',
-                    children: [
-                        // {path: 'adminSysUser', component: AdminSysUser, name: '用户管理',},
-                        // {path: 'adminDept', component: AdminDept, name: '部门管理',},
-                        // {path: 'adminRole', component: AdminRole, name: '角色管理',},
-                        // {path: 'adminMenu', component: AdminFunc, name: '菜单管理',},
-                        //
-                        // {path: 'event_type', component: EventTypeList, name: '活动类型',},
-                        // {path: 'res_type', component: ResTypeList, name: '资源类型',},
-                        // {path: 'charity_type', component: CharityTypeList, name: '行善方类型',},
-                        // {path: 'diff_type', component: DiffTypeList, name: '受善方类型',},
-                    ]
+                    path: '/inbound', component: InboundList, name: '入库',
                 },
-                //
-                // {path: 'event', component: CharityEventList, name: '活动记录',},
-                // {path: 'categorylist', component: CategoryList, name: '物资管理',},
-                // {path: 'charitylist', component: CharityList, name: '行善方管理',},
-                // {path: 'difflist', component: DiffList, name: '受善方管理',},
-
-
+                {
+                    path: '/address', component: AddressList, name: '寄收方',
+                },
+                {
+                    path: '/bill', component: BillList, name: '开票信息',
+                },
+                {
+                    path: '/company', component: Company, name: '公司信息',
+                },
+                {
+                    path: '/outbound', component: OutboundList, name: '出库',
+                },
+                {
+                    path: '/product', component: ProductList, name: '产品',
+                },
+                {
+                    path: '/quote', component: QuoteList, name: '报价',
+                },
+                {
+                    path: '/ticket', component: TicketList, name: '进销项发票',
+                },
+                {
+                    path: '/vendor', component: VendorList, name: '供应商',
+                },
+                {
+                    path: '/custom', component: CustomerList, name: '客户',
+                }
             ]
         }
     ]

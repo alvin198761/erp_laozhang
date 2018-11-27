@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80000
 File Encoding         : 65001
 
-Date: 2018-11-27 13:58:44
+Date: 2018-11-27 17:03:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -355,4 +355,23 @@ CREATE TABLE `type_dict` (
 
 -- ----------------------------
 -- Records of type_dict
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `vendor`
+-- ----------------------------
+DROP TABLE IF EXISTS `vendor`;
+CREATE TABLE `vendor` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `vendor_no` varchar(100) DEFAULT NULL COMMENT '供应商编号',
+  `vendor_name` varchar(200) DEFAULT NULL COMMENT '供应商名称',
+  `address` varchar(200) DEFAULT NULL COMMENT '供应商地址',
+  `level` tinyint(4) DEFAULT NULL COMMENT '供应商级别',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `concat_id` bigint(20) DEFAULT NULL COMMENT '联系人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商';
+
+-- ----------------------------
+-- Records of vendor
 -- ----------------------------

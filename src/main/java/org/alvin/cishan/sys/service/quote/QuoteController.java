@@ -13,7 +13,7 @@ import java.util.List;
 * @date : 2018-11-27 14:04:59
 **/
 @RestController
-@RequestMapping("quote")
+@RequestMapping("api/quote")
 public class QuoteController {
 
 	@SuppressWarnings("unused")

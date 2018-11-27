@@ -1,45 +1,45 @@
 <template>
     <div id="app">
-        <el-container>
-            <el-header style="text-align: center">
+        <el-container style="min-height: 500px; border: 1px solid #eee">
+            <el-header>
                 <el-row>
-                    <el-col :span="2"><a href="/#/">系统图标</a></el-col>
-                    <el-col :span="20">
-                        <el-menu default-active="/event" mode="horizontal" router
-                                 background-color="#545c64"
-                                 text-color="#fff"
-                                 active-text-color="#ffd04b">
-                            <el-menu-item index="/event">活动记录</el-menu-item>
-                            <el-menu-item index="/categorylist">物资管理</el-menu-item>
-                            <el-menu-item index="/charitylist">行善方管理</el-menu-item>
-                            <el-menu-item index="/difflist">受善方管理</el-menu-item>
-                            <el-submenu index="fields">
-                                <template slot="title">字段设置</template>
-                                <el-menu-item index="/settings/event_type">活动类型</el-menu-item>
-                                <el-menu-item index="/settings/res_type">物资类型</el-menu-item>
-                                <el-menu-item index="/settings/charity_type">行善方类型</el-menu-item>
-                                <el-menu-item index="/settings/diff_type">受善方类型</el-menu-item>
-                            </el-submenu>
-                            <el-submenu index="permission">
-                                <template slot="title">系统权限</template>
-                                <el-menu-item index="/settings/adminDept">部门管理</el-menu-item>
-                                <el-menu-item index="/settings/adminMenu">菜单管理</el-menu-item>
-                                <el-menu-item index="/settings/adminRole">角色管理</el-menu-item>
-                                <el-menu-item index="/settings/adminSysUser">用户管理</el-menu-item>
-                            </el-submenu>
-                            <el-menu-item index="/center">个人中心</el-menu-item>
-                        </el-menu>
+                    <el-col :span="20" style="text-align: left">
+                        <b>老张滴管理系统</b>
                     </el-col>
-                    <el-col :span="2">
-                        <a href="/j_spring_security_logout">退出登录</a>
+                    <el-col :span="4" style="text-align: right; font-size: 12px">
+                        <el-dropdown>
+                            <span>老张 <i class="el-icon-setting" style="margin-right: 15px"></i></span>
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item>修改密码</el-dropdown-item>
+                                <el-dropdown-item>退出登录</el-dropdown-item>
+                                <!--<el-dropdown-item>删除</el-dropdown-item>-->
+                            </el-dropdown-menu>
+                        </el-dropdown>
                     </el-col>
                 </el-row>
-
-
             </el-header>
-            <el-main style="min-height: 800px">
-                <router-view></router-view>
-            </el-main>
+            <el-container>
+                <el-aside width="200px" style="background-color: rgb(238, 241, 246)  ">
+                    <el-menu router :default-openeds="['/inbound']">
+                        <el-menu-item index="/inbound">入库管理</el-menu-item>
+                        <el-menu-item index="/quote">报价管理</el-menu-item>
+                        <el-menu-item index="/outbound">出库管理</el-menu-item>
+                        <el-menu-item index="/ticket">进销项发票</el-menu-item>
+                        <el-menu-item index="/bill">开票信息管理</el-menu-item>
+
+                        <el-menu-item index="/vendor">供应商信息</el-menu-item>
+                        <el-menu-item index="/address">寄收方信息</el-menu-item>
+                        <el-menu-item index="/custom">客户信息</el-menu-item>
+                        <el-menu-item index="/product">产品信息</el-menu-item>
+                        <el-menu-item index="/company">公司信息</el-menu-item>
+                    </el-menu>
+                </el-aside>
+                <el-main>
+                    <div style="min-height: 700px ; height: 700px">
+                        <router-view></router-view>
+                    </div>
+                </el-main>
+            </el-container>
         </el-container>
     </div>
 </template>
@@ -150,5 +150,15 @@
     /*调整验证距离*/
     .el-form-item__error {
         padding-top: 1px !important
+    }
+
+    .el-header {
+        background-color: #B3C0D1;
+        color: #333;
+        line-height: 60px;
+    }
+
+    .el-aside {
+        color: #333;
     }
 </style>

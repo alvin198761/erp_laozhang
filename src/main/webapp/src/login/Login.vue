@@ -1,7 +1,7 @@
 <template>
     <el-card style="width: 500px;margin-right: auto ; margin-left: auto;margin-top: 300px">
         <div slot="header">
-            慈善管理系统登录
+            管理系统登录
         </div>
         <el-form action="/j_spring_security_check" method="post" :model="form" status-icon :rules="rules"
                  ref="loginForm" id="loginForm" label-width="100px">
