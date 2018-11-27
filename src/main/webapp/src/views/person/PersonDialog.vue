@@ -1,4 +1,4 @@
-/*类型字典新增与修改,作者:唐植超,日期:2018-11-27 14:04:59*/
+/*客户联系人新增与修改,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
       <el-dialog :title="title" :visible.sync="show" :close-on-click-modal="false" :close-on-press-escape="false">
             <el-form :model="form" ref="form" :rules="rules" label-width="100px">
@@ -7,11 +7,11 @@
                                                             <el-form-item label='主键' prop='id'>
                                     <el-input placeholder='请输入主键'  size="small" v-model='form.id'></el-input>
                                 </el-form-item>
-                                                            <el-form-item label='type' prop='type'>
-                                    <el-input placeholder='请输入type'  size="small" v-model='form.type'></el-input>
+                                                            <el-form-item label='客户id' prop='cus_id'>
+                                    <el-input placeholder='请输入客户id'  size="small" v-model='form.cus_id'></el-input>
                                 </el-form-item>
-                                                            <el-form-item label='name' prop='name'>
-                                    <el-input placeholder='请输入name'  size="small" v-model='form.name'></el-input>
+                                                            <el-form-item label='收寄方ID' prop='address_id'>
+                                    <el-input placeholder='请输入收寄方ID'  size="small" v-model='form.address_id'></el-input>
                                 </el-form-item>
                                                         </el-col>
                       </el-row>
@@ -37,13 +37,13 @@
             {required: true, message: '请输入主键', trigger: 'blur'},
             {min: 1, max: 10, message: '主键长度不正确', trigger: 'blur'},
         ],
-                    type :[
-            {required: true, message: '请输入type', trigger: 'blur'},
-            {min: 1, max: 10, message: 'type长度不正确', trigger: 'blur'},
+                    cus_id :[
+            {required: true, message: '请输入客户id', trigger: 'blur'},
+            {min: 1, max: 10, message: '客户id长度不正确', trigger: 'blur'},
         ],
-                    name :[
-            {required: true, message: '请输入name', trigger: 'blur'},
-            {min: 1, max: 10, message: 'name长度不正确', trigger: 'blur'},
+                    address_id :[
+            {required: true, message: '请输入收寄方ID', trigger: 'blur'},
+            {min: 1, max: 10, message: '收寄方ID长度不正确', trigger: 'blur'},
         ],
                 }
       }
@@ -55,7 +55,7 @@
               if (!valid) {
                 return;
               }
-              that.$http.post("/api/dict/" + that.dialogMode, JSON.stringify(that.form)).then(res => {
+              that.$http.post("/api/person/" + that.dialogMode, JSON.stringify(that.form)).then(res => {
                 that.show = false;
                 that.$message.success(that.title + "成功!");
                 that.refresh();
@@ -67,18 +67,18 @@
       initForm() {//初始数据
         return {
                         id : null,// 主键
-                        type : null,// type
-                        name : null,// name
+                        cus_id : null,// 客户id
+                        address_id : null,// 收寄方ID
                   }
       },
       addDialog() {//新增
-        this.title = "新增类型字典";
+        this.title = "新增客户联系人";
         this.dialogMode = "save";
         this.form = this.initForm();
         this.show = true;
       },
       editDialog(row) {//修改
-        this.title = "修改类型字典";
+        this.title = "修改客户联系人";
         this.dialogMode = "update";
         this.form = {...row};
         this.show = true;

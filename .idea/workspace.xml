@@ -1,7 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d242688c-23d4-4daf-ba71-7f320fe414e5" name="Default" comment="" />
+    <list default="true" id="d242688c-23d4-4daf-ba71-7f320fe414e5" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/AddressCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/AddressController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/AddressDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/AddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/bill/Bill.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/bill/BillCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/bill/BillController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/bill/BillDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/bill/BillService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/inbound/Inbound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/inbound/InboundCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/inbound/InboundController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/inbound/InboundDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/inbound/InboundService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/outbound/Outbound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/outbound/OutboundCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/outbound/OutboundController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/outbound/OutboundDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/outbound/OutboundService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/person/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/person/PersonCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/person/PersonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/person/PersonDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/person/PersonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/product/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/product/ProductCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/product/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/product/ProductDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/product/ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/quote/Quote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/quote/QuoteCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/quote/QuoteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/quote/QuoteDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/quote/QuoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/ticket/Ticket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/ticket/TicketCond.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/ticket/TicketController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/ticket/TicketDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/ticket/TicketService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/AddressMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/BillMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/InboundMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/OutboundMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/PersonMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/ProductMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/QuoteMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/mock/TicketMock.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/address/AddressDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/address/AddressList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/bill/BillDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/bill/BillList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/dict/DictList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/inbound/InboundDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/inbound/InboundList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/outbound/OutboundDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/outbound/OutboundList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/person/PersonDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/person/PersonList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/product/ProductDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/product/ProductList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/quote/QuoteDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/quote/QuoteList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/ticket/TicketDialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/src/views/ticket/TicketList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/category/Category.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/category/CategoryCond.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/category/CategoryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/category/CategoryDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/category/CategoryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charity/Charity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charity/CharityCond.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charity/CharityController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charity/CharityDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charity/CharityService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charityevent/CharityEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charityevent/CharityEventCond.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charityevent/CharityEventController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charityevent/CharityEventDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/charityevent/CharityEventService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/Dict.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/Dict.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictCond.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictCond.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/dict/DictService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/eventuser/EventUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/eventuser/EventUserCond.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/eventuser/EventUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/eventuser/EventUserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/eventuser/EventUserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/erp_laozhang.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/erp_laozhang.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/mock/CategoryMock.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/mock/CharityEventMock.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/mock/CharityMock.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/mock/DictMock.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/mock/DictMock.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/category/CategoryDialog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/category/CategoryList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/charity/CharityDialog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/charity/CharityList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/charity/DiffList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/charityevent/CharityEventDialog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/charityevent/CharityEventList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/charityevent/JoinListDialog.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/dict/CharityTypeList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/dict/DictDialog.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/src/views/dict/DictDialog.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/dict/DiffTypeList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/dict/EventTypeList.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/src/views/dict/ResTypeList.vue" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,71 +124,55 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Address.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/Address.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="AddressMock.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/mock/AddressMock.js">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="830">
-              <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
+            <state relative-caret-position="12">
+              <caret line="15" column="60" lean-forward="true" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="assembly.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/assembly/assembly.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="49" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application-prod.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-prod.yml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="application-dev.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-dev.yml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="erp_laozhang.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/db/erp_laozhang.sql">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="database.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/db/database.txt">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="48" lean-forward="true" selection-start-column="48" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReadMe.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ReadMe.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="152">
-                <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="store.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/src/store.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -86,6 +182,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/db/database.txt" />
         <option value="$PROJECT_DIR$/ReadMe.md" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/erp_laozhang.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/Address.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/src/router.js" />
       </list>
     </option>
   </component>
@@ -106,12 +205,14 @@
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -119,12 +220,177 @@
               <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
               <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="docs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cishan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cishan" type="462c0819:PsiDirectoryNode" />
+              <item name="sys" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cishan" type="462c0819:PsiDirectoryNode" />
+              <item name="sys" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="address" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="bill" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="dict" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="inbound" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="outbound" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="person" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="quote" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp_laozhang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="erp_laozhang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="ticket" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -134,7 +400,13 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\github_dir\erp_laozhang\src\main\webapp\mock" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\github_dir\erp_laozhang\src\main\webapp\src\views" />
+      <recent name="F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service" />
+      <recent name="F:\github_dir\erp_laozhang\src\main\resources\db" />
       <recent name="F:\github_dir\erp_laozhang\src\main" />
     </key>
   </component>
@@ -204,43 +476,44 @@
       <option name="presentableId" value="Default" />
       <updated>1543280385827</updated>
       <workItem from="1543280389982" duration="616000" />
+      <workItem from="1543297611002" duration="1371000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="616000" />
+    <option name="totallyTimeSpent" value="1987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info id="Favorites" side_tool="true" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +525,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="830">
+        <state relative-caret-position="2698">
           <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
         </state>
       </provider>
@@ -294,6 +567,91 @@
             <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2698">
+          <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assembly/assembly.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="31" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ReadMe.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="152">
+            <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/database.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/config/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/erp_laozhang.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="853">
+          <caret line="153" column="31" lean-forward="true" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/alvin/cishan/sys/service/address/Address.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/mock/AddressMock.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="15" column="60" lean-forward="true" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/src/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

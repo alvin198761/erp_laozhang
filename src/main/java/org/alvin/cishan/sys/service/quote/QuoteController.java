@@ -1,4 +1,4 @@
-package org.alvin.cishan.sys.service.dict;
+package org.alvin.cishan.sys.service.quote;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dl.keep.common.util.Page;
 
 /**
-* @类说明: 类型字典--数据控制器层
+* @类说明: 报价--数据控制器层
 * @author: 唐植超
 * @date : 2018-11-27 14:04:59
 **/
 @RestController
-@RequestMapping("dict")
-public class DictController {
+@RequestMapping("quote")
+public class QuoteController {
 
 	@SuppressWarnings("unused")
 	private final Log logger = LogFactory.getLog(getClass());
 	@Autowired
-	private DictService service; //注入类型字典数据逻辑层
+	private QuoteService service; //注入报价数据逻辑层
 
     /**
-    * @方法说明：  新增[类型字典]记录
+    * @方法说明：  新增[报价]记录
     */
 	@PostMapping("save")
-	public int save(@RequestBody Dict dict) {
-		return service.save(dict);
+	public int save(@RequestBody Quote quote) {
+		return service.save(quote);
 	}
 
     /**
-    * @方法说明： 删除类型字典记录(多条)
+    * @方法说明： 删除报价记录(多条)
     */
 	@RequestMapping("delete")
 	public int delete(@RequestParam("ids[]") Long ids[]) {
@@ -40,42 +40,42 @@ public class DictController {
 	}
 
     /**
-    * @方法说明： 修改类型字典记录
+    * @方法说明： 修改报价记录
     */
 	@PostMapping("update")
-	public int update(@RequestBody Dict dict) {
-		return service.update(dict);
+	public int update(@RequestBody Quote quote) {
+		return service.update(quote);
 	}
 
     /**
-    * @方法说明： 按条件查询分页类型字典列表
+    * @方法说明： 按条件查询分页报价列表
     */
 	@PostMapping("queryPage")
-	public Page<Dict> queryPage(@RequestBody DictCond cond ){
+	public Page<Quote> queryPage(@RequestBody QuoteCond cond ){
 		return service.queryPage(cond);
 	}
 
     /**
-    * @方法说明： 按条件查询不分页类型字典列表
+    * @方法说明： 按条件查询不分页报价列表
     */
 	@PostMapping("queryList")
-	public List<Dict> queryList(@RequestBody DictCond cond ){
+	public List<Quote> queryList(@RequestBody QuoteCond cond ){
 		return service.queryList(cond);
 	}
 
     /**
-    * @方法说明： 按主键查单个类型字典记录
+    * @方法说明： 按主键查单个报价记录
     */
 	@RequestMapping("findById")
-	public Dict findById(@RequestParam("id") Long id) {
+	public Quote findById(@RequestParam("id") Long id) {
 		return service.findById(id);
 	}
 
     /**
-    * @方法说明： 按条件查询类型字典记录个数
+    * @方法说明： 按条件查询报价记录个数
     */
 	@PostMapping("queryCount")
-	public long queryCount(@RequestBody DictCond cond ){
+	public long queryCount(@RequestBody QuoteCond cond ){
 		return service.queryCount(cond);
 	}
 }

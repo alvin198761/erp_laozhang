@@ -4,16 +4,35 @@ Navicat MySQL Data Transfer
 Source Server         : localhost
 Source Server Version : 80000
 Source Host           : localhost:3306
-Source Database       : ci_shan
+Source Database       : erp_laozhang
 
 Target Server Type    : MYSQL
 Target Server Version : 80000
 File Encoding         : 65001
 
-Date: 2018-11-03 15:54:56
+Date: 2018-11-27 13:58:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `address`
+-- ----------------------------
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `type` tinyint(4) DEFAULT NULL COMMENT '类型',
+  `target_phone` varchar(20) DEFAULT NULL COMMENT '电话',
+  `target_addr` varchar(200) DEFAULT NULL COMMENT '地址',
+  `target_name` varchar(50) DEFAULT NULL COMMENT '姓名',
+  `target_id` bigint(20) DEFAULT NULL COMMENT '收寄方id',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收寄信息';
+
+-- ----------------------------
+-- Records of address
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `admin_dept`
@@ -176,88 +195,151 @@ CREATE TABLE `base_dict` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `category`
+-- Table structure for `bill`
 -- ----------------------------
-DROP TABLE IF EXISTS `category`;
-CREATE TABLE `category` (
+DROP TABLE IF EXISTS `bill`;
+CREATE TABLE `bill` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `type` tinyint(4) DEFAULT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `count` int(11) DEFAULT NULL,
-  `create_date` datetime DEFAULT NULL,
-  `author` bigint(20) DEFAULT NULL,
-  `remark` varchar(500) DEFAULT NULL,
-  `c_id` bigint(20) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
+  `vendor_id` bigint(20) DEFAULT NULL COMMENT '供应商',
+  `bank` varchar(100) DEFAULT NULL COMMENT '开户行',
+  `account` varchar(100) DEFAULT NULL COMMENT '账号',
+  `taxpayer_no` varchar(100) DEFAULT NULL COMMENT '纳税人识别号',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='捐助物资';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='开票信息';
 
 -- ----------------------------
--- Records of category
+-- Records of bill
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `charity`
+-- Table structure for `cus_person`
 -- ----------------------------
-DROP TABLE IF EXISTS `charity`;
-CREATE TABLE `charity` (
+DROP TABLE IF EXISTS `cus_person`;
+CREATE TABLE `cus_person` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `type` tinyint(4) DEFAULT NULL,
-  `charity_name` varchar(200) DEFAULT NULL,
-  `phone_no` char(20) DEFAULT NULL,
-  `gender` char(10) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL,
-  `create_date` datetime DEFAULT NULL,
-  `author` bigint(20) DEFAULT NULL,
-  `remark` varchar(500) DEFAULT NULL,
-  `p_id` bigint(20) DEFAULT NULL,
-  `category` tinyint(4) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
+  `cus_id` bigint(20) DEFAULT NULL COMMENT '客户id',
+  `address_id` bigint(20) DEFAULT NULL COMMENT '收寄方ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='慈善方';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户联系人';
 
 -- ----------------------------
--- Records of charity
+-- Records of cus_person
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `charity_event`
+-- Table structure for `inbound`
 -- ----------------------------
-DROP TABLE IF EXISTS `charity_event`;
-CREATE TABLE `charity_event` (
+DROP TABLE IF EXISTS `inbound`;
+CREATE TABLE `inbound` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `type` tinyint(4) DEFAULT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `content` varchar(500) DEFAULT NULL,
-  `chairman_id` bigint(20) DEFAULT NULL,
-  `target_id` bigint(20) DEFAULT NULL,
-  `event_time` datetime DEFAULT NULL,
-  `author` bigint(20) DEFAULT NULL,
-  `remark` varchar(500) DEFAULT NULL,
-  `chairmain_pnone` char(20) DEFAULT NULL,
-  `target_phone` char(20) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT NULL,
-  `create_time` datetime DEFAULT NULL,
+  `prod_id` varchar(500) DEFAULT NULL COMMENT '产品id',
+  `date` datetime DEFAULT NULL COMMENT '入库日期',
+  `ticket_type` tinyint(4) DEFAULT NULL COMMENT '发票类型',
+  `ticket_status` tinyint(4) DEFAULT NULL COMMENT '发票状态',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='善行活动';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='入库记录';
 
 -- ----------------------------
--- Records of charity_event
+-- Records of inbound
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `event_user`
+-- Table structure for `outbound`
 -- ----------------------------
-DROP TABLE IF EXISTS `event_user`;
-CREATE TABLE `event_user` (
+DROP TABLE IF EXISTS `outbound`;
+CREATE TABLE `outbound` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `event_id` bigint(20) DEFAULT NULL COMMENT '活动ID',
-  `user_id` bigint(20) DEFAULT NULL COMMENT '参与人ID',
+  `cus_id` bigint(20) DEFAULT NULL COMMENT '客户id',
+  `prod_id` bigint(20) DEFAULT NULL COMMENT '产品id',
+  `price` float DEFAULT NULL COMMENT '单价',
+  `num` float DEFAULT NULL COMMENT '数量',
+  `total` float DEFAULT NULL COMMENT '总价',
+  `status` tinyint(4) DEFAULT NULL COMMENT '送货状态',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='活动参与方';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='出库记录';
 
 -- ----------------------------
--- Records of event_user
+-- Records of outbound
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `product`
+-- ----------------------------
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `prod_no` varchar(100) DEFAULT NULL COMMENT '货号',
+  `tax_type` varchar(100) DEFAULT NULL COMMENT '税收类型',
+  `prod_name` varchar(100) DEFAULT NULL COMMENT '产品名称',
+  `spec_no` varchar(50) DEFAULT NULL COMMENT '规格型号',
+  `note` varchar(500) DEFAULT NULL COMMENT '产品说明',
+  `unit` varchar(10) DEFAULT NULL COMMENT '单位',
+  `price` float DEFAULT NULL COMMENT '底价',
+  `sell_price_yes` float DEFAULT NULL COMMENT '售卖价(含税)',
+  `sell_price_no` float DEFAULT NULL COMMENT '售卖价(不含税)',
+  `mark_price_yes` float DEFAULT NULL COMMENT '市场价(不含税)',
+  `mark_price_no` float DEFAULT NULL COMMENT '市场价(含税)',
+  `price_mode` tinyint(4) DEFAULT NULL COMMENT '价格类型',
+  `vendor_id` bigint(20) DEFAULT NULL COMMENT '货物来源',
+  `pic1` varchar(100) DEFAULT NULL COMMENT '产品图片1',
+  `pic2` varchar(100) DEFAULT NULL COMMENT '产品图片2',
+  `pic3` varchar(100) DEFAULT NULL COMMENT '产品图片3',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='产品';
+
+-- ----------------------------
+-- Records of product
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `quote`
+-- ----------------------------
+DROP TABLE IF EXISTS `quote`;
+CREATE TABLE `quote` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `cus_id` bigint(20) DEFAULT NULL COMMENT '客户id',
+  `date` datetime DEFAULT NULL COMMENT '报价日期',
+  `prod_id` tinyint(4) DEFAULT NULL COMMENT '产品id',
+  `total` float DEFAULT NULL COMMENT '总价',
+  `priice` float DEFAULT NULL COMMENT '单价',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `status` tinyint(4) DEFAULT NULL COMMENT '单据状态',
+  `num` float DEFAULT NULL COMMENT '数量',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='报价';
+
+-- ----------------------------
+-- Records of quote
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `ticket`
+-- ----------------------------
+DROP TABLE IF EXISTS `ticket`;
+CREATE TABLE `ticket` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `vendor_id` bigint(20) DEFAULT NULL COMMENT '供应商id',
+  `tax_type` varchar(20) DEFAULT NULL COMMENT '税收类型',
+  `prod_id` bigint(20) DEFAULT NULL COMMENT '产品id',
+  `target_name` varchar(50) DEFAULT NULL COMMENT '姓名',
+  `target_id` bigint(20) DEFAULT NULL COMMENT '收寄方id',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `num` float DEFAULT NULL COMMENT '数量',
+  `price` float DEFAULT NULL COMMENT '单价',
+  `total` float DEFAULT NULL COMMENT '总价',
+  `ticket_type` tinyint(4) DEFAULT NULL COMMENT '发票类型',
+  `rate` double DEFAULT NULL COMMENT '税率',
+  `type` char(10) DEFAULT NULL COMMENT '进出类型',
+  `cus_id` bigint(20) DEFAULT NULL COMMENT '客户Id',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='进销项发票录入';
+
+-- ----------------------------
+-- Records of ticket
 -- ----------------------------
 
 -- ----------------------------
@@ -269,20 +351,8 @@ CREATE TABLE `type_dict` (
   `type` int(11) DEFAULT NULL,
   `name` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='类型字典';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='类型字典';
 
 -- ----------------------------
 -- Records of type_dict
 -- ----------------------------
-INSERT INTO `type_dict` VALUES ('2', '1', '捐款');
-INSERT INTO `type_dict` VALUES ('3', '1', '物资');
-INSERT INTO `type_dict` VALUES ('4', '2', '衣服');
-INSERT INTO `type_dict` VALUES ('5', '2', '书本');
-INSERT INTO `type_dict` VALUES ('6', '2', '学习用品');
-INSERT INTO `type_dict` VALUES ('7', '3', '个人');
-INSERT INTO `type_dict` VALUES ('8', '3', '公司');
-INSERT INTO `type_dict` VALUES ('9', '3', '慈善组织');
-INSERT INTO `type_dict` VALUES ('10', '3', '团体');
-INSERT INTO `type_dict` VALUES ('11', '4', '个人');
-INSERT INTO `type_dict` VALUES ('12', '4', '学校');
-INSERT INTO `type_dict` VALUES ('13', '4', '家庭');

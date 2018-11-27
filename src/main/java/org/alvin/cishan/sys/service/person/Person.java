@@ -1,4 +1,4 @@
-package org.alvin.cishan.sys.service.dict;
+package org.alvin.cishan.sys.service.person;
 
     
     
@@ -11,7 +11,7 @@ import lombok.experimental.Accessors;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 /**
-* @类说明: 类型字典--实体类
+* @类说明: 客户联系人--实体类
 * @author: 唐植超
 * @date : 2018-11-27 14:04:59
 **/
@@ -21,19 +21,19 @@ import io.swagger.annotations.ApiModelProperty;
 @Builder	
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "Dict", description = "类型字典实体")
-public class Dict {
+@ApiModel(value = "Person", description = "客户联系人实体")
+public class Person {
 
     //数据库中的字段
     
             @ApiModelProperty(value = "主键", dataType = "Long")
     private Long id ;//  主键
     
-            @ApiModelProperty(value = "type", dataType = "Integer")
-    private Integer type ;//  type
+            @ApiModelProperty(value = "客户id", dataType = "Long")
+    private Long cus_id ;//  客户id
     
-            @ApiModelProperty(value = "name", dataType = "String")
-    private String name ;//  name
+            @ApiModelProperty(value = "收寄方ID", dataType = "Long")
+    private Long address_id ;//  收寄方ID
     
     //此处可添加查询显示辅助字段
 

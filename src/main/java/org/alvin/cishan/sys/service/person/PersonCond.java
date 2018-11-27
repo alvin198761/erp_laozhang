@@ -1,4 +1,4 @@
-package org.alvin.cishan.sys.service.dict;
+package org.alvin.cishan.sys.service.person;
 
     
     
@@ -14,7 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.List;
 
 /**
-* @类说明: 类型字典--查询条件实体类
+* @类说明: 客户联系人--查询条件实体类
 * @author: 唐植超
 * @date : 2018-11-27 14:04:59
 **/
@@ -24,8 +24,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ApiModel(value = "Dict", description = "类型字典查询条件实体")
-public class DictCond extends BaseCondition {
+@ApiModel(value = "Person", description = "客户联系人查询条件实体")
+public class PersonCond extends BaseCondition {
 
 
     /**
@@ -34,18 +34,18 @@ public class DictCond extends BaseCondition {
     @Override
     public void addCondition() {
                     add(id , " AND t.id = ? " );
-                            add(type , " AND t.type = ? " );
-                            add(name , " AND t.name LIKE ? " ,3);
+                            add(cus_id , " AND t.cus_id = ? " );
+                            add(address_id , " AND t.address_id = ? " );
                 // add(ids, "AND t.id IN ");");
     }
 
     //feilds
         @ApiModelProperty(value = "主键", dataType = "Long")
     private  Long  id ;//  主键
-        @ApiModelProperty(value = "type", dataType = "Integer")
-    private  Integer  type ;//  type
-        @ApiModelProperty(value = "name", dataType = "String")
-    private  String  name ;//  name
+        @ApiModelProperty(value = "客户id", dataType = "Long")
+    private  Long  cus_id ;//  客户id
+        @ApiModelProperty(value = "收寄方ID", dataType = "Long")
+    private  Long  address_id ;//  收寄方ID
     
     //private List<Long> ids;// 主键列表
     private List<String> selectedFields; //暂时不放入父类

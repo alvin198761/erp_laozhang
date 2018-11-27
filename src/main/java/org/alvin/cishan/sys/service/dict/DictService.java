@@ -1,18 +1,18 @@
 package org.alvin.cishan.sys.service.dict;
+import java.util.List;
+import com.dl.keep.common.util.Page;
 
-import org.alvin.cishan.sys.util.Page;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 /**
 * @类说明: 类型字典--数据逻辑层
 * @author: 唐植超
-* @date : 2018-10-20 11:34:30
+* @date : 2018-11-27 14:04:59
 **/
 @Service
 public class DictService {

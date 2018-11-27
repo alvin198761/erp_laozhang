@@ -1,4 +1,4 @@
-package org.alvin.cishan.sys.service.dict;
+package org.alvin.cishan.sys.service.address;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dl.keep.common.util.Page;
 
 /**
-* @类说明: 类型字典--数据控制器层
+* @类说明: 收寄信息--数据控制器层
 * @author: 唐植超
 * @date : 2018-11-27 14:04:59
 **/
 @RestController
-@RequestMapping("dict")
-public class DictController {
+@RequestMapping("address")
+public class AddressController {
 
 	@SuppressWarnings("unused")
 	private final Log logger = LogFactory.getLog(getClass());
 	@Autowired
-	private DictService service; //注入类型字典数据逻辑层
+	private AddressService service; //注入收寄信息数据逻辑层
 
     /**
-    * @方法说明：  新增[类型字典]记录
+    * @方法说明：  新增[收寄信息]记录
     */
 	@PostMapping("save")
-	public int save(@RequestBody Dict dict) {
-		return service.save(dict);
+	public int save(@RequestBody Address address) {
+		return service.save(address);
 	}
 
     /**
-    * @方法说明： 删除类型字典记录(多条)
+    * @方法说明： 删除收寄信息记录(多条)
     */
 	@RequestMapping("delete")
 	public int delete(@RequestParam("ids[]") Long ids[]) {
@@ -40,42 +40,42 @@ public class DictController {
 	}
 
     /**
-    * @方法说明： 修改类型字典记录
+    * @方法说明： 修改收寄信息记录
     */
 	@PostMapping("update")
-	public int update(@RequestBody Dict dict) {
-		return service.update(dict);
+	public int update(@RequestBody Address address) {
+		return service.update(address);
 	}
 
     /**
-    * @方法说明： 按条件查询分页类型字典列表
+    * @方法说明： 按条件查询分页收寄信息列表
     */
 	@PostMapping("queryPage")
-	public Page<Dict> queryPage(@RequestBody DictCond cond ){
+	public Page<Address> queryPage(@RequestBody AddressCond cond ){
 		return service.queryPage(cond);
 	}
 
     /**
-    * @方法说明： 按条件查询不分页类型字典列表
+    * @方法说明： 按条件查询不分页收寄信息列表
     */
 	@PostMapping("queryList")
-	public List<Dict> queryList(@RequestBody DictCond cond ){
+	public List<Address> queryList(@RequestBody AddressCond cond ){
 		return service.queryList(cond);
 	}
 
     /**
-    * @方法说明： 按主键查单个类型字典记录
+    * @方法说明： 按主键查单个收寄信息记录
     */
 	@RequestMapping("findById")
-	public Dict findById(@RequestParam("id") Long id) {
+	public Address findById(@RequestParam("id") Long id) {
 		return service.findById(id);
 	}
 
     /**
-    * @方法说明： 按条件查询类型字典记录个数
+    * @方法说明： 按条件查询收寄信息记录个数
     */
 	@PostMapping("queryCount")
-	public long queryCount(@RequestBody DictCond cond ){
+	public long queryCount(@RequestBody AddressCond cond ){
 		return service.queryCount(cond);
 	}
 }
