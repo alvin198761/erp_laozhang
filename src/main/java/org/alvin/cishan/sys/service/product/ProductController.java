@@ -1,13 +1,12 @@
 package org.alvin.cishan.sys.service.product;
-import java.util.List;
+
+import org.alvin.cishan.sys.util.Page;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import com.dl.keep.common.util.Page;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
 * @类说明: 产品--数据控制器层

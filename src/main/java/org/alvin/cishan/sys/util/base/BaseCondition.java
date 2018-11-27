@@ -112,6 +112,15 @@ public abstract class BaseCondition {
 	}
 
 	/**
+	 * @功能: 拼加条件使用等于大于小于....运算符(Double)
+	 */
+	protected void add(Double value, String strSQL) {
+		if (null != strSQL && null != value && !"".equals(strSQL)) {
+			condition.append(" " + strSQL);
+			paramList.add(value);
+		}
+	}
+	/**
 	 * @功能: 拼加条件使用等于大于小于....运算符(Integer类型)
 	 */
 	protected void add(Integer value, String strSQL) {

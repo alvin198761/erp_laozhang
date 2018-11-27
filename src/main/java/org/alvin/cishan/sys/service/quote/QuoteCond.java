@@ -1,19 +1,14 @@
 package org.alvin.cishan.sys.service.quote;
 
-    
-import java.util.Date;
-    
-import lombok.Getter;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-import com.dl.keep.common.util.base.BaseCondition;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.List;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.alvin.cishan.sys.util.base.BaseCondition;
 
+import java.util.Date;
+import java.util.List;
 /**
 * @类说明: 报价--查询条件实体类
 * @author: 唐植超

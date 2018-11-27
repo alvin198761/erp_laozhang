@@ -1,20 +1,20 @@
 package org.alvin.cishan.sys.service.bill;
-import java.util.List;
 
-import org.springframework.stereotype.Repository;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-
-import com.dl.keep.common.util.SqlUtil;
-import com.dl.webdata.common.jdbc.BaseDao;
-import com.dl.keep.common.util.Page;
 import com.google.common.base.Joiner;
+import org.alvin.cishan.common.BaseDao;
+import org.alvin.cishan.sys.util.Page;
+import org.alvin.cishan.sys.util.SqlUtil;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 /**
 * @类说明: 开票信息--数据访问层
 * @author: 唐植超
 * @date : 2018-11-27 14:04:59
 **/
 @Repository
-public class BillDao extends BaseDao{
+public class BillDao extends BaseDao {
 
     private StringBuilder insert = new StringBuilder();
 
