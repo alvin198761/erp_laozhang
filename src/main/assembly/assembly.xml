@@ -10,7 +10,7 @@
         <file>
             <source>${project.build.directory}/${project.build.finalName}.jar</source>
             <outputDirectory>./</outputDirectory>
-            <destName>ci_shan.jar</destName>
+            <destName>erp_laozhang.jar</destName>
         </file>
     </files>
     <fileSets>

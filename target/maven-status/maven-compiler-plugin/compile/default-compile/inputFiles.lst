@@ -20,6 +20,7 @@ F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\inbound\In
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\product\ProductCond.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\Page.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\UploadUtil.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\customer\CustomerCond.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\common\acl\UserSecurityService.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminroledept\AdminRoleDeptAction.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\quote\QuoteCond.java
@@ -63,6 +64,7 @@ F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\ticket\Tic
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\CMDUtils.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\admindept\AdminDeptBus.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\product\Product.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\vendor\VendorController.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\ticket\TicketDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminfunc\AdminFuncDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminuserrole\AdminUserRoleCond.java
@@ -74,11 +76,14 @@ F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\exception\Err
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\address\AddressCond.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\common\acl\AuthPermissionEvaluator.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminsysuser\AdminSysUserDao.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\vendor\Vendor.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\customer\CustomerService.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\common\acl\RoleType.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\admindept\AdminDeptDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\admindept\AdminDeptAction.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\address\AddressDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\MessageInfo.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\customer\CustomerController.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\exception\ParameterException.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\CommonConst.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\common\aop\UrlCache.java
@@ -92,10 +97,13 @@ F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\Application.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminuserrole\AdminUserRoleAction.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\product\ProductService.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\config\GlobalSecurityConfig.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\vendor\VendorService.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\bill\BillController.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\customer\Customer.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\outbound\OutboundDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\common\aop\NoRepeatSubmitAop.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\ticket\TicketService.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\vendor\VendorCond.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\bill\BillDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminuserrole\AdminUserRoleBus.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\outbound\OutboundService.java
@@ -104,9 +112,12 @@ F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminroledept
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminrolefunc\AdminRoleFunc.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\dict\DictCond.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\address\Address.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\dict\Company.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\inbound\InboundController.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminrole\AdminRoleBus.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\customer\CustomerDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\outbound\OutboundController.java
+F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\vendor\VendorDao.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\service\bill\BillCond.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\util\PushServiceConst.java
 F:\github_dir\erp_laozhang\src\main\java\org\alvin\cishan\sys\auth\adminroledept\AdminRoleDeptDao.java
