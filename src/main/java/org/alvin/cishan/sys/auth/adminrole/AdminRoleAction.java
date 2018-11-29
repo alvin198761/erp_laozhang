@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/adminRole")
 public class AdminRoleAction {
-//	private final Log logger = LogFactory.getLog(getClass());
+	//	private final Log logger = LogFactory.getLog(getClass());
 	@Autowired
 	private AdminRoleBus bus; // 角色Business层
 
@@ -43,7 +43,7 @@ public class AdminRoleAction {
 	 * @方法说明:删除角色记录(多条)
 	 **/
 	@DeleteMapping("delete")
-	public int delete(@RequestParam("ids[]") Integer ids[]) {
+	public int delete(@RequestParam("ids[]") Integer[] ids) {
 		return bus.delete(ids);
 	}
 
@@ -67,10 +67,10 @@ public class AdminRoleAction {
 	/**
 	 * @方法说明:按条件查询不分页角色列表
 	 **/
-	 @PostMapping("queryList")
+	@PostMapping("queryList")
 	public List<AdminRole> queryList(@RequestBody AdminRoleCond cond, Principal principal) {
 		// cond.setBranch_id(getDefaultBranchId(principal));
 		return bus.queryList(cond);
 	}
- 
+
 }

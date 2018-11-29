@@ -42,8 +42,8 @@ public class AdminDeptAction {
 	 * @方法说明:删除部门记录(多条)
 	 **/
 	@DeleteMapping("delete")
-	public int delete(@RequestParam("ids[]") Integer ids[]) {
-		return bus.delete(ids);
+	public int delete(@RequestParam("id") Integer id) {
+		return bus.delete(id);
 	}
 
 	/**

@@ -33,9 +33,9 @@ public class ProductService {
 	/**
 	* @方法说明：  删除产品记录(多条)
 	*/
-	public int delete(Long ids[]) {
+	public int delete(Long id) {
 		//return dao.deleteLogic(ids);//逻辑删除
-		return dao.delete(ids);//物理删除
+		return dao.delete(new Long[]{id});//物理删除
 	}
 
 	/**

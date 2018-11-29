@@ -32,9 +32,9 @@ public class AdminDeptBus {
 	 * @方法说明:删除部门记录(多条)
 	 **/
 	@Transactional
-	public int delete(Integer ids[]) {
+	public int delete(Integer id) {
 		// return dao.deleteLogic(ids);//逻辑删除
-		return dao.delete(ids);// 物理删除
+		return dao.delete(new Integer[]{id});// 物理删除
 	}
 
 	/**

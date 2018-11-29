@@ -46,7 +46,7 @@ public class AdminSysUserAction extends PrincipalAction {
 	 * @方法说明:删除用户记录(多条)
 	 **/
 	@DeleteMapping("delete")
-	public int delete(@RequestParam("ids[]") Integer ids[]) {
+	public int delete(@RequestParam("ids[]") Integer [] ids) {
 		return bus.delete(ids);
 	}
 

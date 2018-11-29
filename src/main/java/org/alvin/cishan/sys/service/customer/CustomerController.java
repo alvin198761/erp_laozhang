@@ -33,8 +33,8 @@ public class CustomerController {
     * @方法说明： 删除客户记录(多条)
     */
 	@RequestMapping("delete")
-	public int delete(@RequestParam("ids[]") Long ids[]) {
-		return service.delete(ids);
+	public int delete(@RequestParam("id") Long id) {
+		return service.delete(id);
 	}
 
     /**

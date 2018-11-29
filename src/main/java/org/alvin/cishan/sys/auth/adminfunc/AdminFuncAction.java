@@ -45,7 +45,7 @@ public class AdminFuncAction {
 	 * @方法说明:删除菜单记录(多条)
 	 **/
 	@DeleteMapping("delete")
-	public int delete(@RequestParam("ids[]") Integer ids[]) {
+	public int delete(@RequestParam("ids[]") Integer[] ids) {
 		return bus.delete(ids);
 	}
 

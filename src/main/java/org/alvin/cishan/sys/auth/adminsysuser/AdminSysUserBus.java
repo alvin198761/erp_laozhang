@@ -32,7 +32,7 @@ public class AdminSysUserBus implements InitializingBean {
 	 * @方法说明:删除用户记录(多条)
 	 **/
 	@Transactional
-	public int delete(Integer ids[]) {
+	public int delete(Integer [] ids) {
 		return dao.delete(ids);// 物理删除
 	}
 
