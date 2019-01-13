@@ -29,15 +29,16 @@ public class Person {
 	@ApiModelProperty(value = "主键", dataType = "Long")
 	private Long id;//  主键
 
-	@ApiModelProperty(value = "客户id", dataType = "Long")
-	private Long cus_id;//  客户id
+	@ApiModelProperty(value = "业务id", dataType = "Long")
+	private Long bus_id;//  客户id
 
-	@ApiModelProperty(value = "收寄方ID", dataType = "Long")
-	private Long address_id;//  收寄方ID
+	@ApiModelProperty(value = "联系人姓名", dataType = "String")
+	private String name;//  收寄方ID
 
-	//此处可添加查询显示辅助字段
+	@ApiModelProperty(value = "联系人电话", dataType = "String")
+	private String phone_no;//  收寄方ID
 
-	private String cus_name;
-	private String address;
+	@ApiModelProperty(value = "业务类型", dataType = "Byte")
+	private Byte bus_type;//  业务类型
 
 }

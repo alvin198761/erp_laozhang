@@ -22,8 +22,8 @@ public class PersonDao extends BaseDao {
     * @方法说明：  构造方法,用于拼加SQL及初始化工作
     */
     public PersonDao () {
-        insert.append("INSERT INTO cus_person (cus_id,address_id) ");
-        insert.append(" VALUES (:cus_id,:address_id)");
+        insert.append("INSERT INTO cus_person (bus_id,bus_type,name,phone_no) ");
+        insert.append(" VALUES (:bus_id,:name,:phone_no,:bus_type)");
     }
 
     /**
@@ -31,9 +31,9 @@ public class PersonDao extends BaseDao {
     */
     public int save(Person vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("REPLACE INTO cus_person (id,cus_id,address_id)");
-        sql.append(" VALUES (?,?,?) ");
-        Object[] params ={ vo.getId(),vo.getCus_id(),vo.getAddress_id() };
+        sql.append("REPLACE INTO cus_person (id,bus_id,name,phone_no,bus_type)");
+        sql.append(" VALUES (?,?,?,?,?) ");
+        Object[] params ={ vo.getId(),vo.getBus_id(),vo.getName(),vo.getPhone_no() ,vo.getBus_type()};
         //logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
     }
@@ -65,9 +65,9 @@ public class PersonDao extends BaseDao {
     */
     public int update(Person vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE cus_person SET cus_id=?,address_id=? ");
+        sql.append("UPDATE cus_person SET bus_id=?,name=?,phone_no=?,bus_type ");
         sql.append(" WHERE id=? ");
-        Object[] params = {vo.getCus_id(),vo.getAddress_id(),vo.getId()};
+        Object[] params = {vo.getBus_id(),vo.getName(),vo.getPhone_no(),vo.getBus_type(),vo.getId()};
         return jdbcTemplate.update(sql.toString(), params);
       }
 
@@ -134,7 +134,7 @@ public class PersonDao extends BaseDao {
     */
     public String getSelectedItems(PersonCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.cus_id,t.address_id"; //默认所有字段
+        return "t.id,t.bus_id,t.name,t.phone_no,t.bus_type "; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }

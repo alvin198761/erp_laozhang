@@ -41,11 +41,12 @@
             <el-table-column prop="cus_no" label="客户编号"></el-table-column>
             <el-table-column prop="cus_name" label="单位名称"></el-table-column>
             <el-table-column prop="type_name" label="客户性质"></el-table-column>
-            <el-table-column label="操作" width="150">
+            <el-table-column label="操作" width="200">
                 <template slot-scope="props">
                     <div>
                         <el-button type="text" @click="doEdit(props.row)">编辑</el-button>
                         <el-button type="text" @click="doDelete(props.row)">删除</el-button>
+                        <el-button type="text" @click="personList(props.row)">联系人管理</el-button>
                     </div>
                 </template>
             </el-table-column>
@@ -58,13 +59,14 @@
                            :page-size="size"></el-pagination>
         </div>
         <CustomerDialog ref="dialog" :refresh="refresh"></CustomerDialog>
+        <CusPersonListDialog ref="personListDialog"></CusPersonListDialog>
     </div>
 </template>
 <script>
     import CustomerDialog from './CustomerDialog.vue';
-
+    import CusPersonListDialog from './cus_person/CusPersonListDialog.vue';
     export default {
-        components: {CustomerDialog},
+        components: {CustomerDialog,CusPersonListDialog},
         data: function () {
             return {
                 total: 0,
@@ -123,6 +125,9 @@
                     });
                 }).catch(() => {
                 });
+            },
+            personList(row){
+                this.$refs["personListDialog"].showDialog(row.id);
             }
         }
     }

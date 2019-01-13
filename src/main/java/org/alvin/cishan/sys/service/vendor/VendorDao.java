@@ -145,6 +145,6 @@ public class VendorDao extends BaseDao {
     * @return
     */
     public String getJoinTables(){
-        return " join  type_dict td on td.id=t.cus_type and td.type=5 ";
+        return " join  type_dict td on td.id=t.level and td.level=5 ";
     }
 }

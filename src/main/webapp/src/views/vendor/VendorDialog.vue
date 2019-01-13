@@ -72,12 +72,12 @@
         },
         created(){
             this.loadLevelList();
-            this.loadConcatList();
+//            this.loadConcatList();
         },
         methods: {
             loadConcatList(){
                 const that = this;
-                that.$http.post("/api/person/queryList",{}).then(res =>{
+                that.$http.post("/api/cus_person/queryList",{}).then(res =>{
                     that.concatList = res.data;
                 }).catch(err =>{
                     that.$message.error("获取联系人出错:" + err)

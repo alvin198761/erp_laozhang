@@ -7,7 +7,7 @@
             <!--</el-form-item>-->
             <!--<el-form-item label="类型">-->
             <!--<el-input placeholder="请输入类型" size="small" v-model="form.type"></el-input>-->
-            </el-form-item>
+            <!--</el-form-item>-->
             <el-form-item label="电话">
                 <el-input placeholder="请输入电话" size="small" v-model="form.target_phone"></el-input>
             </el-form-item>

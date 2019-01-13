@@ -1,24 +1,27 @@
-/*供应商管理,作者:唐植超,日期:2018-11-27 17:05:46*/
+/*收寄信息管理,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <div>
         <el-form :inline="true">
-            <el-form-item label="供应商编号">
-                <el-input placeholder="请输入供应商编号" size="small" v-model="form.vendor_no"></el-input>
-            </el-form-item>
-            <el-form-item label="供应商名称">
-                <el-input placeholder="请输入供应商名称" size="small" v-model="form.vendor_name"></el-input>
-            </el-form-item>
-            <!--<el-form-item label="供应商地址">-->
-            <!--<el-input placeholder="请输入供应商地址" size="small" v-model="form.address"></el-input>-->
+            <!--<el-form-item label="主键">-->
+            <!--<el-input placeholder="请输入主键" size="small" v-model="form.id"></el-input>-->
             <!--</el-form-item>-->
-            <!--<el-form-item label="供应商级别">-->
-                <!--<el-input placeholder="请输入供应商级别" size="small" v-model="form.level"></el-input>-->
+            <!--<el-form-item label="类型">-->
+            <!--<el-input placeholder="请输入类型" size="small" v-model="form.type"></el-input>-->
+            <!--</el-form-item>-->
+            <el-form-item label="电话">
+                <el-input placeholder="请输入电话" size="small" v-model="form.target_phone"></el-input>
+            </el-form-item>
+            <el-form-item label="地址">
+                <el-input placeholder="请输入地址" size="small" v-model="form.target_addr"></el-input>
+            </el-form-item>
+            <el-form-item label="姓名">
+                <el-input placeholder="请输入姓名" size="small" v-model="form.target_name"></el-input>
+            </el-form-item>
+            <!--<el-form-item label="收寄方id">-->
+            <!--<el-input placeholder="请输入收寄方id" size="small" v-model="form.target_id"></el-input>-->
             <!--</el-form-item>-->
             <!--<el-form-item label="备注">-->
             <!--<el-input placeholder="请输入备注" size="small" v-model="form.remark"></el-input>-->
-            <!--</el-form-item>-->
-            <!--<el-form-item label="联系人">-->
-            <!--<el-input placeholder="请输入联系人" size="small" v-model="form.concat_id"></el-input>-->
             <!--</el-form-item>-->
             <el-form-item>
                 <el-button icon="search" @click="refresh" title="根据输入的条件查询" size="small">查询</el-button>
@@ -30,11 +33,16 @@
                 <template slot-scope="props">
                     <el-form>
                         <el-row :gutter="10">
-
-                            <el-col :span="24">
-                                <el-form-item label="供应商地址">{{props.row.address}}</el-form-item>
+                            <el-col :span="12">
+                                <el-form-item label="电话">{{props.row.target_phone}}</el-form-item>
                             </el-col>
-                            <el-col :span="24">
+                            <el-col :span="12">
+                                <el-form-item label="地址">{{props.row.target_addr}}</el-form-item>
+                            </el-col>
+                            <el-col :span="12">
+                                <el-form-item label="姓名">{{props.row.target_name}}</el-form-item>
+                            </el-col>
+                            <el-col :span="12">
                                 <el-form-item label="备注">{{props.row.remark}}</el-form-item>
                             </el-col>
                         </el-row>
@@ -42,10 +50,12 @@
                 </template>
             </el-table-column>
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
-            <el-table-column prop="vendor_no" label="供应商编号"></el-table-column>
-            <el-table-column prop="vendor_name" label="供应商名称"></el-table-column>
-            <el-table-column prop="level_name" label="供应商级别"></el-table-column>
-            <el-table-column prop="concat_id" label="联系人"></el-table-column>
+            <!--<el-table-column prop="type" label="类型"></el-table-column>-->
+            <el-table-column prop="target_phone" label="电话"></el-table-column>
+            <el-table-column prop="target_addr" label="地址"></el-table-column>
+            <el-table-column prop="target_name" label="姓名"></el-table-column>
+            <el-table-column prop="target_id" label="收寄方id"></el-table-column>
+            <el-table-column prop="remark" label="备注"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>
@@ -62,14 +72,14 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <VendorDialog ref="dialog" :refresh="refresh"></VendorDialog>
+        <AddressDialog ref="dialog" :refresh="refresh"></AddressDialog>
     </div>
 </template>
 <script>
-    import VendorDialog from './VendorDialog.vue';
+    import AddressDialog from './AddressDialog.vue';
 
     export default {
-        components: {VendorDialog},
+        components: {AddressDialog},
         data: function () {
             return {
                 total: 0,
@@ -78,12 +88,12 @@
                 dataList: [],
                 form: {
                     id: null,// 主键
-                    vendor_no: null,// 供应商编号
-                    vendor_name: null,// 供应商名称
-                    address: null,// 供应商地址
-                    level: null,// 供应商级别
+                    type: null,// 类型
+                    target_phone: null,// 电话
+                    target_addr: null,// 地址
+                    target_name: null,// 姓名
+                    target_id: null,// 收寄方id
                     remark: null,// 备注
-                    concat_id: null,// 联系人
                 },
                 loading: false
             }
@@ -97,12 +107,12 @@
                 const that = this;
                 that.loading = true;
                 const requestData = {...that.form, page: that.page - 1, size: that.size};
-                that.$http.post("/api/vendor/queryPage", JSON.stringify(requestData)).then(res => {
+                that.$http.post("/api/address/queryPage", JSON.stringify(requestData)).then(res => {
                     that.loading = false;
                     that.dataList = res.data.content;
                     that.total = res.data.totalElements;
                 }).catch(res => {
-                    that.$message.error("获取供应商列表失败：" + res);
+                    that.$message.error("获取收寄信息列表失败：" + res);
                     that.loading = false;
                 });
             },
@@ -119,7 +129,7 @@
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
-                    that.$http.delete("/api/vendor/delete", {
+                    that.$http.delete("/api/address/delete", {
                         params: {id: row.id}
                     }).then(res => {
                         this.$message.success("删除成功");

@@ -46,7 +46,7 @@
                     if (!valid) {
                         return;
                     }
-                    that.$http.post("/api/person/" + that.dialogMode, JSON.stringify(that.form)).then(res => {
+                    that.$http.post("/api/cus_person/" + that.dialogMode, JSON.stringify(that.form)).then(res => {
                         that.show = false;
                         that.$message.success(that.title + "成功!");
                         that.refresh();

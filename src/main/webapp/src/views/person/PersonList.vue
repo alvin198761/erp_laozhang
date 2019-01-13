@@ -83,7 +83,7 @@
         const that = this;
         that.loading = true;
         const requestData = {...that.form, page: that.page - 1, size: that.size};
-        that.$http.post("/api/person/queryPage", JSON.stringify(requestData)).then(res => {
+        that.$http.post("/api/cus_person/queryPage", JSON.stringify(requestData)).then(res => {
 		          that.loading = false;
 		          that.dataList = res.data.content;
 		          that.total = res.data.totalElements;
@@ -105,7 +105,7 @@
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          that.$http.delete("/api/person/delete", {
+          that.$http.delete("/api/cus_person/delete", {
 		            params: {id: row.id}
 		          }).then(res => {
 		            this.$message.success("删除成功");

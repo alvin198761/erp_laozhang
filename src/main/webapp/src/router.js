@@ -3,7 +3,7 @@ import Router from "vue-router";
 import RouterViewPage from "./views/RouterViewPage.vue";
 
 import InboundList from './views/inbound/InboundList.vue';
-import AddressList from './views/address/AddressList.vue';
+import AddressView from './views/address/AddressView.vue';
 import BillList from './views/bill/BillList.vue';
 import Settings from './views/settings/Settings.vue';
 import OutboundList from './views/outbound/OutboundList.vue';
@@ -28,7 +28,7 @@ export default new Router({
                     path: '/inbound', component: InboundList, name: '入库',
                 },
                 {
-                    path: '/address', component: AddressList, name: '寄收方',
+                    path: '/address', component: AddressView, name: '寄收方',
                 },
                 {
                     path: '/bill', component: BillList, name: '开票信息',

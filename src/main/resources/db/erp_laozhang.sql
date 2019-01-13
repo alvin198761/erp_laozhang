@@ -387,6 +387,5 @@ CREATE TABLE `customer` (
   `address` varchar(200) DEFAULT NULL COMMENT '客户地址',
   `cus_type` tinyint(4) DEFAULT NULL COMMENT '客户性质',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
-  `concat_id` bigint(20) DEFAULT NULL COMMENT '联系人',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户';

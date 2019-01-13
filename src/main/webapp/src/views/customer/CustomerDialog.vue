@@ -23,9 +23,6 @@
                             </el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label='联系人' prop='address'>
-                        <el-input placeholder='请输入客户地址' size="small" v-model='form.address'></el-input>
-                    </el-form-item>
                     <el-form-item label='备注' prop='remark'>
                         <el-input placeholder='请输入备注' size="small" type="textarea" v-model='form.remark'></el-input>
                     </el-form-item>
