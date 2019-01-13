@@ -135,7 +135,7 @@ public class VendorDao extends BaseDao {
     */
     public String getSelectedItems(VendorCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.vendor_no,t.vendor_name,t.address,t.level,t.remark,t.concat_id"; //默认所有字段
+        return "t.id,t.vendor_no,t.vendor_name,t.address,t.level,t.remark,t.concat_id,td.name as level_name "; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
@@ -145,6 +145,6 @@ public class VendorDao extends BaseDao {
     * @return
     */
     public String getJoinTables(){
-        return "";
+        return " join  type_dict td on td.id=t.cus_type and td.type=5 ";
     }
 }

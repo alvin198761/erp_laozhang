@@ -10,6 +10,8 @@ module.exports = {
                 id: "@integer(100,200)",//主键
                 cus_id: "@integer(100,200)",//客户id
                 address_id: "@integer(100,200)",//收寄方ID
+                cus_name: "@cword(5,10)",//收寄方ID
+                address: "@cword(5,10)",//收寄方ID
             }],
             'number': '@integer(100,200)',
             'size': 10,
@@ -38,6 +40,8 @@ module.exports = {
                 id: "@integer(100,200)",//主键
                 cus_id: "@integer(100,200)",//客户id
                 address_id: "@integer(100,200)",//收寄方ID
+                cus_name: "@cword(5,10)",//收寄方ID
+                address: "@cword(5,10)",//收寄方ID
             }]
         });
         setTimeout(function () {

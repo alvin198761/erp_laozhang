@@ -40,7 +40,7 @@
             </el-table-column>
             <el-table-column prop="cus_no" label="客户编号"></el-table-column>
             <el-table-column prop="cus_name" label="单位名称"></el-table-column>
-            <el-table-column prop="cus_type" label="客户性质"></el-table-column>
+            <el-table-column prop="type_name" label="客户性质"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>

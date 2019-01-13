@@ -375,3 +375,18 @@ CREATE TABLE `vendor` (
 -- ----------------------------
 -- Records of vendor
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `customer`
+-- ----------------------------
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `cus_no` varchar(100) DEFAULT NULL COMMENT '客户编号',
+  `cus_name` varchar(200) DEFAULT NULL COMMENT '单位名称',
+  `address` varchar(200) DEFAULT NULL COMMENT '客户地址',
+  `cus_type` tinyint(4) DEFAULT NULL COMMENT '客户性质',
+  `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `concat_id` bigint(20) DEFAULT NULL COMMENT '联系人',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户';

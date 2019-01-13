@@ -1,11 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import RouterViewPage from "./views/RouterViewPage.vue";
 
 import InboundList from './views/inbound/InboundList.vue';
 import AddressList from './views/address/AddressList.vue';
 import BillList from './views/bill/BillList.vue';
-import Company from './views/dict/Company.vue';
+import Settings from './views/settings/Settings.vue';
 import OutboundList from './views/outbound/OutboundList.vue';
 import ProductList from './views/product/ProductList.vue';
 import QuoteList from './views/quote/QuoteList.vue';
@@ -20,7 +20,7 @@ export default new Router({
     routes: [
         {
             path: '/',
-            component: Home,
+            component: RouterViewPage,
             name: '首页',
             redirect: '/inbound',
             children: [
@@ -32,9 +32,6 @@ export default new Router({
                 },
                 {
                     path: '/bill', component: BillList, name: '开票信息',
-                },
-                {
-                    path: '/company', component: Company, name: '公司信息',
                 },
                 {
                     path: '/outbound', component: OutboundList, name: '出库',
@@ -53,6 +50,10 @@ export default new Router({
                 },
                 {
                     path: '/custom', component: CustomerList, name: '客户',
+                },
+                {
+                    path: '/settings' ,component : Settings, name: '基础设置',
+
                 }
             ]
         }

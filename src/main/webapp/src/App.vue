@@ -20,18 +20,33 @@
             </el-header>
             <el-container>
                 <el-aside width="200px" style="background-color: rgb(238, 241, 246)  ">
-                    <el-menu router :default-openeds="['/inbound']">
-                        <el-menu-item index="/inbound">入库管理</el-menu-item>
-                        <el-menu-item index="/quote">报价管理</el-menu-item>
-                        <el-menu-item index="/outbound">出库管理</el-menu-item>
-                        <el-menu-item index="/ticket">进销项发票</el-menu-item>
-                        <el-menu-item index="/bill">开票信息管理</el-menu-item>
-
-                        <el-menu-item index="/vendor">供应商信息</el-menu-item>
-                        <el-menu-item index="/address">寄收方信息</el-menu-item>
-                        <el-menu-item index="/custom">客户信息</el-menu-item>
-                        <el-menu-item index="/product">产品信息</el-menu-item>
-                        <el-menu-item index="/company">公司信息</el-menu-item>
+                    <el-menu router   :default-openeds="['/inbound']">
+                        <el-submenu index="/bus">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
+                                <span>业务管理</span>
+                            </template>
+                            <el-menu-item index="/inbound">
+                                入库管理
+                            </el-menu-item>
+                            <el-menu-item index="/quote">报价管理</el-menu-item>
+                            <el-menu-item index="/outbound">出库管理</el-menu-item>
+                            <el-menu-item index="/ticket">进销项发票</el-menu-item>
+                        </el-submenu>
+                        <el-submenu index="/info">
+                            <template slot="title">
+                                <i class="el-icon-document"></i>
+                                <span>信息管理</span>
+                            </template>
+                            <el-menu-item index="/custom">客户信息</el-menu-item>
+                            <el-menu-item index="/vendor">供应商信息</el-menu-item>
+                            <el-menu-item index="/product">产品信息</el-menu-item>
+                            <el-menu-item index="/bill">开票信息</el-menu-item>
+                            <el-menu-item index="/address">寄收方信息</el-menu-item>
+                        </el-submenu>
+                        <el-menu-item index="/settings">
+                            <i class="el-icon-setting"></i>
+                            基础设置</el-menu-item>
                     </el-menu>
                 </el-aside>
                 <el-main>
@@ -46,16 +61,16 @@
 
 <script>
     export default {
-        data(){
+        data() {
             return {
                 timer: null
             };
         },
-        created(){
+        created() {
             const that = this;
             this.timer = setInterval(() => that.$http.get("/api/heartbeat"), 2 * 60 * 1000);
         },
-        destroyed(){
+        destroyed() {
             clearInterval(this.timer);
         }
     }

@@ -58,4 +58,5 @@ public class CustomerCond extends BaseCondition {
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类
+
 }

@@ -49,4 +49,6 @@ public class Vendor {
 
 	//此处可添加查询显示辅助字段
 
+	private String level_name;//级别名称
+
 }

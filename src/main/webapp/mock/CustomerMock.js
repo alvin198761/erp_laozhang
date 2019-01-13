@@ -13,6 +13,7 @@ module.exports = {
                 address: "@word(5,10)",// 客户地址
                 cus_type: "@integer(100,200)",//客户性质
                 remark: "@word(5,10)",// 备注
+                type_name: "@word(5,10)",// 客户性质类型名称
             }],
             'number': '@integer(100,200)',
             'size': 10,
@@ -44,6 +45,7 @@ module.exports = {
                 address: "@word(5,10)",// 客户地址
                 cus_type: "@integer(100,200)",//客户性质
                 remark: "@word(5,10)",// 备注
+                type_name: "@word(5,10)",// 客户性质类型名称
             }]
         });
         setTimeout(function () {
@@ -51,7 +53,7 @@ module.exports = {
         }, 500);
     },
 
-    'POST /api/customer/delete': function (req, res, next) {
+    'DELETE /api/customer/delete': function (req, res, next) {
         setTimeout(function () {
             res.json({});
         }, 500);

@@ -83,6 +83,7 @@ public class DictDao extends BaseDao {
 		sb.append(getJoinTables());
 		sb.append(" WHERE 1=1 ");
 		sb.append(cond.getCondition());
+		sb.append(" order by id desc");
 		//sb.append(cond.getOrderSql());//增加排序子句;
 		//logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
 		return queryPage(sb.toString(), cond, Dict.class);
@@ -98,7 +99,9 @@ public class DictDao extends BaseDao {
 		sb.append(getJoinTables());
 		sb.append(" WHERE 1=1 ");
 		sb.append(cond.getCondition());
+		sb.append(" order by id desc");
 		//sb.append(" ORDER BY operate_time DESC");
+		logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
 		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(Dict.class));
 	}
 
@@ -151,5 +154,6 @@ public class DictDao extends BaseDao {
 
 	public void deleteByTypes(ArrayList<Integer> types) {
 		String sql = "DELETE FROM type_dict WHERE `type` in (" + Joiner.on(",").join(types) + ")";
+		jdbcTemplate.update(sql);
 	}
 }

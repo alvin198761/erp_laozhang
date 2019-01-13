@@ -13,6 +13,7 @@ module.exports = {
                 ticket_type: "@integer(100,200)",//发票类型
                 ticket_status: "@integer(100,200)",//发票状态
                 remark: "@word(5,10)",// 备注
+                prod_name: "@cword(5,10)",//产品名称
             }],
             'number': '@integer(100,200)',
             'size': 10,
@@ -44,6 +45,7 @@ module.exports = {
                 ticket_type: "@integer(100,200)",//发票类型
                 ticket_status: "@integer(100,200)",//发票状态
                 remark: "@word(5,10)",// 备注
+                prod_name: "@cword(5,10)",//产品名称
             }]
         });
         setTimeout(function () {

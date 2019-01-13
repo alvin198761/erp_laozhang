@@ -25,6 +25,8 @@ module.exports = {
                 pic2: "@word(5,10)",// 产品图片2
                 pic3: "@word(5,10)",// 产品图片3
                 remark: "@word(5,10)",// 备注
+                shuiShouLeiXing: '@cword(5,10)',
+                danWei: '@cword(1,2)',
             }],
             'number': '@integer(100,200)',
             'size': 10,
@@ -68,6 +70,8 @@ module.exports = {
                 pic2: "@word(5,10)",// 产品图片2
                 pic3: "@word(5,10)",// 产品图片3
                 remark: "@word(5,10)",// 备注
+                shuiShouLeiXing: '@cword(5,10)',
+                danWei: '@cword(1,2)',
             }]
         });
         setTimeout(function () {

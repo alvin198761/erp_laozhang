@@ -135,7 +135,7 @@ public class CustomerDao extends BaseDao {
     */
     public String getSelectedItems(CustomerCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.cus_no,t.cus_name,t.address,t.cus_type,t.remark"; //默认所有字段
+        return "t.id,t.cus_no,t.cus_name,t.address,t.cus_type,t.remark,td.name as type_name"; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
@@ -145,6 +145,6 @@ public class CustomerDao extends BaseDao {
     * @return
     */
     public String getJoinTables(){
-        return "";
+        return " join  type_dict td on td.id=t.cus_type and td.type=4 ";
     }
 }

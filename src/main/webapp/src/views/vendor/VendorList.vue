@@ -2,7 +2,6 @@
 <template>
     <div>
         <el-form :inline="true">
-            </el-form-item>
             <el-form-item label="供应商编号">
                 <el-input placeholder="请输入供应商编号" size="small" v-model="form.vendor_no"></el-input>
             </el-form-item>
@@ -45,7 +44,7 @@
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
             <el-table-column prop="vendor_no" label="供应商编号"></el-table-column>
             <el-table-column prop="vendor_name" label="供应商名称"></el-table-column>
-            <el-table-column prop="level" label="供应商级别"></el-table-column>
+            <el-table-column prop="level_name" label="供应商级别"></el-table-column>
             <el-table-column prop="concat_id" label="联系人"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">

@@ -83,7 +83,7 @@ public class DictController {
 		return this.service.fetchCompany();
 	}
 
-	@GetMapping("saveCompany")
+	@PostMapping("saveCompany")
 	public void saveCompany(@RequestBody Company company) {
 		this.service.saveCompany(company);
 	}

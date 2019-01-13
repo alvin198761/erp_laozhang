@@ -14,10 +14,17 @@
                         <el-input placeholder='请输入供应商地址' size="small" v-model='form.address'></el-input>
                     </el-form-item>
                     <el-form-item label='供应商级别' prop='level'>
-                        <el-input placeholder='请输入供应商级别' size="small" v-model='form.level'></el-input>
+                        <el-select v-model="form.level" placeholder="请选择供应商级别" style="width: 100%"  size="small">
+                            <el-option
+                                    v-for="item in levelList"
+                                    :key="item.id"
+                                    :label="item.name"
+                                    :value="item.id">
+                            </el-option>
+                        </el-select>
                     </el-form-item>
                     <el-form-item label='备注' prop='remark'>
-                        <el-input placeholder='请输入备注' size="small" v-model='form.remark'></el-input>
+                        <el-input placeholder='请输入备注' size="small" type="textarea" v-model='form.remark'></el-input>
                     </el-form-item>
                     <el-form-item label='联系人' prop='concat_id'>
                         <el-input placeholder='请输入联系人' size="small" v-model='form.concat_id'></el-input>
@@ -55,16 +62,37 @@
                     level: [
                         {required: true, message: '请输入供应商级别', trigger: 'blur'},
                     ],
-                    remark: [
-                        {required: true, message: '请输入备注', trigger: 'blur'},
-                    ],
-                    concat_id: [
-                        {required: true, message: '请输入联系人', trigger: 'blur'},
-                    ],
-                }
+//                    concat_id: [
+//                        {required: true, message: '请输入联系人', trigger: 'blur'},
+//                    ],
+                },
+                levelList: [],
+                concatList: []
             }
         },
+        created(){
+            this.loadLevelList();
+            this.loadConcatList();
+        },
         methods: {
+            loadConcatList(){
+                const that = this;
+                that.$http.post("/api/person/queryList",{}).then(res =>{
+                    that.concatList = res.data;
+                }).catch(err =>{
+                    that.$message.error("获取联系人出错:" + err)
+                });
+            },
+            loadLevelList(){
+                const that = this;
+                that.$http.post("/api/dict/queryList", {
+                    type: 5
+                }).then(res => {
+                    that.levelList = res.data;
+                }).catch(err =>{
+                    that.$message.error("获取供应商级别出错:" + err)
+                });
+            },
             save() {//新增及修改记录
                 const that = this;
                 this.$refs['form'].validate((valid) => {

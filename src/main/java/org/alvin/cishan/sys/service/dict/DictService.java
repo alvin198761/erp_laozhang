@@ -83,20 +83,17 @@ public class DictService {
 		DictCond dictCond = new DictCond();
 		dictCond.setTypes(types);
 		Company company = new Company();
-		this.dao.queryList(dictCond).stream().collect(Collectors.groupingBy(Dict::getType)).forEach((k, v) -> {
-			if (v == null || v.isEmpty()) {
+		this.dao.queryList(dictCond).stream().forEach((item) -> {
+			if (item.getType()== 1) {
+				company.setName(item.getName());
 				return;
 			}
-			if (k == 1) {
-				company.setName(v.get(0).getName());
+			if (item.getType()== 2) {
+				company.setAddress(item.getName());
 				return;
 			}
-			if (k == 2) {
-				company.setAddress(v.get(0).getName());
-				return;
-			}
-			if (k == 3) {
-				company.setHead(v.get(0).getName());
+			if (item.getType()== 3) {
+				company.setHead(item.getName());
 				return;
 			}
 
@@ -110,7 +107,7 @@ public class DictService {
 		List<Dict> dicts = Lists.newArrayList();
 		dicts.add(Dict.builder().type(1).name(company.getName()).build());
 		dicts.add(Dict.builder().type(2).name(company.getAddress()).build());
-		dicts.add(Dict.builder().type(2).name(company.getHead()).build());
+		dicts.add(Dict.builder().type(3).name(company.getHead()).build());
 		this.dao.insertBatch(dicts);
 	}
 }

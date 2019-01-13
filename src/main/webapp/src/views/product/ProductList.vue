@@ -54,11 +54,11 @@
             </el-table-column>
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
             <el-table-column prop="prod_no" label="货号"></el-table-column>
-            <el-table-column prop="tax_type" label="税收类型"></el-table-column>
+            <el-table-column prop="shuiShouLeiXing" label="税收类型"></el-table-column>
             <el-table-column prop="prod_name" label="产品名称"></el-table-column>
             <el-table-column prop="spec_no" label="规格型号"></el-table-column>
             <el-table-column prop="note" label="产品说明"></el-table-column>
-            <el-table-column prop="unit" label="单位"></el-table-column>
+            <el-table-column prop="danWei" label="单位"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>

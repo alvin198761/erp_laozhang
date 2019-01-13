@@ -14,10 +14,20 @@
                         <el-input placeholder='请输入客户地址' size="small" v-model='form.address'></el-input>
                     </el-form-item>
                     <el-form-item label='客户性质' prop='cus_type'>
-                        <el-input placeholder='请输入客户性质' size="small" v-model='form.cus_type'></el-input>
+                        <el-select v-model="form.cus_type" placeholder="请选择客户性质" style="width: 100%"  size="small">
+                            <el-option
+                                    v-for="item in typeList"
+                                    :key="item.id"
+                                    :label="item.name"
+                                    :value="item.id">
+                            </el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item label='联系人' prop='address'>
+                        <el-input placeholder='请输入客户地址' size="small" v-model='form.address'></el-input>
                     </el-form-item>
                     <el-form-item label='备注' prop='remark'>
-                        <el-input placeholder='请输入备注' size="small" v-model='form.remark'></el-input>
+                        <el-input placeholder='请输入备注' size="small" type="textarea" v-model='form.remark'></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -39,9 +49,7 @@
                 dialogMode: "save",
                 show: false,
                 rules: {
-                    id: [
-                        {required: true, message: '请输入主键', trigger: 'blur'},
-                    ],
+
                     cus_no: [
                         {required: true, message: '请输入客户编号', trigger: 'blur'},
                     ],
@@ -52,15 +60,27 @@
                         {required: true, message: '请输入客户地址', trigger: 'blur'},
                     ],
                     cus_type: [
-                        {required: true, message: '请输入客户性质', trigger: 'blur'},
+                        {required: true, message: '请选择客户性质', trigger: 'blur'},
                     ],
-                    remark: [
-                        {required: true, message: '请输入备注', trigger: 'blur'},
-                    ],
-                }
+
+                },
+                typeList:[]
             }
         },
+        created(){
+            this.loadTypeList();
+        },
         methods: {
+            loadTypeList(){
+                const that = this;
+                that.$http.post("/api/dict/queryList",{
+                    type: 4
+                }).then(res => {
+                    that.typeList = res.data;
+                }).catch(err =>{
+                    that.$message.error("获取客户性质出错:" + err)
+                });
+            },
             save() {//新增及修改记录
                 const that = this;
                 this.$refs['form'].validate((valid) => {

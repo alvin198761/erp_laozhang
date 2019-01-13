@@ -28,6 +28,8 @@ public class Customer {
 
 	@ApiModelProperty(value = "主键", dataType = "Long")
 	private Long id;//  主键
+	@ApiModelProperty(value = "联系人", dataType = "Long")
+	private Long concat_id;//  联系人
 
 	@ApiModelProperty(value = "客户编号", dataType = "String")
 	private String cus_no;//  客户编号
@@ -44,6 +46,10 @@ public class Customer {
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
+
+
 	//此处可添加查询显示辅助字段
+
+	private String type_name ; //客户性质名称
 
 }

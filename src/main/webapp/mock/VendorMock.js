@@ -14,6 +14,7 @@ module.exports = {
                 level: "@integer(100,200)",//供应商级别
                 remark: "@word(5,10)",// 备注
                 concat_id: "@integer(100,200)",//联系人
+                level_name:"@word(5,10)",//级别名称
             }],
             'number': '@integer(100,200)',
             'size': 10,

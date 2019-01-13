@@ -37,8 +37,9 @@
                     </el-form>
                 </template>
             </el-table-column>
-            <el-table-column prop="id" label="主键"></el-table-column>
-            <el-table-column prop="prod_id" label="产品id"></el-table-column>
+            <!--<el-table-column prop="id" label="主键"></el-table-column>-->
+            <!--<el-table-column prop="prod_id" label="产品id"></el-table-column>-->
+            <el-table-column prop="prod_name" label="产品名称"></el-table-column>
             <el-table-column prop="date" label="入库日期"></el-table-column>
             <el-table-column prop="ticket_type" label="发票类型"></el-table-column>
             <el-table-column prop="ticket_status" label="发票状态"></el-table-column>

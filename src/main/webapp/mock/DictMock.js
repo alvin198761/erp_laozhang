@@ -45,7 +45,7 @@ module.exports = {
         }, 500);
     },
 
-    'POST /api/dict/delete': function (req, res, next) {
+    'DELETE /api/dict/delete': function (req, res, next) {
         setTimeout(function () {
             res.json({});
         }, 500);

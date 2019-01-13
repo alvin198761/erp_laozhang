@@ -37,4 +37,7 @@ public class Person {
 
 	//此处可添加查询显示辅助字段
 
+	private String cus_name;
+	private String address;
+
 }
