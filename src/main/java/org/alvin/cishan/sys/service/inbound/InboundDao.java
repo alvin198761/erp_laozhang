@@ -82,7 +82,7 @@ public class InboundDao extends BaseDao {
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
         //sb.append(cond.getOrderSql());//增加排序子句;
-        //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Inbound.class);
     }
     
@@ -134,7 +134,7 @@ public class InboundDao extends BaseDao {
     */
     public String getSelectedItems(InboundCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.prod_id,t.date,t.ticket_type,t.ticket_status,t.remark"; //默认所有字段
+        return "t.id,t.prod_id,t.date,t.ticket_type,t.ticket_status,t.remark,p.prod_name,p.prod_no"; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
@@ -144,6 +144,6 @@ public class InboundDao extends BaseDao {
     * @return
     */
     public String getJoinTables(){
-        return "";
+        return " join product p on p.id = t.prod_id ";
     }
 }

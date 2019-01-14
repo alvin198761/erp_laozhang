@@ -46,10 +46,10 @@ public class InboundCond extends BaseCondition {
 	private String prod_id;//  产品id
 	@ApiModelProperty(value = "入库日期", dataType = "Date")
 	private Date date;//  入库日期
-	@ApiModelProperty(value = "发票类型", dataType = "Byte")
-	private Byte ticket_type;//  发票类型
-	@ApiModelProperty(value = "发票状态", dataType = "Byte")
-	private Byte ticket_status;//  发票状态
+	@ApiModelProperty(value = "发票类型", dataType = "String")
+	private String ticket_type;//  发票类型
+	@ApiModelProperty(value = "发票状态", dataType = "String")
+	private String ticket_status;//  发票状态
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 

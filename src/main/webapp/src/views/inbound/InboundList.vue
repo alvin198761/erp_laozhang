@@ -11,9 +11,9 @@
             <!--<el-form-item label="入库日期">-->
             <!--<el-input placeholder="请输入入库日期" size="small" v-model="form.date"></el-input>-->
             <!--</el-form-item>-->
-            <el-form-item label="发票类型">
-                <el-input placeholder="请输入发票类型" size="small" v-model="form.ticket_type"></el-input>
-            </el-form-item>
+            <!--<el-form-item label="发票类型">-->
+                <!--<el-input placeholder="请输入发票类型" size="small" v-model="form.ticket_type"></el-input>-->
+            <!--</el-form-item>-->
             <!--<el-form-item label="发票状态">-->
             <!--<el-input placeholder="请输入发票状态" size="small" v-model="form.ticket_status"></el-input>-->
             <!--</el-form-item>-->
@@ -39,8 +39,14 @@
             </el-table-column>
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
             <!--<el-table-column prop="prod_id" label="产品id"></el-table-column>-->
-            <el-table-column prop="prod_name" label="产品名称"></el-table-column>
-            <el-table-column prop="date" label="入库日期"></el-table-column>
+            <el-table-column  label="产品">
+                <template slot-scope="props">
+                    {{props.row.prod_name }}({{props.row.prod_no}})
+                </template>
+            </el-table-column>
+            <el-table-column prop="date" label="入库日期">
+                <template slot-scope="props">{{props.row.date |date_filter}}</template>
+            </el-table-column>
             <el-table-column prop="ticket_type" label="发票类型"></el-table-column>
             <el-table-column prop="ticket_status" label="发票状态"></el-table-column>
             <el-table-column label="操作" width="150">
