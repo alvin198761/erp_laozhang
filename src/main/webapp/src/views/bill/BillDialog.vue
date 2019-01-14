@@ -24,7 +24,7 @@
                         <el-input placeholder='请输入纳税人识别号' size="small" v-model='form.taxpayer_no'></el-input>
                     </el-form-item>
                     <el-form-item label='备注' prop='remark'>
-                        <el-input placeholder='请输入备注' size="small" v-model='form.remark'></el-input>
+                        <el-input placeholder='请输入备注' size="small" type="textarea" v-model='form.remark'></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>

@@ -41,7 +41,7 @@ public class TicketCond extends BaseCondition {
 		add(total, " AND t.total = ? ");
 		add(ticket_type, " AND t.ticket_type = ? ");
 		add(rate, " AND t.rate = ? ");
-		add(type, " AND t.type LIKE ? ", 3);
+		add(type, " AND t.type = ? ");
 		add(cus_id, " AND t.cus_id = ? ");
 		// add(ids, "AND t.id IN ");");
 	}
@@ -67,12 +67,12 @@ public class TicketCond extends BaseCondition {
 	private Float price;//  单价
 	@ApiModelProperty(value = "总价", dataType = "Float")
 	private Float total;//  总价
-	@ApiModelProperty(value = "发票类型", dataType = "Byte")
-	private Byte ticket_type;//  发票类型
+	@ApiModelProperty(value = "发票类型", dataType = "String")
+	private String ticket_type;//  发票类型
 	@ApiModelProperty(value = "税率", dataType = "Double")
 	private Double rate;//  税率
-	@ApiModelProperty(value = "进出类型", dataType = "String")
-	private String type;//  进出类型
+	@ApiModelProperty(value = "进出类型", dataType = "Byte")
+	private Byte type;//  进出类型
 	@ApiModelProperty(value = "客户Id", dataType = "Long")
 	private Long cus_id;//  客户Id
 

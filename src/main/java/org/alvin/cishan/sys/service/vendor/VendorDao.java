@@ -82,7 +82,7 @@ public class VendorDao extends BaseDao {
         sb.append(getJoinTables());
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
-        //sb.append(cond.getOrderSql());//增加排序子句;
+        sb.append(" order by id desc ");//增加排序子句;
         logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Vendor.class);
     }
@@ -97,6 +97,7 @@ public class VendorDao extends BaseDao {
         sb.append(getJoinTables());
         sb.append(" WHERE 1=1 ");
     	sb.append(cond.getCondition());
+        sb.append(" order by id desc");//增加排序子句;
     	//sb.append(" ORDER BY operate_time DESC");
     	return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(Vendor.class));
     }

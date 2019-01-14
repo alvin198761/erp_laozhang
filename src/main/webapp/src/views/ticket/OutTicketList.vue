@@ -39,7 +39,7 @@
                 <el-input placeholder="请输入税率" size="small" v-model="form.rate"></el-input>
             </el-form-item>
             <!--<el-form-item label="进出类型">-->
-                <!--<el-input placeholder="请输入进出类型" size="small" v-model="form.type"></el-input>-->
+            <!--<el-input placeholder="请输入进出类型" size="small" v-model="form.type"></el-input>-->
             <!--</el-form-item>-->
             <!--<el-form-item label="客户Id">-->
             <!--<el-input placeholder="请输入客户Id" size="small" v-model="form.cus_id"></el-input>-->
@@ -54,6 +54,15 @@
                 <template slot-scope="props">
                     <el-form>
                         <el-row :gutter="10">
+                            <el-col :span="12">
+                                <el-form-item label="电话">{{props.row.address_phone_no}}</el-form-item>
+                            </el-col>
+                            <el-col :span="12">
+                                <el-form-item label="姓名">{{props.row.address_name}}</el-form-item>
+                            </el-col>
+                            <el-col :span="24">
+                                <el-form-item label="地址">{{props.row.address}}</el-form-item>
+                            </el-col>
                             <el-col :span="24">
                                 <el-form-item label="备注">{{props.row.remark}}</el-form-item>
                             </el-col>
@@ -62,19 +71,23 @@
                     </el-form>
                 </template>
             </el-table-column>
-            <el-table-column prop="id" label="主键"></el-table-column>
-            <el-table-column prop="vendor_id" label="供应商id"></el-table-column>
+            <el-table-column  label="客户">
+                <template slot-scope="props">
+                    {{props.row.cus_name}}({{props.row.cus_no}})
+                </template>
+            </el-table-column>
+            <el-table-column   label="产品">
+                <template slot-scope="props">
+                    {{props.row.prod_name}}({{props.row.prod_no}})
+                </template>
+            </el-table-column>
             <el-table-column prop="tax_type" label="税收类型"></el-table-column>
-            <el-table-column prop="prod_id" label="产品id"></el-table-column>
             <el-table-column prop="target_name" label="姓名"></el-table-column>
-            <el-table-column prop="target_id" label="收寄方id"></el-table-column>
             <el-table-column prop="num" label="数量"></el-table-column>
             <el-table-column prop="price" label="单价"></el-table-column>
             <el-table-column prop="total" label="总价"></el-table-column>
             <el-table-column prop="ticket_type" label="发票类型"></el-table-column>
             <el-table-column prop="rate" label="税率"></el-table-column>
-            <el-table-column prop="type" label="进出类型"></el-table-column>
-            <el-table-column prop="cus_id" label="客户Id"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>
@@ -91,14 +104,14 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <TicketDialog ref="dialog" :refresh="refresh"></TicketDialog>
+        <OutTicketDialog ref="dialog" :refresh="refresh"></OutTicketDialog>
     </div>
 </template>
 <script>
-    import TicketDialog from './TicketDialog.vue';
+    import OutTicketDialog from './OutTicketDialog.vue';
 
     export default {
-        components: {TicketDialog},
+        components: {OutTicketDialog},
         data: function () {
             return {
                 total: 0,
@@ -118,7 +131,7 @@
                     total: null,// 总价
                     ticket_type: null,// 发票类型
                     rate: null,// 税率
-                    type: null,// 进出类型
+                    type: 2,// 进出类型
                     cus_id: null,// 客户Id
                 },
                 loading: false
@@ -139,8 +152,8 @@
                     that.total = res.data.totalElements;
                 }).catch(res => {
                     that.$message.error("获取进销项发票录入列表失败：" + res);
-                that.loading = false;
-            }) ;
+                    that.loading = false;
+                }) ;
             },
             doAdd() {
                 this.$refs["dialog"].addDialog();
@@ -156,16 +169,16 @@
                     type: 'warning'
                 }).then(() => {
                     that.$http.delete("/api/ticket/delete", {
-                    params: {id: row.id}
-                }).then(res => {
-                    this.$message.success("删除成功");
-                that.refresh();
-            }).
-                catch(res => {
-                    that.$message.error("删除失败：" + res);
-            })                ;
-            }). catch(() => {}
-            )
+                        params: {id: row.id}
+                    }).then(res => {
+                        this.$message.success("删除成功");
+                        that.refresh();
+                    }).
+                    catch(res => {
+                        that.$message.error("删除失败：" + res);
+                    })                ;
+                }). catch(() => {}
+                )
                 ;
             }
         }

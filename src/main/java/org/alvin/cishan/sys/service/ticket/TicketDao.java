@@ -78,18 +78,33 @@ public class TicketDao extends BaseDao {
         /**
         * @方法说明：按条件查询分页进销项发票录入列表
         */
-    public Page<Ticket> queryPage(TicketCond cond) {
+    public Page<Ticket> queryInPage(TicketCond cond) {
         StringBuilder sb = new StringBuilder("SELECT ");
-        sb.append(this.getSelectedItems(cond));
+        sb.append(" t.id,t.vendor_id,t.tax_type,t.prod_id,t.target_name,t.target_id,t.remark,t.num,t.price,t.total,t.ticket_type,t.rate,t.type,t.cus_id,v.vendor_name,v.vendor_no,p.prod_name,p.prod_no,a.target_phone as address_phone_no,a.target_addr as address,a.target_name as address_name ");
         sb.append(" FROM ticket t ");
-        sb.append(getJoinTables());
+        sb.append(" join vendor v on v.id = t.vendor_id join product p on p.id = t.prod_id join address a on a.id = t.target_id ");
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
-        //sb.append(cond.getOrderSql());//增加排序子句;
-        //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        sb.append(" order by id desc ");//增加排序子句;
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Ticket.class);
     }
-    
+
+
+    /**
+     * @方法说明：按条件查询分页进销项发票录入列表
+     */
+    public Page<Ticket> queryOutPage(TicketCond cond) {
+        StringBuilder sb = new StringBuilder("SELECT ");
+        sb.append(" t.id,t.vendor_id,t.tax_type,t.prod_id,t.target_name,t.target_id,t.remark,t.num,t.price,t.total,t.ticket_type,t.rate,t.type,t.cus_id,c.cus_no,c.cus_name,p.prod_name,p.prod_no,a.target_phone as address_phone_no,a.target_addr as address,a.target_name as address_name ");
+        sb.append(" FROM ticket t ");
+        sb.append(" join customer c on c.id = t.cus_id join product p on p.id = t.prod_id join address a on a.id = t.target_id ");
+        sb.append(" WHERE 1=1 ");
+        sb.append(cond.getCondition());
+        sb.append(" order by id desc ");//增加排序子句;
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        return queryPage(sb.toString(), cond, Ticket.class);
+    }
     /**
     * @方法说明：按条件查询不分页进销项发票录入列表
     */

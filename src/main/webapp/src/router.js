@@ -9,7 +9,7 @@ import Settings from './views/settings/Settings.vue';
 import OutboundList from './views/outbound/OutboundList.vue';
 import ProductList from './views/product/ProductList.vue';
 import QuoteList from './views/quote/QuoteList.vue';
-import TicketList from './views/ticket/TicketList.vue';
+import TicketView from './views/ticket/TicketView.vue';
 import VendorList from './views/vendor/VendorList.vue';
 import CustomerList from './views/customer/CustomerList.vue';
 
@@ -43,7 +43,7 @@ export default new Router({
                     path: '/quote', component: QuoteList, name: '报价',
                 },
                 {
-                    path: '/ticket', component: TicketList, name: '进销项发票',
+                    path: '/ticket', component: TicketView, name: '进销项发票',
                 },
                 {
                     path: '/vendor', component: VendorList, name: '供应商',

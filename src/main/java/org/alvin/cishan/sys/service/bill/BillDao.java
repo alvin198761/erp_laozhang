@@ -81,7 +81,7 @@ public class BillDao extends BaseDao {
         sb.append(getJoinTables());
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
-        //sb.append(cond.getOrderSql());//增加排序子句;
+        sb.append(" ORDER BY id DESC");
         //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Bill.class);
     }
@@ -96,7 +96,7 @@ public class BillDao extends BaseDao {
         sb.append(getJoinTables());
         sb.append(" WHERE 1=1 ");
     	sb.append(cond.getCondition());
-    	//sb.append(" ORDER BY operate_time DESC");
+    	sb.append(" ORDER BY id DESC");
     	return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(Bill.class));
     }
     

@@ -56,18 +56,31 @@ public class Ticket {
 	@ApiModelProperty(value = "总价", dataType = "Float")
 	private Float total;//  总价
 
-	@ApiModelProperty(value = "发票类型", dataType = "Byte")
-	private Byte ticket_type;//  发票类型
+	@ApiModelProperty(value = "发票类型", dataType = "String")
+	private String ticket_type;//  发票类型
 
 	@ApiModelProperty(value = "税率", dataType = "Double")
 	private Double rate;//  税率
 
-	@ApiModelProperty(value = "进出类型", dataType = "String")
-	private String type;//  进出类型
+	@ApiModelProperty(value = "进出类型", dataType = "Byte")
+	private Byte type;//  进出类型
 
 	@ApiModelProperty(value = "客户Id", dataType = "Long")
 	private Long cus_id;//  客户Id
 
 	//此处可添加查询显示辅助字段
+
+	private String vendor_name;
+	private String vendor_no;
+
+	private String prod_name;
+	private String prod_no;
+
+	private String address_phone_no;
+	private String address_name;
+	private String address;
+
+	private String cus_name;
+	private String cus_no;
 
 }
