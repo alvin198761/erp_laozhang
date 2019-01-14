@@ -26,12 +26,14 @@
                     </el-form>
                 </template>
             </el-table-column>
-            <el-table-column prop="id" label="主键"></el-table-column>
-            <el-table-column prop="vendor_id" label="供应商"></el-table-column>
+            <el-table-column  label="供应商">
+                <template slot-scope="props">
+                    {{props.row.vendor_name}}({{props.row.vendor_no}})
+                </template>
+            </el-table-column>
             <el-table-column prop="bank" label="开户行"></el-table-column>
             <el-table-column prop="account" label="账号"></el-table-column>
             <el-table-column prop="taxpayer_no" label="纳税人识别号"></el-table-column>
-            <el-table-column prop="remark" label="备注"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>

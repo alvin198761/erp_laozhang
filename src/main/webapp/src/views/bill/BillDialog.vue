@@ -1,11 +1,18 @@
 /*开票信息新增与修改,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <el-dialog :title="title" :visible.sync="show" :close-on-click-modal="false" :close-on-press-escape="false">
-        <el-form :model="form" ref="form" :rules="rules" label-width="100px">
+        <el-form :model="form" ref="form" :rules="rules" label-width="150px">
             <el-row>
                 <el-col>
                     <el-form-item label='供应商' prop='vendor_id'>
-                        <el-input placeholder='请输入供应商' size="small" v-model='form.vendor_id'></el-input>
+                        <el-select filterable  v-model="form.vendor_id" placeholder="请选择供应商" style="width: 100%" size="small">
+                            <el-option
+                                    v-for="item in gongYingShangList"
+                                    :key="item.id"
+                                    :label="item.vendor_name + '('+item.vendor_no+')'"
+                                    :value="item.id">
+                            </el-option>
+                        </el-select>
                     </el-form-item>
                     <el-form-item label='开户行' prop='bank'>
                         <el-input placeholder='请输入开户行' size="small" v-model='form.bank'></el-input>
@@ -54,13 +61,27 @@
                     taxpayer_no: [
                         {required: true, message: '请输入纳税人识别号', trigger: 'blur'},
                     ],
-                    remark: [
-                        {required: true, message: '请输入备注', trigger: 'blur'},
-                    ],
-                }
+//                    remark: [
+//                        {required: true, message: '请输入备注', trigger: 'blur'},
+//                    ],
+                },
+                gongYingShangList:[]
             }
         },
+        created(){
+            this.loadGongYingShangList();
+        },
         methods: {
+            loadGongYingShangList(){
+                const that = this;
+                that.$http.post("/api/vendor/queryList", {
+
+                }).then(res => {
+                    that.gongYingShangList = res.data;
+                }).catch(err => {
+                    that.$message.error("获取货物来源出错:" + err)
+                });
+            },
             save() {//新增及修改记录
                 const that = this;
                 this.$refs['form'].validate((valid) => {

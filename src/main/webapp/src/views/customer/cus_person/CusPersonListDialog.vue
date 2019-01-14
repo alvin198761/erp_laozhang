@@ -78,7 +78,7 @@
             doAdd() {
                 this.dataList.push({
                     id: null,// 主键
-                    cus_id: null,// type
+                    bus_id: null,// type
                     name: null,
                     phone_no: null// name
                 });
@@ -115,7 +115,7 @@
                 });
             },
             showDialog(cus_id) {
-                this.form.cus_id = cus_id;
+                this.form.bus_id = cus_id;
                 this.refresh();
                 this.show = true;
             }

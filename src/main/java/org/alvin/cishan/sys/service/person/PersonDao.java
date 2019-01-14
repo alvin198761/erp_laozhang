@@ -22,7 +22,7 @@ public class PersonDao extends BaseDao {
     * @方法说明：  构造方法,用于拼加SQL及初始化工作
     */
     public PersonDao () {
-        insert.append("INSERT INTO cus_person (bus_id,bus_type,name,phone_no) ");
+        insert.append("INSERT INTO person (bus_id,bus_type,name,phone_no) ");
         insert.append(" VALUES (:bus_id,:name,:phone_no,:bus_type)");
     }
 
@@ -31,7 +31,7 @@ public class PersonDao extends BaseDao {
     */
     public int save(Person vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("REPLACE INTO cus_person (id,bus_id,name,phone_no,bus_type)");
+        sql.append("REPLACE INTO person (id,bus_id,name,phone_no,bus_type)");
         sql.append(" VALUES (?,?,?,?,?) ");
         Object[] params ={ vo.getId(),vo.getBus_id(),vo.getName(),vo.getPhone_no() ,vo.getBus_type()};
         //logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
@@ -56,7 +56,7 @@ public class PersonDao extends BaseDao {
     * @方法说明：物理删除客户联系人记录(多条)
     */
     public int delete(Long ids[]) {
-        String sql = "DELETE FROM cus_person WHERE id" + SqlUtil.ArrayToIn(ids);
+        String sql = "DELETE FROM person WHERE id" + SqlUtil.ArrayToIn(ids);
         return jdbcTemplate.update(sql);
     }
     
@@ -65,7 +65,7 @@ public class PersonDao extends BaseDao {
     */
     public int update(Person vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE cus_person SET bus_id=?,name=?,phone_no=?,bus_type ");
+        sql.append("UPDATE person SET bus_id=?,name=?,phone_no=?,bus_type ");
         sql.append(" WHERE id=? ");
         Object[] params = {vo.getBus_id(),vo.getName(),vo.getPhone_no(),vo.getBus_type(),vo.getId()};
         return jdbcTemplate.update(sql.toString(), params);
@@ -77,12 +77,12 @@ public class PersonDao extends BaseDao {
     public Page<Person> queryPage(PersonCond cond) {
         StringBuilder sb = new StringBuilder("SELECT ");
         sb.append(this.getSelectedItems(cond));
-        sb.append(" FROM cus_person t ");
+        sb.append(" FROM person t ");
         sb.append(getJoinTables());
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
         //sb.append(cond.getOrderSql());//增加排序子句;
-        //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Person.class);
     }
     
@@ -92,11 +92,12 @@ public class PersonDao extends BaseDao {
     public List<Person> queryList(PersonCond cond) {
         StringBuilder sb = new StringBuilder("SELECT ");
         sb.append(this.getSelectedItems(cond));
-        sb.append(" FROM cus_person t ");
+        sb.append(" FROM person t ");
         sb.append(getJoinTables());
         sb.append(" WHERE 1=1 ");
     	sb.append(cond.getCondition());
     	//sb.append(" ORDER BY operate_time DESC");
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
     	return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(Person.class));
     }
     
@@ -106,7 +107,7 @@ public class PersonDao extends BaseDao {
     public Person findById(Long id) {
         StringBuilder sb = new StringBuilder("SELECT ");
         sb.append(this.getSelectedItems(null));
-        sb.append(" FROM cus_person t ");
+        sb.append(" FROM person t ");
         sb.append(getJoinTables());
         sb.append(" WHERE 1=1 ");
     	sb.append(" AND t.id=?");
@@ -117,7 +118,7 @@ public class PersonDao extends BaseDao {
     * @方法说明：按条件查询客户联系人记录个数
     */
     public long queryCount(PersonCond cond) {
-    	String countSql = "SELECT COUNT(1) FROM cus_person t WHERE 1=1" + cond.getCondition();
+    	String countSql = "SELECT COUNT(1) FROM person t WHERE 1=1" + cond.getCondition();
     	return jdbcTemplate.queryForObject(countSql, cond.getArray(), Long.class);
     }
     
@@ -125,7 +126,7 @@ public class PersonDao extends BaseDao {
     * @方法说明：按条件查询客户联系人记录个数
     */
     public int deleteLogic(Long ids[]) {
-    	String sql = "UPDATE cus_person SET delete_remark=1 WHERE id" + SqlUtil.ArrayToIn(ids);
+    	String sql = "UPDATE person SET delete_remark=1 WHERE id" + SqlUtil.ArrayToIn(ids);
     	return jdbcTemplate.update(sql);
     }
 
@@ -144,6 +145,6 @@ public class PersonDao extends BaseDao {
     * @return
     */
     public String getJoinTables(){
-        return "";
+        return " ";
     }
 }

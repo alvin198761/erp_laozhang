@@ -74,18 +74,32 @@ public class AddressDao extends BaseDao {
         /**
         * @方法说明：按条件查询分页收寄信息列表
         */
-    public Page<Address> queryPage(AddressCond cond) {
+    public Page<Address> queryKehuPage(AddressCond cond) {
         StringBuilder sb = new StringBuilder("SELECT ");
-        sb.append(this.getSelectedItems(cond));
+        sb.append("t.id,t.type,t.target_phone,t.target_addr,t.target_name,t.target_id,t.remark,c.cus_name,c.cus_no");
         sb.append(" FROM address t ");
-        sb.append(getJoinTables());
+        sb.append(" JOIN customer c on c.id = t.target_id ");
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
-        //sb.append(cond.getOrderSql());//增加排序子句;
-        //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        sb.append(" order by id desc ");//增加排序子句;
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Address.class);
     }
-    
+
+    /**
+     * @方法说明：按条件查询分页收寄信息列表
+     */
+    public Page<Address> queryGongYingshangPage(AddressCond cond) {
+        StringBuilder sb = new StringBuilder("SELECT ");
+        sb.append("t.id,t.type,t.target_phone,t.target_addr,t.target_name,t.target_id,t.remark,v.vendor_name,v.vendor_no");
+        sb.append(" FROM address t ");
+        sb.append(" JOIN vendor v on v.id = t.target_id ");
+        sb.append(" WHERE 1=1 ");
+        sb.append(cond.getCondition());
+        sb.append(" order by id desc ");//增加排序子句;
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        return queryPage(sb.toString(), cond, Address.class);
+    }
     /**
     * @方法说明：按条件查询不分页收寄信息列表
     */

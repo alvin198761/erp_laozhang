@@ -19,34 +19,52 @@
                                 <el-form-item label="底价">{{props.row.price}}</el-form-item>
                             </el-col>
                             <el-col :span="6">
-                                <el-form-item label="售卖价(含税)">{{props.row.sell_price_yes}}</el-form-item>
+                                <el-form-item label="售卖价">{{props.row.sell_price}}</el-form-item>
                             </el-col>
                             <el-col :span="6">
-                                <el-form-item label="售卖价(不含税)">{{props.row.sell_price_no}}</el-form-item>
-                            </el-col>
-                            <el-col :span="6">
-                                <el-form-item label="市场价(不含税)">{{props.row.mark_price_yes}}</el-form-item>
-                            </el-col>
-                            <el-col :span="6">
-                                <el-form-item label="市场价(含税)">{{props.row.mark_price_no}}</el-form-item>
+                                <el-form-item label="市场价">{{props.row.mark_price}}</el-form-item>
                             </el-col>
                             <el-col :span="6">
                                 <el-form-item label="价格类型">{{props.row.price_mode}}</el-form-item>
                             </el-col>
-                            <el-col :span="6">
-                                <el-form-item label="货物来源">{{props.row.vendor_id}}</el-form-item>
+                            <el-col :span="12">
+                                <el-form-item label="货物来源">{{props.row.vendor_name}}({{props.row.vendor_no}})</el-form-item>
                             </el-col>
-                            <el-col :span="6">
-                                <el-form-item label="产品图片1">{{props.row.pic1}}</el-form-item>
+                            <el-col :span="12">
+                            <el-form-item label="备注">{{props.row.remark}}</el-form-item>
+                        </el-col>
+                            <el-col :span="8">
+                                <el-form-item label="产品图片1">
+                                <div v-if="props.row.pic1 == null"  >
+                                    <br/>
+                                    <h1> 暂无图片</h1>
+                                </div>
+                                <div  v-if="props.row.pic1 != null">
+                                    <img  :src="'/api/product/productPic/' + props.row.pic1" style="width: 200px ; height: 200px" />
+                                </div>
+                                </el-form-item>
                             </el-col>
-                            <el-col :span="6">
-                                <el-form-item label="产品图片2">{{props.row.pic2}}</el-form-item>
+                            <el-col :span="8">
+                                <el-form-item label="产品图片2">
+                                    <div v-if="props.row.pic2 == null"  >
+                                        <br/>
+                                        <h1> 暂无图片</h1>
+                                    </div>
+                                    <div  v-if="props.row.pic2 != null">
+                                        <img  :src="'/api/product/productPic/' + props.row.pic2" style="width: 200px ; height: 200px" />
+                                    </div>
+                                </el-form-item>
                             </el-col>
-                            <el-col :span="6">
-                                <el-form-item label="产品图片3">{{props.row.pic3}}</el-form-item>
-                            </el-col>
-                            <el-col :span="6">
-                                <el-form-item label="备注">{{props.row.remark}}</el-form-item>
+                            <el-col :span="8">
+                                <el-form-item label="产品图片3">
+                                    <div v-if="props.row.pic3 == null"  >
+                                        <br/>
+                                        <h1> 暂无图片</h1>
+                                    </div>
+                                    <div  v-if="props.row.pic3 != null">
+                                        <img  :src="'/api/product/productPic/' + props.row.pic3" style="width: 200px ; height: 200px" />
+                                    </div>
+                                </el-form-item>
                             </el-col>
                         </el-row>
                     </el-form>
@@ -54,11 +72,11 @@
             </el-table-column>
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
             <el-table-column prop="prod_no" label="货号"></el-table-column>
-            <el-table-column prop="shuiShouLeiXing" label="税收类型"></el-table-column>
+            <el-table-column prop="tax_type" label="税收分类"></el-table-column>
             <el-table-column prop="prod_name" label="产品名称"></el-table-column>
             <el-table-column prop="spec_no" label="规格型号"></el-table-column>
             <el-table-column prop="note" label="产品说明"></el-table-column>
-            <el-table-column prop="danWei" label="单位"></el-table-column>
+            <el-table-column prop="unit" label="单位"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>

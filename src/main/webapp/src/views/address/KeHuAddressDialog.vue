@@ -13,11 +13,19 @@
                     <el-form-item label='姓名' prop='target_name'>
                         <el-input placeholder='请输入姓名' size="small" v-model='form.target_name'></el-input>
                     </el-form-item>
-                    <el-form-item label='收寄方id' prop='target_id'>
-                        <el-input placeholder='请输入收寄方id' size="small" v-model='form.target_id'></el-input>
+                    <el-form-item label='客户' prop='target_id'>
+                        <el-select filterable  v-model="form.target_id" placeholder="请选择客户" style="width: 100%" size="small">
+                            <el-option
+                                    v-for="item in kehuList"
+                                    :key="item.id"
+                                    :label="item.cus_name + '('+item.cus_no+')'"
+                                    :value="item.id">
+                            </el-option>
+                        </el-select>
+                        <!--<el-input placeholder='请输入收寄方id' size="small" v-model='form.target_id'></el-input>-->
                     </el-form-item>
                     <el-form-item label='备注' prop='remark'>
-                        <el-input placeholder='请输入备注' size="small" v-model='form.remark'></el-input>
+                        <el-input placeholder='请输入备注' size="small" v-model='form.remark' type="textarea"></el-input>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -39,12 +47,6 @@
                 dialogMode: "save",
                 show: false,
                 rules: {
-                    id: [
-                        {required: true, message: '请输入主键', trigger: 'blur'},
-                    ],
-                    type: [
-                        {required: true, message: '请输入类型', trigger: 'blur'},
-                    ],
                     target_phone: [
                         {required: true, message: '请输入电话', trigger: 'blur'},
                     ],
@@ -55,12 +57,24 @@
                         {required: true, message: '请输入姓名', trigger: 'blur'},
                     ],
                     target_id: [
-                        {required: true, message: '请输入收寄方id', trigger: 'blur'},
+                        {required: true, message: '请选择客户', trigger: 'blur'},
                     ]
-                }
+                },
+                kehuList: []
             }
         },
+        created(){
+            this.loadKeHuList();
+        },
         methods: {
+            loadKeHuList(){
+                const that = this;
+                that.$http.post("/api/customer/queryList",{}).then(res => {
+                    that.kehuList  = res.data;
+                }).catch(err => {
+                    that.$message.error("获取客户信息出错：" +err)
+                });
+            },
             save() {//新增及修改记录
                 const that = this;
                 this.$refs['form'].validate((valid) => {
@@ -79,7 +93,7 @@
             initForm() {//初始数据
                 return {
                     id: null,// 主键
-                    type: null,// 类型
+                    type: 1,// 类型
                     target_phone: null,// 电话
                     target_addr: null,// 地址
                     target_name: null,// 姓名
@@ -88,13 +102,13 @@
                 }
             },
             addDialog() {//新增
-                this.title = "新增收寄信息";
+                this.title = "新增客户地址信息";
                 this.dialogMode = "save";
                 this.form = this.initForm();
                 this.show = true;
             },
             editDialog(row) {//修改
-                this.title = "修改收寄信息";
+                this.title = "修改客户地址信息";
                 this.dialogMode = "update";
                 this.form = {...row};
                 this.show = true;

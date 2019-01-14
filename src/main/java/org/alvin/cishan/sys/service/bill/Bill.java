@@ -44,6 +44,7 @@ public class Bill {
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
-	//此处可添加查询显示辅助字段
-
+//此处可添加查询显示辅助字段
+	private String vendor_name; //供应商名称
+	private String vendor_no; //供应商编号
 }

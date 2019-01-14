@@ -50,20 +50,14 @@ public class Product {
 	@ApiModelProperty(value = "底价", dataType = "Float")
 	private Float price;//  底价
 
-	@ApiModelProperty(value = "售卖价(含税)", dataType = "Float")
-	private Float sell_price_yes;//  售卖价(含税)
+	@ApiModelProperty(value = "售卖价", dataType = "Float")
+	private Float sell_price;//  售卖价(含税)
 
-	@ApiModelProperty(value = "售卖价(不含税)", dataType = "Float")
-	private Float sell_price_no;//  售卖价(不含税)
+	@ApiModelProperty(value = "市场价", dataType = "Float")
+	private Float mark_price;//  市场价(不含税)
 
-	@ApiModelProperty(value = "市场价(不含税)", dataType = "Float")
-	private Float mark_price_yes;//  市场价(不含税)
-
-	@ApiModelProperty(value = "市场价(含税)", dataType = "Float")
-	private Float mark_price_no;//  市场价(含税)
-
-	@ApiModelProperty(value = "价格类型", dataType = "Byte")
-	private Byte price_mode;//  价格类型
+	@ApiModelProperty(value = "价格类型", dataType = "String")
+	private String price_mode;//  价格类型
 
 	@ApiModelProperty(value = "货物来源", dataType = "Long")
 	private Long vendor_id;//  货物来源
@@ -80,6 +74,11 @@ public class Product {
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
+	@ApiModelProperty(value = "是否含税", dataType = "String")
+	private String has_tax; //是否含税
+
 	//此处可添加查询显示辅助字段
+	private String vendor_name; //供应商名称
+	private String vendor_no; //供应商编号
 
 }

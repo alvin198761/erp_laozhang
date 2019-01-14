@@ -37,10 +37,8 @@ public class ProductCond extends BaseCondition {
 		add(note, " AND t.note LIKE ? ", 3);
 		add(unit, " AND t.unit LIKE ? ", 3);
 		add(price, " AND t.price = ? ");
-		add(sell_price_yes, " AND t.sell_price_yes = ? ");
-		add(sell_price_no, " AND t.sell_price_no = ? ");
-		add(mark_price_yes, " AND t.mark_price_yes = ? ");
-		add(mark_price_no, " AND t.mark_price_no = ? ");
+		add(sell_price, " AND t.sell_price = ? ");
+		add(mark_price, " AND t.mark_price = ? ");
 		add(price_mode, " AND t.price_mode = ? ");
 		add(vendor_id, " AND t.vendor_id = ? ");
 		add(pic1, " AND t.pic1 LIKE ? ", 3);
@@ -67,16 +65,12 @@ public class ProductCond extends BaseCondition {
 	private String unit;//  单位
 	@ApiModelProperty(value = "底价", dataType = "Float")
 	private Float price;//  底价
-	@ApiModelProperty(value = "售卖价(含税)", dataType = "Float")
-	private Float sell_price_yes;//  售卖价(含税)
-	@ApiModelProperty(value = "售卖价(不含税)", dataType = "Float")
-	private Float sell_price_no;//  售卖价(不含税)
-	@ApiModelProperty(value = "市场价(不含税)", dataType = "Float")
-	private Float mark_price_yes;//  市场价(不含税)
-	@ApiModelProperty(value = "市场价(含税)", dataType = "Float")
-	private Float mark_price_no;//  市场价(含税)
-	@ApiModelProperty(value = "价格类型", dataType = "Byte")
-	private Byte price_mode;//  价格类型
+	@ApiModelProperty(value = "售卖价", dataType = "Float")
+	private Float sell_price;//  售卖
+	@ApiModelProperty(value = "市场价", dataType = "Float")
+	private Float mark_price;//  市场价
+	@ApiModelProperty(value = "价格类型", dataType = "String")
+	private String price_mode;//  价格类型
 	@ApiModelProperty(value = "货物来源", dataType = "Long")
 	private Long vendor_id;//  货物来源
 	@ApiModelProperty(value = "产品图片1", dataType = "String")
@@ -87,7 +81,8 @@ public class ProductCond extends BaseCondition {
 	private String pic3;//  产品图片3
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
-
+	@ApiModelProperty(value = "是否含税", dataType = "String")
+	private String has_tax; //是否含税
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类
 }

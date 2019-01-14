@@ -44,9 +44,6 @@ public class Vendor {
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
-	@ApiModelProperty(value = "联系人", dataType = "Long")
-	private Long concat_id;//  联系人
-
 	//此处可添加查询显示辅助字段
 
 	private String level_name;//级别名称

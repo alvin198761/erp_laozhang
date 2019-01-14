@@ -134,16 +134,16 @@ public class BillDao extends BaseDao {
     */
     public String getSelectedItems(BillCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.vendor_id,t.bank,t.account,t.taxpayer_no,t.remark"; //默认所有字段
+        return "t.id,t.vendor_id,t.bank,t.account,t.taxpayer_no,t.remark,v.vendor_name,v.vendor_no"; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
 
     /**
-    * @方法说明：表连接代码
-    * @return
-    */
+     * @方法说明：表连接代码
+     * @return
+     */
     public String getJoinTables(){
-        return "";
+        return " join vendor v on t.vendor_id = v.id ";
     }
 }

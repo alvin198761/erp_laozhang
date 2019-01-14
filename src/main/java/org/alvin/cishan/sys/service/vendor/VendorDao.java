@@ -23,8 +23,8 @@ public class VendorDao extends BaseDao {
     * @方法说明：  构造方法,用于拼加SQL及初始化工作
     */
     public VendorDao () {
-        insert.append("INSERT INTO vendor (vendor_no,vendor_name,address,level,remark,concat_id) ");
-        insert.append(" VALUES (:vendor_no,:vendor_name,:address,:level,:remark,:concat_id)");
+        insert.append("INSERT INTO vendor (vendor_no,vendor_name,address,level,remark ) ");
+        insert.append(" VALUES (:vendor_no,:vendor_name,:address,:level,:remark )");
     }
 
     /**
@@ -32,9 +32,9 @@ public class VendorDao extends BaseDao {
     */
     public int save(Vendor vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("REPLACE INTO vendor (id,vendor_no,vendor_name,address,level,remark,concat_id)");
-        sql.append(" VALUES (?,?,?,?,?,?,?) ");
-        Object[] params ={ vo.getId(),vo.getVendor_no(),vo.getVendor_name(),vo.getAddress(),vo.getLevel(),vo.getRemark(),vo.getConcat_id() };
+        sql.append("REPLACE INTO vendor (id,vendor_no,vendor_name,address,level,remark )");
+        sql.append(" VALUES (?,?,?,?,?,?) ");
+        Object[] params ={ vo.getId(),vo.getVendor_no(),vo.getVendor_name(),vo.getAddress(),vo.getLevel(),vo.getRemark()  };
         //logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
     }
@@ -66,9 +66,9 @@ public class VendorDao extends BaseDao {
     */
     public int update(Vendor vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE vendor SET vendor_no=?,vendor_name=?,address=?,level=?,remark=?,concat_id=? ");
+        sql.append("UPDATE vendor SET vendor_no=?,vendor_name=?,address=?,level=?,remark=? ");
         sql.append(" WHERE id=? ");
-        Object[] params = {vo.getVendor_no(),vo.getVendor_name(),vo.getAddress(),vo.getLevel(),vo.getRemark(),vo.getConcat_id(),vo.getId()};
+        Object[] params = {vo.getVendor_no(),vo.getVendor_name(),vo.getAddress(),vo.getLevel(),vo.getRemark(), vo.getId()};
         return jdbcTemplate.update(sql.toString(), params);
       }
 
@@ -83,7 +83,7 @@ public class VendorDao extends BaseDao {
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
         //sb.append(cond.getOrderSql());//增加排序子句;
-        //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Vendor.class);
     }
     
@@ -135,7 +135,7 @@ public class VendorDao extends BaseDao {
     */
     public String getSelectedItems(VendorCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.vendor_no,t.vendor_name,t.address,t.level,t.remark,t.concat_id,td.name as level_name "; //默认所有字段
+        return "t.id,t.vendor_no,t.vendor_name,t.address,t.level,t.remark,td.name as level_name "; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
@@ -145,6 +145,6 @@ public class VendorDao extends BaseDao {
     * @return
     */
     public String getJoinTables(){
-        return " join  type_dict td on td.id=t.level and td.level=5 ";
+        return " join  type_dict td on td.id=t.level and td.type=5 ";
     }
 }

@@ -39,7 +39,6 @@ public class VendorCond extends BaseCondition {
 		add(address, " AND t.address = ? ");
 		add(level, " AND t.level = ? ");
 		add(remark, " AND t.remark LIKE ? ", 3);
-		add(concat_id, " AND t.concat_id = ? ");
 		// add(ids, "AND t.id IN ");");
 	}
 
@@ -56,8 +55,6 @@ public class VendorCond extends BaseCondition {
 	private Byte level;//  供应商级别
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
-	@ApiModelProperty(value = "联系人", dataType = "Long")
-	private Long concat_id;//  联系人
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类

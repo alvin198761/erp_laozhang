@@ -30,8 +30,8 @@ public class PersonCond extends BaseCondition {
 	@Override
 	public void addCondition() {
 		add(id, " AND t.id = ? ");
-		add(cus_id, " AND t.bus_id = ? ");
-		add(cus_id, " AND t.bus_type = ? ");
+		add(bus_id, " AND t.bus_id = ? ");
+		add(bus_type, " AND t.bus_type = ? ");
 		add(address_id, " AND t.address_id = ? ");
 		// add(ids, "AND t.id IN ");");
 	}
@@ -40,7 +40,7 @@ public class PersonCond extends BaseCondition {
 	@ApiModelProperty(value = "主键", dataType = "Long")
 	private Long id;//  主键
 	@ApiModelProperty(value = "客户id", dataType = "Long")
-	private Long cus_id;//  客户id
+	private Long bus_id;//  客户id
 	@ApiModelProperty(value = "收寄方ID", dataType = "Long")
 	private Long address_id;//  收寄方ID
 	@ApiModelProperty(value = "业务类型", dataType = "Byte")

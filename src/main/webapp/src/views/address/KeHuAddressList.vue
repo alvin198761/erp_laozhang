@@ -54,7 +54,11 @@
             <el-table-column prop="target_phone" label="电话"></el-table-column>
             <el-table-column prop="target_addr" label="地址"></el-table-column>
             <el-table-column prop="target_name" label="姓名"></el-table-column>
-            <el-table-column prop="target_id" label="收寄方id"></el-table-column>
+            <el-table-column  label="客户">
+                <template slot-scope="props">
+                    {{props.row.cus_name}}({{props.row.cus_no}})
+                </template>
+            </el-table-column>
             <el-table-column prop="remark" label="备注"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
@@ -72,14 +76,14 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <AddressDialog ref="dialog" :refresh="refresh"></AddressDialog>
+        <KeHuAddressDialog ref="dialog" :refresh="refresh"></KeHuAddressDialog>
     </div>
 </template>
 <script>
-    import AddressDialog from './AddressDialog.vue';
+    import KeHuAddressDialog from './KeHuAddressDialog.vue';
 
     export default {
-        components: {AddressDialog},
+        components: {KeHuAddressDialog},
         data: function () {
             return {
                 total: 0,
@@ -88,7 +92,7 @@
                 dataList: [],
                 form: {
                     id: null,// 主键
-                    type: null,// 类型
+                    type: 1,// 类型
                     target_phone: null,// 电话
                     target_addr: null,// 地址
                     target_name: null,// 姓名

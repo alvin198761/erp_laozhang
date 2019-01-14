@@ -57,4 +57,11 @@ public class AddressCond extends BaseCondition {
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类
+
+	private String cus_name;
+	private String cus_no;
+
+
+	private String vendor_name;
+	private String vendor_no;
 }

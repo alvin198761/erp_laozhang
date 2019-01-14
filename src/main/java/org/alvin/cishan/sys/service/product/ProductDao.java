@@ -22,10 +22,10 @@ public class ProductDao extends BaseDao {
     * @方法说明：  构造方法,用于拼加SQL及初始化工作
     */
     public ProductDao () {
-        insert.append("INSERT INTO product (prod_no,tax_type,prod_name,spec_no,note,unit,price,sell_price_yes,sell_price_no,"); 
-		insert.append("mark_price_yes,mark_price_no,price_mode,vendor_id,pic1,pic2,pic3,remark) ");
+        insert.append("INSERT INTO product (prod_no,tax_type,prod_name,spec_no,note,unit,price,sell_price,");
+		insert.append("mark_price,price_mode,vendor_id,pic1,pic2,pic3,remark,has_tax) ");
         insert.append(" VALUES (:prod_no,:tax_type,:prod_name,:spec_no,:note,:unit,:price,:sell_price_yes,:sell_price_no,"); 
-		insert.append(":mark_price_yes,:mark_price_no,:price_mode,:vendor_id,:pic1,:pic2,:pic3,:remark)");
+		insert.append(":mark_price_yes,:mark_price_no,:price_mode,:vendor_id,:pic1,:pic2,:pic3,:remark,:has_tax)");
     }
 
     /**
@@ -33,11 +33,11 @@ public class ProductDao extends BaseDao {
     */
     public int save(Product vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("REPLACE INTO product (id,prod_no,tax_type,prod_name,spec_no,note,unit,price,sell_price_yes,sell_price_no,"); 
-		sql.append("mark_price_yes,mark_price_no,price_mode,vendor_id,pic1,pic2,pic3,remark)");
-        sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
-        Object[] params ={ vo.getId(),vo.getProd_no(),vo.getTax_type(),vo.getProd_name(),vo.getSpec_no(),vo.getNote(),vo.getUnit(),vo.getPrice(),vo.getSell_price_yes(),vo.getSell_price_no(),vo.getMark_price_yes(),vo.getMark_price_no(),vo.getPrice_mode(),vo.getVendor_id(),vo.getPic1(),vo.getPic2(),vo.getPic3(),vo.getRemark() };
-        //logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
+        sql.append("REPLACE INTO product (id,prod_no,tax_type,prod_name,spec_no,note,unit,price,sell_price,");
+		sql.append("mark_price,price_mode,vendor_id,pic1,pic2,pic3,remark,has_tax)");
+        sql.append(" VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+        Object[] params ={ vo.getId(),vo.getProd_no(),vo.getTax_type(),vo.getProd_name(),vo.getSpec_no(),vo.getNote(),vo.getUnit(),vo.getPrice(),vo.getSell_price(),vo.getMark_price(),vo.getPrice_mode(),vo.getVendor_id(),vo.getPic1(),vo.getPic2(),vo.getPic3(),vo.getRemark() ,vo.getHas_tax()};
+        logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
     }
     
@@ -68,10 +68,10 @@ public class ProductDao extends BaseDao {
     */
     public int update(Product vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE product SET prod_no=?,tax_type=?,prod_name=?,spec_no=?,note=?,unit=?,price=?,sell_price_yes=?,sell_price_no=?,"); 
-		sql.append("mark_price_yes=?,mark_price_no=?,price_mode=?,vendor_id=?,pic1=?,pic2=?,pic3=?,remark=? ");
+        sql.append("UPDATE product SET prod_no=?,tax_type=?,prod_name=?,spec_no=?,note=?,unit=?,price=?,sell_price=?,");
+		sql.append("mark_price=?,price_mode=?,vendor_id=?,pic1=?,pic2=?,pic3=?,remark=?,has_tax=? ");
         sql.append(" WHERE id=? ");
-        Object[] params = {vo.getProd_no(),vo.getTax_type(),vo.getProd_name(),vo.getSpec_no(),vo.getNote(),vo.getUnit(),vo.getPrice(),vo.getSell_price_yes(),vo.getSell_price_no(),vo.getMark_price_yes(),vo.getMark_price_no(),vo.getPrice_mode(),vo.getVendor_id(),vo.getPic1(),vo.getPic2(),vo.getPic3(),vo.getRemark(),vo.getId()};
+        Object[] params = {vo.getProd_no(),vo.getTax_type(),vo.getProd_name(),vo.getSpec_no(),vo.getNote(),vo.getUnit(),vo.getPrice(),vo.getSell_price(),vo.getMark_price(),vo.getPrice_mode(),vo.getVendor_id(),vo.getPic1(),vo.getPic2(),vo.getPic3(),vo.getRemark(),vo.getHas_tax(),vo.getId()};
         return jdbcTemplate.update(sql.toString(), params);
       }
 
@@ -138,7 +138,7 @@ public class ProductDao extends BaseDao {
     */
     public String getSelectedItems(ProductCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.prod_no,t.tax_type,t.prod_name,t.spec_no,t.note,t.unit,t.price,t.sell_price_yes,t.sell_price_no,t.mark_price_yes,t.mark_price_no,t.price_mode,t.vendor_id,t.pic1,t.pic2,t.pic3,t.remark"; //默认所有字段
+        return "t.id,t.prod_no,t.tax_type,t.prod_name,t.spec_no,t.note,t.unit,t.price,t.sell_price,t.mark_price,t.price_mode,t.vendor_id,t.pic1,t.pic2,t.pic3,t.remark,t.has_tax,v.vendor_name,v.vendor_no"; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
@@ -148,6 +148,6 @@ public class ProductDao extends BaseDao {
     * @return
     */
     public String getJoinTables(){
-        return "";
+        return " join vendor v on t.vendor_id = v.id ";
     }
 }

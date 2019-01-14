@@ -45,12 +45,13 @@
             <el-table-column prop="vendor_no" label="供应商编号"></el-table-column>
             <el-table-column prop="vendor_name" label="供应商名称"></el-table-column>
             <el-table-column prop="level_name" label="供应商级别"></el-table-column>
-            <el-table-column prop="concat_id" label="联系人"></el-table-column>
-            <el-table-column label="操作" width="150">
+            <!--<el-table-column prop="concat_id" label="联系人"></el-table-column>-->
+            <el-table-column label="操作" width="200">
                 <template slot-scope="props">
                     <div>
                         <el-button type="text" @click="doEdit(props.row)">编辑</el-button>
                         <el-button type="text" @click="doDelete(props.row)">删除</el-button>
+                        <el-button type="text" @click="personList(props.row)">联系人管理</el-button>
                     </div>
                 </template>
             </el-table-column>
@@ -63,13 +64,16 @@
                            :page-size="size"></el-pagination>
         </div>
         <VendorDialog ref="dialog" :refresh="refresh"></VendorDialog>
+        <VendorPersonListDialog ref="personListDialog"></VendorPersonListDialog>
+
     </div>
 </template>
 <script>
     import VendorDialog from './VendorDialog.vue';
+    import VendorPersonListDialog from './vendor_person/VendorPersonListDialog.vue';
 
     export default {
-        components: {VendorDialog},
+        components: {VendorDialog,VendorPersonListDialog},
         data: function () {
             return {
                 total: 0,
@@ -129,6 +133,9 @@
                     });
                 }).catch(() => {
                 });
+            },
+            personList(row){
+                this.$refs["personListDialog"].showDialog(row.id);
             }
         }
     }

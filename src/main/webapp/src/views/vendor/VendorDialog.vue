@@ -26,9 +26,9 @@
                     <el-form-item label='备注' prop='remark'>
                         <el-input placeholder='请输入备注' size="small" type="textarea" v-model='form.remark'></el-input>
                     </el-form-item>
-                    <el-form-item label='联系人' prop='concat_id'>
-                        <el-input placeholder='请输入联系人' size="small" v-model='form.concat_id'></el-input>
-                    </el-form-item>
+                    <!--<el-form-item label='联系人' prop='concat_id'>-->
+                        <!--<el-input placeholder='请输入联系人' size="small" v-model='form.concat_id'></el-input>-->
+                    <!--</el-form-item>-->
                 </el-col>
             </el-row>
         </el-form>

@@ -1,21 +1,21 @@
 <template>
     <el-tabs v-model="activeName">
-        <el-tab-pane label="寄方列表" name="kehuxingzhi">
-            <JiFangAddressList></JiFangAddressList>
+        <el-tab-pane label="客户地址列表" name="kehuxingzhi">
+            <KeHuAddressList></KeHuAddressList>
         </el-tab-pane>
-        <el-tab-pane label="收方列表" name="gongyingshangjibie">
-            <ShouFangAddressList></ShouFangAddressList>
+        <el-tab-pane label="供应商列表" name="gongyingshangjibie">
+            <GongYingShangAddressList></GongYingShangAddressList>
         </el-tab-pane>
     </el-tabs>
 </template>
 <script>
 
-import JiFangAddressList from './JiFangAddressList.vue';
-import ShouFangAddressList from './ShouFangAddressList.vue';
+import KeHuAddressList from './KeHuAddressList.vue';
+import GongYingShangAddressList from './GongYingShangAddressList.vue';
     export default {
         components: {
-            JiFangAddressList,
-            ShouFangAddressList
+            KeHuAddressList,
+            GongYingShangAddressList
         },
         data() {
             return {
