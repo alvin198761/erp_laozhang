@@ -53,8 +53,8 @@ public class OutboundCond extends BaseCondition {
 	private Float num;//  数量
 	@ApiModelProperty(value = "总价", dataType = "Float")
 	private Float total;//  总价
-	@ApiModelProperty(value = "送货状态", dataType = "Byte")
-	private Byte status;//  送货状态
+	@ApiModelProperty(value = "送货状态", dataType = "String")
+	private String status;//  送货状态
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 

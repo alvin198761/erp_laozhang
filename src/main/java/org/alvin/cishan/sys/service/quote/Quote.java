@@ -45,17 +45,23 @@ public class Quote {
 	private Float total;//  总价
 
 	@ApiModelProperty(value = "单价", dataType = "Float")
-	private Float priice;//  单价
+	private Float price;//  单价
 
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
-	@ApiModelProperty(value = "单据状态", dataType = "Byte")
-	private Byte status;//  单据状态
+	@ApiModelProperty(value = "单据状态", dataType = "String")
+	private String status;//  单据状态
 
 	@ApiModelProperty(value = "数量", dataType = "Float")
 	private Float num;//  数量
 
 	//此处可添加查询显示辅助字段
+
+	private String cus_name;
+	private String cus_no;
+
+	private String prod_name;
+	private String prod_no;
 
 }

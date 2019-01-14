@@ -135,16 +135,16 @@ public class OutboundDao extends BaseDao {
 	 */
 	public String getSelectedItems(OutboundCond cond) {
 		if (cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()) {
-			return "t.id,t.cus_id,t.prod_id,t.price,t.num,t.total,t.status,t.remark"; //默认所有字段
+			return "t.id,t.cus_id,t.prod_id,t.price,t.num,t.total,t.status,t.remark,c.cus_name ,c.cus_no ,p.prod_name,p.prod_no"; //默认所有字段
 		}
 		return Joiner.on(",").join(cond.getSelectedFields());
 	}
 
 	/**
-	 * @return
 	 * @方法说明：表连接代码
+	 * @return
 	 */
-	public String getJoinTables() {
-		return "";
+	public String getJoinTables(){
+		return " join customer c on c.id = t.cus_id join product p on p.id = t.prod_id";
 	}
 }

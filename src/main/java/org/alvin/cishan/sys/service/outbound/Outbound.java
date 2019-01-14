@@ -44,12 +44,18 @@ public class Outbound {
 	@ApiModelProperty(value = "总价", dataType = "Float")
 	private Float total;//  总价
 
-	@ApiModelProperty(value = "送货状态", dataType = "Byte")
-	private Byte status;//  送货状态
+	@ApiModelProperty(value = "送货状态", dataType = "String")
+	private String status;//  送货状态
 
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
 	//此处可添加查询显示辅助字段
+
+	private String cus_name;
+	private String cus_no;
+
+	private String prod_name;
+	private String prod_no;
 
 }

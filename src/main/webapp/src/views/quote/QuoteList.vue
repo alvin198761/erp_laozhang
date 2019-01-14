@@ -18,7 +18,7 @@
             <!--<el-input placeholder="请输入总价" size="small" v-model="form.total"></el-input>-->
             <!--</el-form-item>-->
             <!--<el-form-item label="单价">-->
-            <!--<el-input placeholder="请输入单价" size="small" v-model="form.priice"></el-input>-->
+            <!--<el-input placeholder="请输入单价" size="small" v-model="form.price"></el-input>-->
             <!--</el-form-item>-->
             <!--<el-form-item label="备注">-->
             <!--<el-input placeholder="请输入备注" size="small" v-model="form.remark"></el-input>-->
@@ -47,11 +47,21 @@
                 </template>
             </el-table-column>
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
-            <el-table-column prop="cus_id" label="客户id"></el-table-column>
-            <el-table-column prop="date" label="报价日期"></el-table-column>
-            <el-table-column prop="prod_id" label="产品id"></el-table-column>
+            <el-table-column label="客户">
+                <template slot-scope="props">
+                    {{props.row.cus_name}}({{props.row.cus_no}})
+                </template>
+            </el-table-column>
+            <el-table-column label="产品">
+                <template slot-scope="props">
+                    {{props.row.cus_name}}({{props.row.cus_no}})
+                </template>
+            </el-table-column>
+            <el-table-column label="报价日期">
+                <template slot-scope="props">{{props.row.date |date_filter}}</template>
+            </el-table-column>
             <el-table-column prop="total" label="总价"></el-table-column>
-            <el-table-column prop="priice" label="单价"></el-table-column>
+            <el-table-column prop="price" label="单价"></el-table-column>
             <!--<el-table-column prop="remark" label="备注"></el-table-column>-->
             <el-table-column prop="status" label="单据状态"></el-table-column>
             <el-table-column prop="num" label="数量"></el-table-column>
@@ -91,7 +101,7 @@
                     date: null,// 报价日期
                     prod_id: null,// 产品id
                     total: null,// 总价
-                    priice: null,// 单价
+                    price: null,// 单价
                     remark: null,// 备注
                     status: null,// 单据状态
                     num: null,// 数量

@@ -44,13 +44,20 @@
                 </template>
             </el-table-column>
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
-            <el-table-column prop="cus_id" label="客户id"></el-table-column>
-            <el-table-column prop="prod_id" label="产品id"></el-table-column>
+            <el-table-column  label="客户">
+                <template slot-scope="props">
+                    {{props.row.cus_name}}({{props.row.cus_no}})
+                </template>
+            </el-table-column>
+            <el-table-column label="产品">
+                <template slot-scope="props">
+                    {{props.row.cus_name}}({{props.row.cus_no}})
+                </template>
+            </el-table-column>
             <el-table-column prop="price" label="单价"></el-table-column>
             <el-table-column prop="num" label="数量"></el-table-column>
             <el-table-column prop="total" label="总价"></el-table-column>
             <el-table-column prop="status" label="送货状态"></el-table-column>
-            <el-table-column prop="remark" label="备注"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>

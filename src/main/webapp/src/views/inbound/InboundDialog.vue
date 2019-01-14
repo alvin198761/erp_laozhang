@@ -20,7 +20,7 @@
                             <el-form-item label='入库日期' prop='date'>
                                 <el-date-picker
                                         type="date"
-                                        placeholder='请输入入库日期' size="small" v-model='form.date'>
+                                        placeholder='请选择入库日期' size="small" v-model='form.date'>
                                 </el-date-picker>
                             </el-form-item>
                         </el-col>
