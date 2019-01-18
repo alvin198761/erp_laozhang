@@ -1,6 +1,7 @@
 /*报价管理,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <div>
+        <h3>报价管理</h3><br/>
         <el-form :inline="true">
             <!--<el-form-item label="主键">-->
             <!--<el-input placeholder="请输入主键" size="small" v-model="form.id"></el-input>-->
@@ -40,6 +41,19 @@
                     <el-form>
                         <el-row :gutter="10">
                             <el-col :span="24">
+                                <el-form-item label="产品列表">
+                                    <el-table :data="props.row.prods"  style="width: 100%">
+
+                                        <el-table-column prop="prod_id" label="产品">
+                                            <template slot-scope="sprops">
+                                                {{sprops.row.prod_name}} ({{sprops.row.prod_no}})
+                                            </template>
+                                        </el-table-column>
+                                        <el-table-column prop="priice" label="单价" width="100"></el-table-column>
+                                        <el-table-column prop="num" label="数量"  width="100"></el-table-column>
+                                        <el-table-column prop="total" label="总价"  width="100"></el-table-column>
+                                    </el-table>
+                                </el-form-item>
                                 <el-form-item label="备注">{{props.row.remark}}</el-form-item>
                             </el-col>
                         </el-row>
@@ -52,19 +66,19 @@
                     {{props.row.cus_name}}({{props.row.cus_no}})
                 </template>
             </el-table-column>
-            <el-table-column label="产品">
-                <template slot-scope="props">
-                    {{props.row.cus_name}}({{props.row.cus_no}})
-                </template>
-            </el-table-column>
-            <el-table-column label="报价日期">
+            <!--<el-table-column label="产品">-->
+                <!--<template slot-scope="props">-->
+                    <!--{{props.row.cus_name}}({{props.row.cus_no}})-->
+                <!--</template>-->
+            <!--</el-table-column>-->
+            <el-table-column label="报价日期" width="150">
                 <template slot-scope="props">{{props.row.date |date_filter}}</template>
             </el-table-column>
-            <el-table-column prop="total" label="总价"></el-table-column>
-            <el-table-column prop="price" label="单价"></el-table-column>
+            <!--<el-table-column prop="total" label="总价" width="100"></el-table-column>-->
+            <!--<el-table-column prop="price" label="单价" width="100"></el-table-column>-->
             <!--<el-table-column prop="remark" label="备注"></el-table-column>-->
-            <el-table-column prop="status" label="单据状态"></el-table-column>
-            <el-table-column prop="num" label="数量"></el-table-column>
+            <el-table-column prop="status" label="单据状态" width="150"></el-table-column>
+            <!--<el-table-column prop="num" label="数量" width="100"></el-table-column>-->
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>
@@ -135,6 +149,10 @@
             },
             doDelete(row) {
                 const that = this;
+                if(row.prods.length > 0){
+                    this.$alert("请先删除产品列表");
+                    return ;
+                }
                 this.$confirm('你确定要删除吗?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',

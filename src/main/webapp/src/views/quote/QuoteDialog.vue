@@ -1,13 +1,14 @@
 /*报价新增与修改,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
-    <el-dialog :title="title" :visible.sync="show" :close-on-click-modal="false" :close-on-press-escape="false">
+    <el-dialog :title="title" :visible.sync="show" :close-on-click-modal="false" :close-on-press-escape="false" width="70%">
         <el-form :model="form" ref="form" :rules="rules" label-width="100px">
             <el-row>
                 <el-col>
 
                     <el-form-item label='客户' prop='cus_id'>
                         <!--<el-input placeholder='请输入客户id' size="small" v-model='form.cus_id'></el-input>-->
-                        <el-select filterable  v-model="form.cus_id" placeholder="请选择客户" style="width: 100%" size="small">
+                        <el-select filterable v-model="form.cus_id" placeholder="请选择客户" style="width: 100%"
+                                   size="small">
                             <el-option
                                     v-for="item in kehuList"
                                     :key="item.id"
@@ -18,38 +19,38 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-row>
-                <el-col>
-                    <el-form-item label='产品' prop='prod_id'>
-                        <!--<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>-->
-                        <el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">
-                            <el-option
-                                    v-for="item in chanpingList"
-                                    :key="item.id"
-                                    :label="item.prod_name + '(' + item.prod_no + ')'"
-                                    :value="item.id">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-            </el-row>
-            <el-row>
-                <el-col :span="8">
-                    <el-form-item label='单价' prop='price'>
-                        <el-input-number placeholder='请输入单价' size="small" v-model='form.price'></el-input-number>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item label='数量' prop='num'>
-                        <el-input-number placeholder='请输入数量' size="small" v-model='form.num'></el-input-number>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item label='总价'  >
-                        {{form.price * form.num}}
-                    </el-form-item>
-                </el-col>
-            </el-row>
+            <!--<el-row>-->
+            <!--<el-col>-->
+            <!--<el-form-item label='产品' prop='prod_id'>-->
+            <!--&lt;!&ndash;<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>&ndash;&gt;-->
+            <!--<el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">-->
+            <!--<el-option-->
+            <!--v-for="item in chanpingList"-->
+            <!--:key="item.id"-->
+            <!--:label="item.prod_name + '(' + item.prod_no + ')'"-->
+            <!--:value="item.id">-->
+            <!--</el-option>-->
+            <!--</el-select>-->
+            <!--</el-form-item>-->
+            <!--</el-col>-->
+            <!--</el-row>-->
+            <!--<el-row>-->
+            <!--<el-col :span="8">-->
+            <!--<el-form-item label='单价' prop='price'>-->
+            <!--<el-input-number placeholder='请输入单价' size="small" v-model='form.price'></el-input-number>-->
+            <!--</el-form-item>-->
+            <!--</el-col>-->
+            <!--<el-col :span="8">-->
+            <!--<el-form-item label='数量' prop='num'>-->
+            <!--<el-input-number placeholder='请输入数量' size="small" v-model='form.num'></el-input-number>-->
+            <!--</el-form-item>-->
+            <!--</el-col>-->
+            <!--<el-col :span="8">-->
+            <!--<el-form-item label='总价'  >-->
+            <!--{{form.price * form.num}}-->
+            <!--</el-form-item>-->
+            <!--</el-col>-->
+            <!--</el-row>-->
             <el-row>
                 <el-col :span="12">
                     <el-form-item label='单据状态' prop='status'>
@@ -73,6 +74,46 @@
                     </el-form-item>
                 </el-col>
             </el-row>
+            <el-form-item label='产品列表' prop='prods'>
+                <el-table :data="form.prods" element-loading-text="正在加载......" style="width: 100%">
+                    <el-table-column prop="prod_id" label="产品">
+                        <template slot-scope="sprops">
+                        <el-select v-model="sprops.row.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">
+                        <el-option
+                        v-for="item in chanpingList"
+                        :key="item.id"
+                        :label="item.prod_name + '(' + item.prod_no + ')'"
+                        :value="item.id">
+                        </el-option>
+                        </el-select>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="priice" label="单价" width="150">
+                        <template slot-scope="sprops">
+                            <el-input-number  size="small" v-model="sprops.row.priice" :min="0"></el-input-number>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="num" label="数量" width="150">
+                        <template slot-scope="sprops">
+                        <el-input-number  size="small" v-model="sprops.row.num" :min="1"></el-input-number>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="total" label="总价" width="100">
+                        <template slot-scope="sprops">
+                        {{sprops.row.priice * sprops.row.num}}
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="操作" width="150">
+                        <template slot-scope="sprops">
+                            <div>
+                                <el-button type="text" :disabled="form.prods.indexOf(sprops.row) != form.prods.length -1" @click="form.prods.push({priice: 0 , num: 1,bus_type:1})">添加</el-button>
+                                <el-button type="text" :disabled="form.prods.length == 1" @click="form.prods.splice(form.prods.indexOf(sprops.row),1)">删除
+                                </el-button>
+                            </div>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
             <el-row>
                 <el-col>
                     <el-form-item label='备注' prop='remark'>
@@ -104,24 +145,24 @@
                     date: [
                         {required: true, message: '请输入报价日期', trigger: 'blur'},
                     ],
-                    prod_id: [
-                        {required: true, message: '请选择产品', trigger: 'blur'},
-                    ],
-                    total: [
-                        {required: true, message: '请输入总价', trigger: 'blur'},
-                    ],
-                    price: [
-                        {required: true, message: '请输入单价', trigger: 'blur'},
-                    ],
+//                    prod_id: [
+//                        {required: true, message: '请选择产品', trigger: 'blur'},
+//                    ],
+//                    total: [
+//                        {required: true, message: '请输入总价', trigger: 'blur'},
+//                    ],
+//                    price: [
+//                        {required: true, message: '请输入单价', trigger: 'blur'},
+//                    ],
                     status: [
                         {required: true, message: '请选择单据状态', trigger: 'blur'},
                     ],
-                    num: [
-                        {required: true, message: '请输入数量', trigger: 'blur'},
-                    ],
+//                    num: [
+//                        {required: true, message: '请输入数量', trigger: 'blur'},
+//                    ],
                 },
-                kehuList:[],
-                chanpingList:[],
+                kehuList: [],
+                chanpingList: [],
                 danjvZhuangTaiList: []
             }
         },
@@ -152,10 +193,10 @@
             },
             loadKehuList(){
                 const that = this;
-                that.$http.post("/api/customer/queryList",{}).then(res => {
-                    that.kehuList  = res.data;
+                that.$http.post("/api/customer/queryList", {}).then(res => {
+                    that.kehuList = res.data;
                 }).catch(err => {
-                    that.$message.error("获取客户信息出错：" +err)
+                    that.$message.error("获取客户信息出错：" + err)
                 });
             },
             save() {//新增及修改记录
@@ -179,12 +220,9 @@
                     id: null,// 主键
                     cus_id: null,// 客户id
                     date: new Date(),// 报价日期
-                    prod_id: null,// 产品id
-                    total: null,// 总价
-                    price: null,// 单价
                     remark: null,// 备注
                     status: null,// 单据状态
-                    num: null,// 数量
+                    prods: [{priice: 0 , num: 1,bus_type:1}]
                 }
             },
             addDialog() {//新增

@@ -22,8 +22,8 @@ public class QuoteDao extends BaseDao{
     * @方法说明：  构造方法,用于拼加SQL及初始化工作
     */
     public QuoteDao () {
-        insert.append("INSERT INTO quote (cus_id,date,prod_id,total,price,remark,status,num) ");
-        insert.append(" VALUES (:cus_id,:date,:prod_id,:total,:price,:remark,:status,:num)");
+        insert.append("INSERT INTO quote (cus_id,date,remark,status) ");
+        insert.append(" VALUES (:cus_id,:date,:remark,:status)");
     }
 
     /**
@@ -31,9 +31,9 @@ public class QuoteDao extends BaseDao{
     */
     public int save(Quote vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("REPLACE INTO quote (id,cus_id,date,prod_id,total,price,remark,status,num)");
-        sql.append(" VALUES (?,?,?,?,?,?,?,?,?) ");
-        Object[] params ={ vo.getId(),vo.getCus_id(),vo.getDate(),vo.getProd_id(),vo.getTotal(),vo.getPrice(),vo.getRemark(),vo.getStatus(),vo.getNum() };
+        sql.append("REPLACE INTO quote (id,cus_id,date,remark,status)");
+        sql.append(" VALUES (?,?,?,?,?) ");
+        Object[] params ={ vo.getId(),vo.getCus_id(),vo.getDate(),vo.getRemark(),vo.getStatus() };
         //logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
     }
@@ -65,9 +65,9 @@ public class QuoteDao extends BaseDao{
     */
     public int update(Quote vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE quote SET cus_id=?,date=?,prod_id=?,total=?,price=?,remark=?,status=?,num=? ");
+        sql.append("UPDATE quote SET cus_id=?,date=?,remark=?,status=? ");
         sql.append(" WHERE id=? ");
-        Object[] params = {vo.getCus_id(),vo.getDate(),vo.getProd_id(),vo.getTotal(),vo.getPrice(),vo.getRemark(),vo.getStatus(),vo.getNum(),vo.getId()};
+        Object[] params = {vo.getCus_id(),vo.getDate(),vo.getRemark(),vo.getStatus(),vo.getId()};
         return jdbcTemplate.update(sql.toString(), params);
       }
 
@@ -134,7 +134,7 @@ public class QuoteDao extends BaseDao{
     */
     public String getSelectedItems(QuoteCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.cus_id,t.date,t.prod_id,t.total,t.price,t.remark,t.status,t.num,c.cus_name ,c.cus_no ,p.prod_name,p.prod_no "; //默认所有字段
+        return "t.id,t.cus_id,t.date,t.remark,t.status,c.cus_name ,c.cus_no "; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
@@ -144,7 +144,7 @@ public class QuoteDao extends BaseDao{
     * @return
     */
     public String getJoinTables(){
-        return " join customer c on c.id = t.cus_id join product p on p.id = t.prod_id";
+        return " join customer c on c.id = t.cus_id ";
     }
 
 }

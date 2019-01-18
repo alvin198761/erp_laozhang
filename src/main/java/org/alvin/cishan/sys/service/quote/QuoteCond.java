@@ -33,12 +33,8 @@ public class QuoteCond extends BaseCondition {
 		add(id, " AND t.id = ? ");
 		add(cus_id, " AND t.cus_id = ? ");
 		add(date, " AND t.date = ? ");
-		add(prod_id, " AND t.prod_id = ? ");
-		add(total, " AND t.total = ? ");
-		add(price, " AND t.price = ? ");
 		add(remark, " AND t.remark LIKE ? ", 3);
 		add(status, " AND t.status = ? ");
-		add(num, " AND t.num = ? ");
 		// add(ids, "AND t.id IN ");");
 	}
 
@@ -49,18 +45,10 @@ public class QuoteCond extends BaseCondition {
 	private Long cus_id;//  客户id
 	@ApiModelProperty(value = "报价日期", dataType = "Date")
 	private Date date;//  报价日期
-	@ApiModelProperty(value = "产品id", dataType = "Byte")
-	private Byte prod_id;//  产品id
-	@ApiModelProperty(value = "总价", dataType = "Float")
-	private Float total;//  总价
-	@ApiModelProperty(value = "单价", dataType = "Float")
-	private Float price;//  单价
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 	@ApiModelProperty(value = "单据状态", dataType = "String")
 	private String status;//  单据状态
-	@ApiModelProperty(value = "数量", dataType = "Float")
-	private Float num;//  数量
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类

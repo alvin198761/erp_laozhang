@@ -31,10 +31,6 @@ public class OutboundCond extends BaseCondition {
 	public void addCondition() {
 		add(id, " AND t.id = ? ");
 		add(cus_id, " AND t.cus_id = ? ");
-		add(prod_id, " AND t.prod_id = ? ");
-		add(price, " AND t.price = ? ");
-		add(num, " AND t.num = ? ");
-		add(total, " AND t.total = ? ");
 		add(status, " AND t.status = ? ");
 		add(remark, " AND t.remark LIKE ? ", 3);
 		// add(ids, "AND t.id IN ");");
@@ -45,14 +41,6 @@ public class OutboundCond extends BaseCondition {
 	private Long id;//  主键
 	@ApiModelProperty(value = "客户id", dataType = "Long")
 	private Long cus_id;//  客户id
-	@ApiModelProperty(value = "产品id", dataType = "Long")
-	private Long prod_id;//  产品id
-	@ApiModelProperty(value = "单价", dataType = "Float")
-	private Float price;//  单价
-	@ApiModelProperty(value = "数量", dataType = "Float")
-	private Float num;//  数量
-	@ApiModelProperty(value = "总价", dataType = "Float")
-	private Float total;//  总价
 	@ApiModelProperty(value = "送货状态", dataType = "String")
 	private String status;//  送货状态
 	@ApiModelProperty(value = "备注", dataType = "String")

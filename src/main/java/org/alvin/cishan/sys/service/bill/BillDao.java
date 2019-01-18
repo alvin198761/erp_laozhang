@@ -22,8 +22,8 @@ public class BillDao extends BaseDao {
     * @方法说明：  构造方法,用于拼加SQL及初始化工作
     */
     public BillDao () {
-        insert.append("INSERT INTO bill (vendor_id,bank,account,taxpayer_no,remark) ");
-        insert.append(" VALUES (:vendor_id,:bank,:account,:taxpayer_no,:remark)");
+        insert.append("INSERT INTO bill (bus_id,bank,account,taxpayer_no,remark,bus_type) ");
+        insert.append(" VALUES (:bus_id,:bank,:account,:taxpayer_no,:remark,:bus_type)");
     }
 
     /**
@@ -31,9 +31,9 @@ public class BillDao extends BaseDao {
     */
     public int save(Bill vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("REPLACE INTO bill (id,vendor_id,bank,account,taxpayer_no,remark)");
-        sql.append(" VALUES (?,?,?,?,?,?) ");
-        Object[] params ={ vo.getId(),vo.getVendor_id(),vo.getBank(),vo.getAccount(),vo.getTaxpayer_no(),vo.getRemark() };
+        sql.append("REPLACE INTO bill (id,bus_id,bank,account,taxpayer_no,remark,bus_type)");
+        sql.append(" VALUES (?,?,?,?,?,?,?) ");
+        Object[] params ={ vo.getId(),vo.getBus_id(),vo.getBank(),vo.getAccount(),vo.getTaxpayer_no(),vo.getRemark(),vo.getBus_type() };
         //logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
         return jdbcTemplate.update(sql.toString(), params);
     }
@@ -65,27 +65,41 @@ public class BillDao extends BaseDao {
     */
     public int update(Bill vo) {
         StringBuilder sql = new StringBuilder();
-        sql.append("UPDATE bill SET vendor_id=?,bank=?,account=?,taxpayer_no=?,remark=? ");
+        sql.append("UPDATE bill SET bus_id=?,bank=?,account=?,taxpayer_no=?,remark=? ,bus_type");
         sql.append(" WHERE id=? ");
-        Object[] params = {vo.getVendor_id(),vo.getBank(),vo.getAccount(),vo.getTaxpayer_no(),vo.getRemark(),vo.getId()};
+        Object[] params = {vo.getBus_id(),vo.getBank(),vo.getAccount(),vo.getTaxpayer_no(),vo.getRemark(),vo.getBus_type(),vo.getId()};
         return jdbcTemplate.update(sql.toString(), params);
       }
 
         /**
         * @方法说明：按条件查询分页开票信息列表
         */
-    public Page<Bill> queryPage(BillCond cond) {
+    public Page<Bill> queryVendorPage(BillCond cond) {
         StringBuilder sb = new StringBuilder("SELECT ");
-        sb.append(this.getSelectedItems(cond));
+        sb.append( "t.id,t.bus_id,t.bank,t.account,t.taxpayer_no,t.remark,t.bus_type,v.vendor_name,v.vendor_no");
         sb.append(" FROM bill t ");
-        sb.append(getJoinTables());
+        sb.append(" join vendor v on t.bus_id = v.id ");
         sb.append(" WHERE 1=1 ");
         sb.append(cond.getCondition());
         sb.append(" ORDER BY id DESC");
         //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
         return queryPage(sb.toString(), cond, Bill.class);
     }
-    
+        /**
+        * @方法说明：按条件查询分页开票信息列表
+        */
+    public Page<Bill> queryCusPage(BillCond cond) {
+        StringBuilder sb = new StringBuilder("SELECT ");
+        sb.append("t.id,t.bus_id,t.bank,t.account,t.taxpayer_no,t.remark,t.bus_type,c.cus_name,c.cus_no");
+        sb.append(" FROM bill t ");
+        sb.append(" join customer c on c.id = t.bus_id ");
+        sb.append(" WHERE 1=1 ");
+        sb.append(cond.getCondition());
+        sb.append(" ORDER BY id DESC");
+        //logger.info(SqlUtil.showSql(sb.toString(),cond.getArray()));//显示SQL语句
+        return queryPage(sb.toString(), cond, Bill.class);
+    }
+
     /**
     * @方法说明：按条件查询不分页开票信息列表
     */
@@ -134,7 +148,7 @@ public class BillDao extends BaseDao {
     */
     public String getSelectedItems(BillCond cond){
         if(cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()){
-        return "t.id,t.vendor_id,t.bank,t.account,t.taxpayer_no,t.remark,v.vendor_name,v.vendor_no"; //默认所有字段
+        return "t.id,t.bus_id,t.bank,t.account,t.taxpayer_no,t.remark,t.bus_type,v.vendor_name,v.vendor_no"; //默认所有字段
         }
         return Joiner.on(",").join(cond.getSelectedFields());
     }
@@ -144,6 +158,6 @@ public class BillDao extends BaseDao {
      * @return
      */
     public String getJoinTables(){
-        return " join vendor v on t.vendor_id = v.id ";
+        return " join vendor v on t.bus_id = v.id ";
     }
 }

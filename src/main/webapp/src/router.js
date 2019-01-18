@@ -4,7 +4,7 @@ import RouterViewPage from "./views/RouterViewPage.vue";
 
 import InboundList from './views/inbound/InboundList.vue';
 import AddressView from './views/address/AddressView.vue';
-import BillList from './views/bill/BillList.vue';
+import BillView from './views/bill/BillView.vue';
 import Settings from './views/settings/Settings.vue';
 import OutboundList from './views/outbound/OutboundList.vue';
 import ProductList from './views/product/ProductList.vue';
@@ -12,6 +12,8 @@ import QuoteList from './views/quote/QuoteList.vue';
 import TicketView from './views/ticket/TicketView.vue';
 import VendorList from './views/vendor/VendorList.vue';
 import CustomerList from './views/customer/CustomerList.vue';
+
+
 
 Vue.use(Router)
 
@@ -31,7 +33,7 @@ export default new Router({
                     path: '/address', component: AddressView, name: '寄收方',
                 },
                 {
-                    path: '/bill', component: BillList, name: '开票信息',
+                    path: '/bill', component: BillView, name: '开票信息',
                 },
                 {
                     path: '/outbound', component: OutboundList, name: '出库',

@@ -50,14 +50,14 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <BillDialog ref="dialog" :refresh="refresh"></BillDialog>
+        <VendorBillDialog ref="dialog" :refresh="refresh"></VendorBillDialog>
     </div>
 </template>
 <script>
-    import BillDialog from './BillDialog.vue';
+    import VendorBillDialog from './VendorBillDialog.vue';
 
     export default {
-        components: {BillDialog},
+        components: {VendorBillDialog},
         data: function () {
             return {
                 total: 0,
@@ -66,11 +66,12 @@
                 dataList: [],
                 form: {
                     id: null,// 主键
-                    vendor_id: null,// 供应商
+                    bus_id: null,// 供应商
                     bank: null,// 开户行
                     account: null,// 账号
                     taxpayer_no: null,// 纳税人识别号
-                    remark: null,// 备注
+                    remark: null,// 备注,
+                    bus_type:2,
                 },
                 loading: false
             }

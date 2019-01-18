@@ -66,6 +66,22 @@
                             <el-col :span="24">
                                 <el-form-item label="备注">{{props.row.remark}}</el-form-item>
                             </el-col>
+                            <el-col :span="24">
+                                <el-form-item label="产品列表">
+
+                                    <el-table :data="props.row.prods"  style="width: 100%">
+
+                                        <el-table-column prop="prod_id" label="产品">
+                                            <template slot-scope="sprops">
+                                                {{sprops.row.prod_name}} ({{sprops.row.prod_no}})
+                                            </template>
+                                        </el-table-column>
+                                        <el-table-column prop="priice" label="单价" width="100"></el-table-column>
+                                        <el-table-column prop="num" label="数量"  width="100"></el-table-column>
+                                        <el-table-column prop="total" label="总价"  width="100"></el-table-column>
+                                    </el-table>
+                                </el-form-item>
+                            </el-col>
 
                         </el-row>
                     </el-form>
@@ -76,16 +92,16 @@
                     {{props.row.cus_name}}({{props.row.cus_no}})
                 </template>
             </el-table-column>
-            <el-table-column   label="产品">
-                <template slot-scope="props">
-                    {{props.row.prod_name}}({{props.row.prod_no}})
-                </template>
-            </el-table-column>
-            <el-table-column prop="tax_type" label="税收类型"></el-table-column>
+            <!--<el-table-column   label="产品">-->
+                <!--<template slot-scope="props">-->
+                    <!--{{props.row.prod_name}}({{props.row.prod_no}})-->
+                <!--</template>-->
+            <!--</el-table-column>-->
+            <el-table-column prop="tax_type" label="税收分类"></el-table-column>
             <el-table-column prop="target_name" label="姓名"></el-table-column>
-            <el-table-column prop="num" label="数量"></el-table-column>
-            <el-table-column prop="price" label="单价"></el-table-column>
-            <el-table-column prop="total" label="总价"></el-table-column>
+            <!--<el-table-column prop="num" label="数量"></el-table-column>-->
+            <!--<el-table-column prop="price" label="单价"></el-table-column>-->
+            <!--<el-table-column prop="total" label="总价"></el-table-column>-->
             <el-table-column prop="ticket_type" label="发票类型"></el-table-column>
             <el-table-column prop="rate" label="税率"></el-table-column>
             <el-table-column label="操作" width="150">
@@ -122,13 +138,13 @@
                     id: null,// 主键
                     vendor_id: null,// 供应商id
                     tax_type: null,// 税收类型
-                    prod_id: null,// 产品id
+//                    prod_id: null,// 产品id
                     target_name: null,// 姓名
                     target_id: null,// 收寄方id
                     remark: null,// 备注
-                    num: null,// 数量
-                    price: null,// 单价
-                    total: null,// 总价
+//                    num: null,// 数量
+//                    price: null,// 单价
+//                    total: null,// 总价
                     ticket_type: null,// 发票类型
                     rate: null,// 税率
                     type: 2,// 进出类型
@@ -163,6 +179,10 @@
             },
             doDelete(row) {
                 const that = this;
+                if(row.prods.length > 0){
+                    this.$alert("请先删除产品列表");
+                    return ;
+                }
                 this.$confirm('你确定要删除吗?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',

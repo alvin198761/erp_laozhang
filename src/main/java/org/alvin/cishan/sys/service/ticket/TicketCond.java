@@ -32,13 +32,9 @@ public class TicketCond extends BaseCondition {
 		add(id, " AND t.id = ? ");
 		add(vendor_id, " AND t.vendor_id = ? ");
 		add(tax_type, " AND t.tax_type LIKE ? ", 3);
-		add(prod_id, " AND t.prod_id = ? ");
 		add(target_name, " AND t.target_name LIKE ? ", 3);
 		add(target_id, " AND t.target_id = ? ");
 		add(remark, " AND t.remark LIKE ? ", 3);
-		add(num, " AND t.num = ? ");
-		add(price, " AND t.price = ? ");
-		add(total, " AND t.total = ? ");
 		add(ticket_type, " AND t.ticket_type = ? ");
 		add(rate, " AND t.rate = ? ");
 		add(type, " AND t.type = ? ");
@@ -53,20 +49,12 @@ public class TicketCond extends BaseCondition {
 	private Long vendor_id;//  供应商id
 	@ApiModelProperty(value = "税收类型", dataType = "String")
 	private String tax_type;//  税收类型
-	@ApiModelProperty(value = "产品id", dataType = "Long")
-	private Long prod_id;//  产品id
 	@ApiModelProperty(value = "姓名", dataType = "String")
 	private String target_name;//  姓名
 	@ApiModelProperty(value = "收寄方id", dataType = "Long")
 	private Long target_id;//  收寄方id
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
-	@ApiModelProperty(value = "数量", dataType = "Float")
-	private Float num;//  数量
-	@ApiModelProperty(value = "单价", dataType = "Float")
-	private Float price;//  单价
-	@ApiModelProperty(value = "总价", dataType = "Float")
-	private Float total;//  总价
 	@ApiModelProperty(value = "发票类型", dataType = "String")
 	private String ticket_type;//  发票类型
 	@ApiModelProperty(value = "税率", dataType = "Double")

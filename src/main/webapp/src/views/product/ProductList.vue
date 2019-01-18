@@ -1,6 +1,7 @@
 /*产品管理,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <div>
+        <h3>产品信息管理</h3><br/>
         <el-form :inline="true">
             <el-form-item label="货号">
                 <el-input placeholder="请输入货号" size="small" v-model="form.prod_no"></el-input>

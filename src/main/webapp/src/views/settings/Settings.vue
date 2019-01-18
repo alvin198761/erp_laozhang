@@ -22,7 +22,8 @@
             <SonghuozhuangtaiDictList></SonghuozhuangtaiDictList>
         </el-tab-pane>
         <el-tab-pane label="税收分类" name="shuishoufenlei">
-            <ShuishouzhuangtaiDictList></ShuishouzhuangtaiDictList>
+            <TaxCategory></TaxCategory>
+            <!--<ShuishouzhuangtaiDictList></ShuishouzhuangtaiDictList>-->
         </el-tab-pane>
         <el-tab-pane label="单位设置" name="sanwei">
             <DanweiDictList></DanweiDictList>
@@ -41,8 +42,9 @@
     import FapiaozhuangtaiDictList from './fapiaozhuangtai/FapiaozhuangtaiDictList.vue';
     import DanjvzhuangtaiDictList from './danjvzhuangtai/DanjvzhuangtaiDictList.vue';
     import SonghuozhuangtaiDictList from './songhuozhuangtai/SonghuozhuangtaiDictList.vue';
-    import ShuishouzhuangtaiDictList from './shuishouzhuangtai/ShuishouzhuangtaiDictList.vue';
+//    import ShuishouzhuangtaiDictList from './shuishouzhuangtai/ShuishouzhuangtaiDictList.vue';
     import DanweiDictList from './danwei/DanweiDictList.vue';
+    import TaxCategory from './taxcategory/TaxCategoryList.vue';
 
     export default {
         components: {
@@ -54,8 +56,9 @@
             FapiaozhuangtaiDictList,
             DanjvzhuangtaiDictList,
             SonghuozhuangtaiDictList,
-            ShuishouzhuangtaiDictList,
-            DanweiDictList
+//            ShuishouzhuangtaiDictList,
+            DanweiDictList,
+            TaxCategory
         },
         data() {
             return {

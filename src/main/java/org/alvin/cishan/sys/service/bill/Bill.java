@@ -29,8 +29,8 @@ public class Bill {
 	@ApiModelProperty(value = "主键", dataType = "Long")
 	private Long id;//  主键
 
-	@ApiModelProperty(value = "供应商", dataType = "Long")
-	private Long vendor_id;//  供应商
+	@ApiModelProperty(value = "业务ID", dataType = "Long")
+	private Long bus_id;//  供应商
 
 	@ApiModelProperty(value = "开户行", dataType = "String")
 	private String bank;//  开户行
@@ -44,7 +44,13 @@ public class Bill {
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
-//此处可添加查询显示辅助字段
+	@ApiModelProperty(value = "业务类型", dataType = "Byte")
+	private Byte bus_type;
+
+	//此处可添加查询显示辅助字段
 	private String vendor_name; //供应商名称
 	private String vendor_no; //供应商编号
+
+	private String cus_name;
+	private String cus_no;
 }

@@ -4,12 +4,12 @@
         <el-form :model="form" ref="form" :rules="rules" label-width="150px">
             <el-row>
                 <el-col>
-                    <el-form-item label='供应商' prop='vendor_id'>
-                        <el-select filterable  v-model="form.vendor_id" placeholder="请选择供应商" style="width: 100%" size="small">
+                    <el-form-item label='客户' prop='bus_id'>
+                        <el-select filterable  v-model="form.bus_id" placeholder="请选择客户" style="width: 100%" size="small">
                             <el-option
-                                    v-for="item in gongYingShangList"
+                                    v-for="item in kehuList"
                                     :key="item.id"
-                                    :label="item.vendor_name + '('+item.vendor_no+')'"
+                                    :label="item.cus_name + '('+item.cus_no+')'"
                                     :value="item.id">
                             </el-option>
                         </el-select>
@@ -49,8 +49,8 @@
                     id: [
                         {required: true, message: '请输入主键', trigger: 'blur'},
                     ],
-                    vendor_id: [
-                        {required: true, message: '请输入供应商', trigger: 'blur'},
+                    bus_id: [
+                        {required: true, message: '请选择客户', trigger: 'blur'},
                     ],
                     bank: [
                         {required: true, message: '请输入开户行', trigger: 'blur'},
@@ -65,21 +65,21 @@
 //                        {required: true, message: '请输入备注', trigger: 'blur'},
 //                    ],
                 },
-                gongYingShangList:[]
+                kehuList:[]
             }
         },
         created(){
-            this.loadGongYingShangList();
+            this.loadKehuList();
         },
         methods: {
-            loadGongYingShangList(){
+            loadKehuList(){
                 const that = this;
-                that.$http.post("/api/vendor/queryList", {
+                that.$http.post("/api/customer/queryList", {
 
                 }).then(res => {
-                    that.gongYingShangList = res.data;
+                    that.kehuList = res.data;
                 }).catch(err => {
-                    that.$message.error("获取货物来源出错:" + err)
+                    that.$message.error("获取客户信息出错:" + err)
                 });
             },
             save() {//新增及修改记录
@@ -100,11 +100,12 @@
             initForm() {//初始数据
                 return {
                     id: null,// 主键
-                    vendor_id: null,// 供应商
+                    bus_id: null,// 供应商
                     bank: null,// 开户行
                     account: null,// 账号
                     taxpayer_no: null,// 纳税人识别号
                     remark: null,// 备注
+                    bus_type:1,
                 }
             },
             addDialog() {//新增

@@ -19,39 +19,39 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-row>
-                <el-col>
-                    <el-form-item label='产品' prop='prod_id'>
-                        <!--<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>-->
-                        <el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">
-                            <el-option
-                                    v-for="item in chanpingList"
-                                    :key="item.id"
-                                    :label="item.prod_name + '(' + item.prod_no + ')'"
-                                    :value="item.id">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-            </el-row>
-            <el-row>
-                <el-col :span="8">
-                    <el-form-item label='单价' prop='price'>
-                        <el-input-number placeholder='请输入单价' size="small" v-model='form.price'></el-input-number>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item label='数量' prop='num'>
-                        <el-input-number placeholder='请输入数量' size="small" v-model='form.num'></el-input-number>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item label='总价' prop='total'>
-                        {{form.price * form.num}}
-                        <!--<el-input placeholder='请输入总价' size="small" v-model='form.total'></el-input>-->
-                    </el-form-item>
-                </el-col>
-            </el-row>
+            <!--<el-row>-->
+                <!--<el-col>-->
+                    <!--<el-form-item label='产品' prop='prod_id'>-->
+                        <!--&lt;!&ndash;<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>&ndash;&gt;-->
+                        <!--<el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">-->
+                            <!--<el-option-->
+                                    <!--v-for="item in chanpingList"-->
+                                    <!--:key="item.id"-->
+                                    <!--:label="item.prod_name + '(' + item.prod_no + ')'"-->
+                                    <!--:value="item.id">-->
+                            <!--</el-option>-->
+                        <!--</el-select>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+            <!--</el-row>-->
+            <!--<el-row>-->
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label='单价' prop='price'>-->
+                        <!--<el-input-number placeholder='请输入单价' size="small" v-model='form.price'></el-input-number>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label='数量' prop='num'>-->
+                        <!--<el-input-number placeholder='请输入数量' size="small" v-model='form.num'></el-input-number>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label='总价' prop='total'>-->
+                        <!--{{form.price * form.num}}-->
+                        <!--&lt;!&ndash;<el-input placeholder='请输入总价' size="small" v-model='form.total'></el-input>&ndash;&gt;-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+            <!--</el-row>-->
             <el-row>
                 <el-col>
                     <el-form-item label='送货状态' prop='status'>
@@ -67,6 +67,46 @@
                     </el-form-item>
                 </el-col>
             </el-row>
+            <el-form-item label='产品列表' prop='prods'>
+                <el-table :data="form.prods" element-loading-text="正在加载......" style="width: 100%">
+                    <el-table-column prop="prod_id" label="产品">
+                        <template slot-scope="sprops">
+                            <el-select v-model="sprops.row.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">
+                                <el-option
+                                        v-for="item in chanpingList"
+                                        :key="item.id"
+                                        :label="item.prod_name + '(' + item.prod_no + ')'"
+                                        :value="item.id">
+                                </el-option>
+                            </el-select>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="priice" label="单价" width="150">
+                        <template slot-scope="sprops">
+                            <el-input-number  size="small" v-model="sprops.row.priice" :min="0"></el-input-number>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="num" label="数量" width="150">
+                        <template slot-scope="sprops">
+                            <el-input-number  size="small" v-model="sprops.row.num" :min="1"></el-input-number>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="total" label="总价" width="100">
+                        <template slot-scope="sprops">
+                            {{sprops.row.priice * sprops.row.num}}
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="操作" width="150">
+                        <template slot-scope="sprops">
+                            <div>
+                                <el-button type="text" :disabled="form.prods.indexOf(sprops.row) != form.prods.length -1" @click="form.prods.push({priice: 0 , num: 1,bus_type:2})">添加</el-button>
+                                <el-button type="text" :disabled="form.prods.length == 1" @click="form.prods.splice(form.prods.indexOf(sprops.row),1)">删除
+                                </el-button>
+                            </div>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
             <el-row>
                 <el-col>
                     <el-form-item label='备注' prop='remark'>
@@ -95,15 +135,15 @@
                     cus_id: [
                         {required: true, message: '请选择客户', trigger: 'blur'},
                     ],
-                    prod_id: [
-                        {required: true, message: '请选择产品', trigger: 'blur'},
-                    ],
-                    price: [
-                        {required: true, message: '请输入单价', trigger: 'blur'},
-                    ],
-                    num: [
-                        {required: true, message: '请输入数量', trigger: 'blur'},
-                    ],
+//                    prod_id: [
+//                        {required: true, message: '请选择产品', trigger: 'blur'},
+//                    ],
+//                    price: [
+//                        {required: true, message: '请输入单价', trigger: 'blur'},
+//                    ],
+//                    num: [
+//                        {required: true, message: '请输入数量', trigger: 'blur'},
+//                    ],
 //                    total: [
 //                        {required: true, message: '请输入总价', trigger: 'blur'},
 //                    ],
@@ -172,12 +212,9 @@
                 return {
                     id: null,// 主键
                     cus_id: null,// 客户id
-                    prod_id: null,// 产品id
-                    price: null,// 单价
-                    num: null,// 数量
-                    total: null,// 总价
                     status: null,// 送货状态
                     remark: null,// 备注
+                    prods:[{priice: 0 , num: 1,bus_type:2}]
                 }
             },
             addDialog() {//新增

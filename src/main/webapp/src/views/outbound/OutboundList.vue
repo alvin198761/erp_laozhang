@@ -1,6 +1,7 @@
 /*出库记录管理,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <div>
+        <h3>出库记录</h3><br/>
         <el-form :inline="true">
             <!--<el-form-item label="主键">-->
             <!--<el-input placeholder="请输入主键" size="small" v-model="form.id"></el-input>-->
@@ -8,21 +9,9 @@
             <!--<el-form-item label="客户id">-->
             <!--<el-input placeholder="请输入客户id" size="small" v-model="form.cus_id"></el-input>-->
             <!--</el-form-item>-->
-            <!--<el-form-item label="产品id">-->
-            <!--<el-input placeholder="请输入产品id" size="small" v-model="form.prod_id"></el-input>-->
+            <!--<el-form-item label="送货状态">-->
+                <!--<el-input placeholder="请输入送货状态" size="small" v-model="form.status"></el-input>-->
             <!--</el-form-item>-->
-            <!--<el-form-item label="单价">-->
-            <!--<el-input placeholder="请输入单价" size="small" v-model="form.price"></el-input>-->
-            <!--</el-form-item>-->
-            <!--<el-form-item label="数量">-->
-            <!--<el-input placeholder="请输入数量" size="small" v-model="form.num"></el-input>-->
-            <!--</el-form-item>-->
-            <!--<el-form-item label="总价">-->
-            <!--<el-input placeholder="请输入总价" size="small" v-model="form.total"></el-input>-->
-            <!--</el-form-item>-->
-            <el-form-item label="送货状态">
-                <el-input placeholder="请输入送货状态" size="small" v-model="form.status"></el-input>
-            </el-form-item>
             <!--<el-form-item label="备注">-->
             <!--<el-input placeholder="请输入备注" size="small" v-model="form.remark"></el-input>-->
             <!--</el-form-item>-->
@@ -37,6 +26,19 @@
                     <el-form>
                         <el-row :gutter="10">
                             <el-col :span="24">
+                                <el-form-item label="产品列表">
+                                    <el-table :data="props.row.prods"  style="width: 100%">
+
+                                        <el-table-column prop="prod_id" label="产品">
+                                            <template slot-scope="sprops">
+                                                {{sprops.row.prod_name}} ({{sprops.row.prod_no}})
+                                            </template>
+                                        </el-table-column>
+                                        <el-table-column prop="priice" label="单价" width="100"></el-table-column>
+                                        <el-table-column prop="num" label="数量"  width="100"></el-table-column>
+                                        <el-table-column prop="total" label="总价"  width="100"></el-table-column>
+                                    </el-table>
+                                </el-form-item>
                                 <el-form-item label="备注">{{props.row.remark}}</el-form-item>
                             </el-col>
                         </el-row>
@@ -49,15 +51,15 @@
                     {{props.row.cus_name}}({{props.row.cus_no}})
                 </template>
             </el-table-column>
-            <el-table-column label="产品">
-                <template slot-scope="props">
-                    {{props.row.cus_name}}({{props.row.cus_no}})
-                </template>
-            </el-table-column>
-            <el-table-column prop="price" label="单价"></el-table-column>
-            <el-table-column prop="num" label="数量"></el-table-column>
-            <el-table-column prop="total" label="总价"></el-table-column>
-            <el-table-column prop="status" label="送货状态"></el-table-column>
+            <!--<el-table-column label="产品">-->
+                <!--<template slot-scope="props">-->
+                    <!--{{props.row.cus_name}}({{props.row.cus_no}})-->
+                <!--</template>-->
+            <!--</el-table-column>-->
+            <!--<el-table-column prop="price" label="单价"></el-table-column>-->
+            <!--<el-table-column prop="num" label="数量"></el-table-column>-->
+            <!--<el-table-column prop="total" label="总价"></el-table-column>-->
+            <el-table-column prop="status" label="送货状态" width="150"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
                     <div>
@@ -127,6 +129,10 @@
             },
             doDelete(row) {
                 const that = this;
+                if(row.prods.length > 0){
+                    this.$alert("请先删除产品列表");
+                    return ;
+                }
                 this.$confirm('你确定要删除吗?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',

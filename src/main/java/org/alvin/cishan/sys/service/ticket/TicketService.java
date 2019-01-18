@@ -1,5 +1,9 @@
 package org.alvin.cishan.sys.service.ticket;
 
+import org.alvin.cishan.sys.service.outbound.Outbound;
+import org.alvin.cishan.sys.service.prodrecord.ProdRecord;
+import org.alvin.cishan.sys.service.prodrecord.ProdRecordCond;
+import org.alvin.cishan.sys.service.prodrecord.ProdRecordDao;
 import org.alvin.cishan.sys.util.Page;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @类说明: 进销项发票录入--数据逻辑层
@@ -21,13 +26,28 @@ public class TicketService {
 	private Log logger = LogFactory.getLog(getClass());
 	@Autowired
 	private TicketDao dao; //注入进销项发票录入数据访问层
+	@Autowired
+	private ProdRecordDao recordDao;
 
 	/**
 	 * @方法说明： 新增[进销项发票录入]记录
 	 */
 	@Transactional
 	public int save(Ticket ticket) {
-		return dao.save(ticket);
+//		return dao.save(ticket);
+		Long id = this.dao.saveReturnPK(ticket);
+		List<ProdRecord> list = ticket.getProds().stream().filter((prod) -> {
+			if (prod.getBus_type() == null || prod.getProd_id() == null || prod.getNum() == null || prod.getPriice() == null) {
+				return false;
+			}
+			return true;
+		}).map(prod -> {
+			prod.setBus_id(id);
+			prod.setTotal(prod.getNum() * prod.getPriice());
+			return prod;
+		}).collect(Collectors.toList());
+		recordDao.insertBatch(list);
+		return 1;
 	}
 
 	/**
@@ -43,6 +63,18 @@ public class TicketService {
 	 */
 	@Transactional
 	public int update(Ticket ticket) {
+		recordDao.deleteByBusTypeAndId(ticket.getId(), 3);
+		List<ProdRecord> list = ticket.getProds().stream().filter((prod) -> {
+			if (prod.getBus_type() == null || prod.getProd_id() == null || prod.getNum() == null || prod.getPriice() == null) {
+				return false;
+			}
+			return true;
+		}).map(prod -> {
+			prod.setBus_id(ticket.getId());
+			prod.setTotal(prod.getNum() * prod.getPriice());
+			return prod;
+		}).collect(Collectors.toList());
+		recordDao.insertBatch(list);
 		return dao.update(ticket);
 	}
 
@@ -50,11 +82,24 @@ public class TicketService {
 	 * @方法说明： 按条件查询分页进销项发票录入列表
 	 */
 	public Page<Ticket> queryPage(TicketCond cond) {
+		Page<Ticket> page = null;
 		if (cond.getType() == 1) {
-			return this.dao.queryInPage(cond);
+			page = this.dao.queryInPage(cond);
 		} else {
-			return this.dao.queryOutPage(cond);
+			page = this.dao.queryOutPage(cond);
 		}
+		List<Long> ids = page.getContent().stream().map(Ticket::getId).collect(Collectors.toList());
+		ProdRecordCond prodRecordCond = new ProdRecordCond();
+		prodRecordCond.setBus_type((byte) 3);
+		prodRecordCond.setBus_ids(ids);
+		//
+		List<ProdRecord> records = recordDao.queryList(prodRecordCond);
+		page.getContent().forEach(item -> {
+			item.setProds(records.stream().filter(r -> {
+				return r.getBus_id().longValue() == item.getId().longValue();
+			}).collect(Collectors.toList()));
+		});
+		return page;
 	}
 
 	/**

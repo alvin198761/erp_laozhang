@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.alvin.cishan.sys.service.prodrecord.ProdRecord;
+
+import java.util.List;
 
 /**
  * @类说明: 出库记录--实体类
@@ -32,18 +35,6 @@ public class Outbound {
 	@ApiModelProperty(value = "客户id", dataType = "Long")
 	private Long cus_id;//  客户id
 
-	@ApiModelProperty(value = "产品id", dataType = "Long")
-	private Long prod_id;//  产品id
-
-	@ApiModelProperty(value = "单价", dataType = "Float")
-	private Float price;//  单价
-
-	@ApiModelProperty(value = "数量", dataType = "Float")
-	private Float num;//  数量
-
-	@ApiModelProperty(value = "总价", dataType = "Float")
-	private Float total;//  总价
-
 	@ApiModelProperty(value = "送货状态", dataType = "String")
 	private String status;//  送货状态
 
@@ -55,7 +46,7 @@ public class Outbound {
 	private String cus_name;
 	private String cus_no;
 
-	private String prod_name;
-	private String prod_no;
+	private List<ProdRecord> prods;
+
 
 }

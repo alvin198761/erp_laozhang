@@ -10,6 +10,7 @@ import static com.alibaba.fastjson.util.IOUtils.close;
 public class CMDUtils {
 
 	public static int execute(String cmd, StringBuffer resultMessage, StringBuffer errorMessage) throws IOException, InterruptedException {
+		System.out.println(cmd);
 		String osName = System.getProperty("os.name");
 		if (osName.toLowerCase().contains("windows")) {
 			return executWindowsCmd(cmd, resultMessage, errorMessage);

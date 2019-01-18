@@ -17,38 +17,38 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <el-row>
-                <el-col>
-                    <el-form-item label='产品' prop='prod_id'>
-                        <!--<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>-->
-                        <el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">
-                            <el-option
-                                    v-for="item in chanpingList"
-                                    :key="item.id"
-                                    :label="item.prod_name + '(' + item.prod_no + ')'"
-                                    :value="item.id">
-                            </el-option>
-                        </el-select>
-                    </el-form-item>
-                </el-col>
-            </el-row>
-            <el-row>
-                <el-col :span="8">
-                    <el-form-item label='单价' prop='price'>
-                        <el-input-number placeholder='请输入单价' size="small" v-model='form.price'></el-input-number>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item label='数量' prop='num'>
-                        <el-input-number placeholder='请输入数量' size="small" v-model='form.num'></el-input-number>
-                    </el-form-item>
-                </el-col>
-                <el-col :span="8">
-                    <el-form-item label='总价' prop='total'>
-                        {{form.price * form.num}}
-                    </el-form-item>
-                </el-col>
-            </el-row>
+            <!--<el-row>-->
+                <!--<el-col>-->
+                    <!--<el-form-item label='产品' prop='prod_id'>-->
+                        <!--&lt;!&ndash;<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>&ndash;&gt;-->
+                        <!--<el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">-->
+                            <!--<el-option-->
+                                    <!--v-for="item in chanpingList"-->
+                                    <!--:key="item.id"-->
+                                    <!--:label="item.prod_name + '(' + item.prod_no + ')'"-->
+                                    <!--:value="item.id">-->
+                            <!--</el-option>-->
+                        <!--</el-select>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+            <!--</el-row>-->
+            <!--<el-row>-->
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label='单价' prop='price'>-->
+                        <!--<el-input-number placeholder='请输入单价' size="small" v-model='form.price'></el-input-number>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label='数量' prop='num'>-->
+                        <!--<el-input-number placeholder='请输入数量' size="small" v-model='form.num'></el-input-number>-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+                <!--<el-col :span="8">-->
+                    <!--<el-form-item label='总价' prop='total'>-->
+                        <!--{{form.price * form.num}}-->
+                    <!--</el-form-item>-->
+                <!--</el-col>-->
+            <!--</el-row>-->
             <el-row>
                 <el-col>
                     <el-form-item label='收货人信息' prop='target_id'>
@@ -66,13 +66,13 @@
             </el-row>
             <el-row>
                 <el-col :span="12">
-                    <el-form-item label='税收类型' prop='tax_type'>
+                    <el-form-item label='税收分类' prop='tax_type'>
                         <!--<el-input placeholder='请输入税收类型' size="small" v-model='form.tax_type'></el-input>-->
-                        <el-select v-model="form.tax_type" placeholder="请选择税收类型" style="width: 100%" size="small">
+                        <el-select v-model="form.tax_type" placeholder="请选择税收分类" style="width: 100%" size="small">
                             <el-option
                                     v-for="item in shuiShouLeixingList"
                                     :key="item.id"
-                                    :label="item.name"
+                                    :label="item.name + '('+ item.tax_code +')'"
                                     :value="item.name">
                             </el-option>
                         </el-select>
@@ -104,6 +104,47 @@
                     </el-form-item>
                 </el-col>
             </el-row>
+
+            <el-form-item label='产品列表' prop='prods'>
+                <el-table :data="form.prods" element-loading-text="正在加载......" style="width: 100%">
+                    <el-table-column prop="prod_id" label="产品">
+                        <template slot-scope="sprops">
+                            <el-select v-model="sprops.row.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">
+                                <el-option
+                                        v-for="item in chanpingList"
+                                        :key="item.id"
+                                        :label="item.prod_name + '(' + item.prod_no + ')'"
+                                        :value="item.id">
+                                </el-option>
+                            </el-select>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="priice" label="单价" width="150">
+                        <template slot-scope="sprops">
+                            <el-input-number  size="small" v-model="sprops.row.priice" :min="0"></el-input-number>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="num" label="数量" width="150">
+                        <template slot-scope="sprops">
+                            <el-input-number  size="small" v-model="sprops.row.num" :min="1"></el-input-number>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="total" label="总价" width="100">
+                        <template slot-scope="sprops">
+                            {{sprops.row.priice * sprops.row.num}}
+                        </template>
+                    </el-table-column>
+                    <el-table-column label="操作" width="150">
+                        <template slot-scope="sprops">
+                            <div>
+                                <el-button type="text" :disabled="form.prods.indexOf(sprops.row) != form.prods.length -1" @click="form.prods.push({priice: 0 , num: 1,bus_type:3})">添加</el-button>
+                                <el-button type="text" :disabled="form.prods.length == 1" @click="form.prods.splice(form.prods.indexOf(sprops.row),1)">删除
+                                </el-button>
+                            </div>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </el-form-item>
             <el-row>
                 <el-col>
                     <el-form-item label='备注' prop='remark'>
@@ -136,9 +177,9 @@
                     tax_type: [
                         {required: true, message: '请输入税收类型', trigger: 'blur'},
                     ],
-                    prod_id: [
-                        {required: true, message: '请输入产品', trigger: 'blur'},
-                    ],
+//                    prod_id: [
+//                        {required: true, message: '请输入产品', trigger: 'blur'},
+//                    ],
                     target_name: [
                         {required: true, message: '请输入姓名', trigger: 'blur'},
                     ],
@@ -148,15 +189,15 @@
 //                    remark: [
 //                        {required: true, message: '请输入备注', trigger: 'blur'},
 //                    ],
-                    num: [
-                        {required: true, message: '请输入数量', trigger: 'blur'},
-                    ],
-                    price: [
-                        {required: true, message: '请输入单价', trigger: 'blur'},
-                    ],
-                    total: [
-                        {required: true, message: '请输入总价', trigger: 'blur'},
-                    ],
+//                    num: [
+//                        {required: true, message: '请输入数量', trigger: 'blur'},
+//                    ],
+//                    price: [
+//                        {required: true, message: '请输入单价', trigger: 'blur'},
+//                    ],
+//                    total: [
+//                        {required: true, message: '请输入总价', trigger: 'blur'},
+//                    ],
                     ticket_type: [
                         {required: true, message: '请输入发票类型', trigger: 'blur'},
                     ],
@@ -197,8 +238,7 @@
             },
             loadShuiShouLeixingList(){
                 const that = this;
-                that.$http.post("/api/dict/queryList", {
-                    type: 11
+                that.$http.post("/api/taxCategory/queryList", {
                 }).then(res => {
                     that.shuiShouLeixingList = res.data;
                 }).catch(err => {
@@ -253,17 +293,18 @@
                     id: null,// 主键
                     vendor_id: null,// 供应商id
                     tax_type: null,// 税收类型
-                    prod_id: null,// 产品id
+//                    prod_id: null,// 产品id
                     target_name: null,// 姓名
                     target_id: null,// 收寄方id
                     remark: null,// 备注
-                    num: 0,// 数量
-                    price: 0,// 单价
-                    total: 0,// 总价
+//                    num: 0,// 数量
+//                    price: 0,// 单价
+//                    total: 0,// 总价
                     ticket_type: null,// 发票类型
                     rate: null,// 税率
                     type: 1,// 进出类型
                     cus_id: null,// 客户Id
+                    prods: [{priice: 0,num:1,bus_type:3}]
                 }
             },
             addDialog() {//新增

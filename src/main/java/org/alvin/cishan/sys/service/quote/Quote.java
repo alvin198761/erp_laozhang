@@ -2,6 +2,7 @@ package org.alvin.cishan.sys.service.quote;
 
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.alvin.cishan.sys.service.prodrecord.ProdRecord;
 
 /**
  * @类说明: 报价--实体类
@@ -38,30 +40,17 @@ public class Quote {
 	@ApiModelProperty(value = "报价日期", dataType = "Date")
 	private Date date;//  报价日期
 
-	@ApiModelProperty(value = "产品id", dataType = "Byte")
-	private Byte prod_id;//  产品id
-
-	@ApiModelProperty(value = "总价", dataType = "Float")
-	private Float total;//  总价
-
-	@ApiModelProperty(value = "单价", dataType = "Float")
-	private Float price;//  单价
-
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
 	@ApiModelProperty(value = "单据状态", dataType = "String")
 	private String status;//  单据状态
 
-	@ApiModelProperty(value = "数量", dataType = "Float")
-	private Float num;//  数量
-
 	//此处可添加查询显示辅助字段
 
 	private String cus_name;
 	private String cus_no;
 
-	private String prod_name;
-	private String prod_no;
+	private List<ProdRecord> prods; //产品列表
 
 }

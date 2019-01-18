@@ -34,13 +34,13 @@
                     <el-form>
                         <el-row :gutter="10">
                             <el-col :span="12">
-                                <el-form-item label="电话">{{props.row.target_phone}}</el-form-item>
-                            </el-col>
-                            <el-col :span="12">
                                 <el-form-item label="地址">{{props.row.target_addr}}</el-form-item>
                             </el-col>
                             <el-col :span="12">
                                 <el-form-item label="姓名">{{props.row.target_name}}</el-form-item>
+                            </el-col>
+                            <el-col :span="12">
+                                <el-form-item label="电话">{{props.row.target_phone}}</el-form-item>
                             </el-col>
                             <el-col :span="12">
                                 <el-form-item label="备注">{{props.row.remark}}</el-form-item>
@@ -51,14 +51,14 @@
             </el-table-column>
             <!--<el-table-column prop="id" label="主键"></el-table-column>-->
             <!--<el-table-column prop="type" label="类型"></el-table-column>-->
-            <el-table-column prop="target_phone" label="电话"></el-table-column>
-            <el-table-column prop="target_addr" label="地址"></el-table-column>
-            <el-table-column prop="target_name" label="姓名"></el-table-column>
             <el-table-column  label="供应商">
                 <template slot-scope="props">
                     {{props.row.vendor_name}}({{props.row.vendor_no}})
                 </template>
             </el-table-column>
+            <el-table-column prop="target_addr" label="地址"></el-table-column>
+            <el-table-column prop="target_name" label="姓名"></el-table-column>
+            <el-table-column prop="target_phone" label="电话"></el-table-column>
             <el-table-column prop="remark" label="备注"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">

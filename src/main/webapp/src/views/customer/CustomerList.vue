@@ -1,6 +1,7 @@
 /*客户管理,作者:唐植超,日期:2018-11-27 17:15:51*/
 <template>
     <div>
+        <h3>客户管理</h3><br/>
         <el-form :inline="true">
             <el-form-item label="客户编号">
                 <el-input placeholder="请输入客户编号" size="small" v-model="form.cus_no"></el-input>

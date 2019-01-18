@@ -44,7 +44,7 @@ public class IndexAction {
 
 	@GetMapping("/login")
 	public String login() {
-		return "login_2";
+		return "login";
 	}
 //	@GetMapping("/login")
 //	public String login() {

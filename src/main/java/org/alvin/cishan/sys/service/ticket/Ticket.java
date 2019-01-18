@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.alvin.cishan.sys.service.prodrecord.ProdRecord;
+
+import java.util.List;
 
 /**
  * @类说明: 进销项发票录入--实体类
@@ -35,9 +38,6 @@ public class Ticket {
 	@ApiModelProperty(value = "税收类型", dataType = "String")
 	private String tax_type;//  税收类型
 
-	@ApiModelProperty(value = "产品id", dataType = "Long")
-	private Long prod_id;//  产品id
-
 	@ApiModelProperty(value = "姓名", dataType = "String")
 	private String target_name;//  姓名
 
@@ -46,15 +46,6 @@ public class Ticket {
 
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
-
-	@ApiModelProperty(value = "数量", dataType = "Float")
-	private Float num;//  数量
-
-	@ApiModelProperty(value = "单价", dataType = "Float")
-	private Float price;//  单价
-
-	@ApiModelProperty(value = "总价", dataType = "Float")
-	private Float total;//  总价
 
 	@ApiModelProperty(value = "发票类型", dataType = "String")
 	private String ticket_type;//  发票类型
@@ -73,14 +64,14 @@ public class Ticket {
 	private String vendor_name;
 	private String vendor_no;
 
-	private String prod_name;
-	private String prod_no;
-
 	private String address_phone_no;
 	private String address_name;
 	private String address;
 
 	private String cus_name;
 	private String cus_no;
+
+
+	private List<ProdRecord> prods;
 
 }

@@ -6,14 +6,24 @@
                 <el-col>
                     <el-form-item label='产品' prop='prod_id'>
                         <!--<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>-->
-                        <el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">
+                        <el-select filterable v-model="form.prod_id" placeholder="请选择产品" style="width: 100%" size="small" @change="changeProd">
                             <el-option
                                     v-for="item in chanpingList"
                                     :key="item.id"
-                                    :label="item.prod_name + '(' + item.prod_no + ')'"
+                                    :label="item.prod_name + '(' + item.prod_no + ')' + ' => 供应商：'+ item.vendor_name+'('+ item.vendor_no +')'"
                                     :value="item.id">
                             </el-option>
                         </el-select>
+                        <template v-if="currentProd != null">
+                            <el-row>
+                                <el-col :span="12"><b>产品名称：</b>{{currentProd.prod_name}}</el-col>
+                                <el-col :span="12"><b>产品编号：</b>{{currentProd.prod_no}}</el-col>
+                            </el-row>
+                            <el-row>
+                                <el-col :span="12"><b>供应商名称：</b>{{currentProd.vendor_name}}</el-col>
+                                <el-col :span="12"><b>供应商编号：</b>{{currentProd.vendor_no}}</el-col>
+                            </el-row>
+                        </template>
                     </el-form-item>
                     <el-row>
                         <el-col :span="8">
@@ -27,7 +37,8 @@
                         <el-col :span="8">
                             <el-form-item label='发票类型' prop='ticket_type'>
                                 <!--<el-input placeholder='请输入发票类型' size="small" v-model='form.ticket_type'></el-input>-->
-                                <el-select v-model="form.ticket_type" placeholder="请选择发票类型" style="width: 100%"  size="small">
+                                <el-select v-model="form.ticket_type" placeholder="请选择发票类型" style="width: 100%"
+                                           size="small">
                                     <el-option
                                             v-for="item in fapiaoLeixingList"
                                             :key="item.id"
@@ -40,7 +51,8 @@
                         <el-col :span="8">
                             <el-form-item label='发票状态' prop='ticket_status'>
                                 <!--<el-input placeholder='请输入发票状态' size="small" v-model='form.ticket_status'></el-input>-->
-                                <el-select v-model="form.ticket_status" placeholder="请选择发票状态" style="width: 100%"  size="small">
+                                <el-select v-model="form.ticket_status" placeholder="请选择发票状态" style="width: 100%"
+                                           size="small">
                                     <el-option
                                             v-for="item in fapiaoZhuangTaiList"
                                             :key="item.id"
@@ -76,7 +88,7 @@
                 show: false,
                 rules: {
                     prod_id: [
-                        {required: true, message: '请输入产品id', trigger: 'blur'},
+                        {required: true, type: 'number', message: '请输入产品id', trigger: 'blur'},
                     ],
                     date: [
                         {required: true, message: '请输入入库日期', trigger: 'blur'},
@@ -94,6 +106,7 @@
                 chanpingList: [],
                 fapiaoLeixingList: [],
                 fapiaoZhuangTaiList: [],
+                currentProd: null
             }
         },
         created(){
@@ -104,7 +117,7 @@
         methods: {
             loadFapiaoZhuangTaiList(){
                 const that = this;
-                that.$http.post("/api/dict/queryList",{
+                that.$http.post("/api/dict/queryList", {
                     type: 7
                 }).then(res => {
                     that.fapiaoLeixingList = res.data;
@@ -114,7 +127,7 @@
             },
             loadFapiaoLeixingList(){
                 const that = this;
-                that.$http.post("/api/dict/queryList",{
+                that.$http.post("/api/dict/queryList", {
                     type: 8
                 }).then(res => {
                     that.fapiaoZhuangTaiList = res.data;
@@ -126,6 +139,7 @@
                 const that = this;
                 that.$http.post("/api/product/queryList", {}).then(res => {
                     that.chanpingList = res.data;
+                    console.log(res.data);
                 }).catch(err => {
                     that.$message.error("获取产品信息列表：" + err)
                 });
@@ -162,11 +176,32 @@
                 this.show = true;
             },
             editDialog(row) {//修改
+                console.log(row);
                 this.title = "修改入库记录";
                 this.dialogMode = "update";
-                this.form = {...row};
+                this.form = {...row,prod_id : parseInt(row.prod_id)};
+                this.currentProd = {
+                    vendor_no: row.vendor_no,
+                    vendor_name: row.vendor_name,
+                    prod_no: row.prod_no,
+                    prod_name: row.prod_name
+                }
                 this.show = true;
             },
+            changeProd(row){
+                if(row == null ){
+                    return ;
+                }
+//                debugger
+                this.currentProd = null;
+                for(let i = 0 ; i < this.chanpingList.length ; i++){
+                    if(this.chanpingList[i].id == row){
+                        this.currentProd = {...this.chanpingList[i]}
+                        break;
+                    }
+                }
+//                console.log(row);
+            }
         }
 
     }

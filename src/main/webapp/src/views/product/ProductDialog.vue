@@ -15,7 +15,7 @@
                             <el-option
                                     v-for="item in shuiShouLeiXingList"
                                     :key="item.id"
-                                    :label="item.name"
+                                    :label="item.name + '('+ item.tax_code +')'"
                                     :value="item.name">
                             </el-option>
                         </el-select>
@@ -300,8 +300,8 @@
             },
             loadShuiShouLeiXingList() {
                 const that = this;
-                that.$http.post("/api/dict/queryList", {
-                    type: 11
+                that.$http.post("/api/taxCategory/queryList", {
+
                 }).then(res => {
                     that.shuiShouLeiXingList = res.data;
                 }).catch(err => {
