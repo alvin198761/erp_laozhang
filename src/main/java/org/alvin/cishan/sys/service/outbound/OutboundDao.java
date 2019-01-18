@@ -23,8 +23,8 @@ public class OutboundDao extends BaseDao {
 	 * @方法说明： 构造方法, 用于拼加SQL及初始化工作
 	 */
 	public OutboundDao() {
-		insert.append("INSERT INTO outbound (cus_id,status,remark) ");
-		insert.append(" VALUES (:cus_id,:status,:remark)");
+		insert.append("INSERT INTO outbound (cus_id,status,remark,date) ");
+		insert.append(" VALUES (:cus_id,:status,:remark,:date)");
 	}
 
 	/**
@@ -32,8 +32,8 @@ public class OutboundDao extends BaseDao {
 	 */
 	public int save(Outbound vo) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("REPLACE INTO outbound (id,cus_id,status,remark)");
-		sql.append(" VALUES (?,?,?,?) ");
+		sql.append("REPLACE INTO outbound (id,cus_id,status,remark,date)");
+		sql.append(" VALUES (?,?,?,?,?) ");
 		Object[] params = {vo.getId(), vo.getCus_id(),  vo.getStatus(), vo.getRemark()};
 		//logger.info(SqlUtil.showSql(sql.toString(), params));//显示SQL语句
 		return jdbcTemplate.update(sql.toString(), params);
@@ -66,9 +66,9 @@ public class OutboundDao extends BaseDao {
 	 */
 	public int update(Outbound vo) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("UPDATE outbound SET cus_id=?,status=?,remark=? ");
+		sql.append("UPDATE outbound SET cus_id=?,status=?,remark=?,date=? ");
 		sql.append(" WHERE id=? ");
-		Object[] params = {vo.getCus_id(),  vo.getStatus(), vo.getRemark(), vo.getId()};
+		Object[] params = {vo.getCus_id(),  vo.getStatus(), vo.getRemark(),vo.getDate(), vo.getId()};
 		return jdbcTemplate.update(sql.toString(), params);
 	}
 
@@ -135,7 +135,7 @@ public class OutboundDao extends BaseDao {
 	 */
 	public String getSelectedItems(OutboundCond cond) {
 		if (cond == null || cond.getSelectedFields() == null || cond.getSelectedFields().isEmpty()) {
-			return "t.id,t.cus_id,t.status,t.remark,c.cus_name ,c.cus_no "; //默认所有字段
+			return "t.id,t.cus_id,t.status,t.remark,t.date,c.cus_name ,c.cus_no "; //默认所有字段
 		}
 		return Joiner.on(",").join(cond.getSelectedFields());
 	}

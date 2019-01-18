@@ -19,41 +19,8 @@
                     </el-form-item>
                 </el-col>
             </el-row>
-            <!--<el-row>-->
-                <!--<el-col>-->
-                    <!--<el-form-item label='产品' prop='prod_id'>-->
-                        <!--&lt;!&ndash;<el-input placeholder='请输入产品id' size="small" v-model='form.prod_id'></el-input>&ndash;&gt;-->
-                        <!--<el-select v-model="form.prod_id" placeholder="请选择产品" style="width: 100%"  size="small">-->
-                            <!--<el-option-->
-                                    <!--v-for="item in chanpingList"-->
-                                    <!--:key="item.id"-->
-                                    <!--:label="item.prod_name + '(' + item.prod_no + ')'"-->
-                                    <!--:value="item.id">-->
-                            <!--</el-option>-->
-                        <!--</el-select>-->
-                    <!--</el-form-item>-->
-                <!--</el-col>-->
-            <!--</el-row>-->
-            <!--<el-row>-->
-                <!--<el-col :span="8">-->
-                    <!--<el-form-item label='单价' prop='price'>-->
-                        <!--<el-input-number placeholder='请输入单价' size="small" v-model='form.price'></el-input-number>-->
-                    <!--</el-form-item>-->
-                <!--</el-col>-->
-                <!--<el-col :span="8">-->
-                    <!--<el-form-item label='数量' prop='num'>-->
-                        <!--<el-input-number placeholder='请输入数量' size="small" v-model='form.num'></el-input-number>-->
-                    <!--</el-form-item>-->
-                <!--</el-col>-->
-                <!--<el-col :span="8">-->
-                    <!--<el-form-item label='总价' prop='total'>-->
-                        <!--{{form.price * form.num}}-->
-                        <!--&lt;!&ndash;<el-input placeholder='请输入总价' size="small" v-model='form.total'></el-input>&ndash;&gt;-->
-                    <!--</el-form-item>-->
-                <!--</el-col>-->
-            <!--</el-row>-->
             <el-row>
-                <el-col>
+                <el-col :span="12">
                     <el-form-item label='送货状态' prop='status'>
                         <!--<el-input placeholder='请输入送货状态' size="small" v-model='form.status'></el-input>-->
                         <el-select v-model="form.status" placeholder="请选择送货状态" style="width: 100%" size="small">
@@ -64,6 +31,14 @@
                                     :value="item.name">
                             </el-option>
                         </el-select>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                    <el-form-item label='出库日期' prop='date'>
+                        <el-date-picker
+                                type="date"
+                                placeholder='请选择报出库日期' size="small" v-model='form.date' style="width: 100%">
+                        </el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
@@ -134,6 +109,9 @@
                 rules: {
                     cus_id: [
                         {required: true, message: '请选择客户', trigger: 'blur'},
+                    ],
+                    date: [
+                        {required: true, message: '请选择出库时间', trigger: 'blur'},
                     ],
 //                    prod_id: [
 //                        {required: true, message: '请选择产品', trigger: 'blur'},
@@ -214,7 +192,8 @@
                     cus_id: null,// 客户id
                     status: null,// 送货状态
                     remark: null,// 备注
-                    prods:[{priice: 0 , num: 1,bus_type:2}]
+                    prods:[{priice: 0 , num: 1,bus_type:2}],
+                    date: new Date()
                 }
             },
             addDialog() {//新增

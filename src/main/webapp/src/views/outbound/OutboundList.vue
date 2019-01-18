@@ -6,12 +6,38 @@
             <!--<el-form-item label="主键">-->
             <!--<el-input placeholder="请输入主键" size="small" v-model="form.id"></el-input>-->
             <!--</el-form-item>-->
-            <!--<el-form-item label="客户id">-->
-            <!--<el-input placeholder="请输入客户id" size="small" v-model="form.cus_id"></el-input>-->
-            <!--</el-form-item>-->
-            <!--<el-form-item label="送货状态">-->
+            <el-form-item label="客户">
+                <el-select filterable  v-model="form.cus_id" placeholder="请选择客户" style="width: 100%" size="small">
+                    <el-option label="全部" :value="-1"></el-option>
+                    <el-option
+                            v-for="item in kehuList"
+                            :key="item.id"
+                            :label="item.cus_name + '('+item.cus_no+')'"
+                            :value="item.id">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="出库日期">
+                <el-date-picker
+                        v-model="form.date"
+                        type="daterange"
+                        range-separator="至"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期">
+                </el-date-picker>
+            </el-form-item>
+            <el-form-item label="送货状态">
                 <!--<el-input placeholder="请输入送货状态" size="small" v-model="form.status"></el-input>-->
-            <!--</el-form-item>-->
+                <el-select v-model="form.status" placeholder="请选择送货状态" style="width: 100%" size="small">
+                    <el-option label="全部" :value="-1"></el-option>
+                    <el-option
+                            v-for="item in songHongZhuangTaiList"
+                            :key="item.id"
+                            :label="item.name"
+                            :value="item.name">
+                    </el-option>
+                </el-select>
+            </el-form-item>
             <!--<el-form-item label="备注">-->
             <!--<el-input placeholder="请输入备注" size="small" v-model="form.remark"></el-input>-->
             <!--</el-form-item>-->
@@ -59,6 +85,11 @@
             <!--<el-table-column prop="price" label="单价"></el-table-column>-->
             <!--<el-table-column prop="num" label="数量"></el-table-column>-->
             <!--<el-table-column prop="total" label="总价"></el-table-column>-->
+            <el-table-column  label="出库日期">
+                <template slot-scope="props">
+                    {{props.row.date | date_filter}}
+                </template>
+            </el-table-column>
             <el-table-column prop="status" label="送货状态" width="150"></el-table-column>
             <el-table-column label="操作" width="150">
                 <template slot-scope="props">
@@ -92,26 +123,60 @@
                 dataList: [],
                 form: {
                     id: null,// 主键
-                    cus_id: null,// 客户id
-                    prod_id: null,// 产品id
-                    price: null,// 单价
-                    num: null,// 数量
-                    total: null,// 总价
-                    status: null,// 送货状态
+                    cus_id: -1,// 客户id
+//                    prod_id: null,// 产品id
+//                    price: null,// 单价
+//                    num: null,// 数量
+//                    total: null,// 总价
+                    status: -1,// 送货状态
                     remark: null,// 备注
+                    date: null
                 },
-                loading: false
+                loading: false,
+                kehuList:[],
+                songHongZhuangTaiList:[],
             }
         },
         computed: {},
         created: function () {
             this.refresh();
+            this.loadKehuList();
+            this.loadSongHuoZhuangTaiList();
         },
         methods: {
+            loadSongHuoZhuangTaiList(){
+                const that = this;
+                that.$http.post("/api/dict/queryList", {
+                    type: 10
+                }).then(res => {
+                    that.songHongZhuangTaiList = res.data;
+                }).catch(err => {
+                    that.$message.error("获取送货状态出错:" + err)
+                });
+            },
+            loadKehuList(){
+                const that = this;
+                that.$http.post("/api/customer/queryList",{}).then(res => {
+                    that.kehuList  = res.data;
+                }).catch(err => {
+                    that.$message.error("获取客户信息出错：" +err)
+                });
+            },
             refresh() {
                 const that = this;
                 that.loading = true;
                 const requestData = {...that.form, page: that.page - 1, size: that.size};
+                if(requestData.status == -1){
+                    requestData.status = null;
+                }
+                if(requestData.cus_id == -1){
+                    requestData.cus_id = null;
+                }
+                if(requestData.date != null && requestData.date.length == 2){
+                    requestData.start = requestData.date[0];
+                    requestData.end = requestData.date[1];
+                }
+                requestData.date = null;
                 that.$http.post("/api/outbound/queryPage", JSON.stringify(requestData)).then(res => {
                     that.loading = false;
                     that.dataList = res.data.content;

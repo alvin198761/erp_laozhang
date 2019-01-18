@@ -7,6 +7,7 @@ import lombok.*;
 import lombok.experimental.Accessors;
 import org.alvin.cishan.sys.util.base.BaseCondition;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +35,8 @@ public class OutboundCond extends BaseCondition {
 		add(status, " AND t.status = ? ");
 		add(remark, " AND t.remark LIKE ? ", 3);
 		// add(ids, "AND t.id IN ");");
+		add(start, " AND t.date >= ? ");
+		add(end, " AND t.date <= ? ");
 	}
 
 	//feilds
@@ -45,7 +48,13 @@ public class OutboundCond extends BaseCondition {
 	private String status;//  送货状态
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
+	@ApiModelProperty(value = "出库时间", dataType = "Date")
+	private Date date;//  备注
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类
+
+
+	private Date start;
+	private Date end;
 }

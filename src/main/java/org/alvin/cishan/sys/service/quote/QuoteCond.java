@@ -36,6 +36,8 @@ public class QuoteCond extends BaseCondition {
 		add(remark, " AND t.remark LIKE ? ", 3);
 		add(status, " AND t.status = ? ");
 		// add(ids, "AND t.id IN ");");
+		add(start, " AND t.date >= ? ");
+		add(end, " AND t.date <= ? ");
 	}
 
 	//feilds
@@ -52,4 +54,7 @@ public class QuoteCond extends BaseCondition {
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类
+
+	private Date start;
+	private Date end;
 }

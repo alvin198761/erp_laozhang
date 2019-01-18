@@ -24,6 +24,15 @@
             <!--<el-form-item label="备注">-->
             <!--<el-input placeholder="请输入备注" size="small" v-model="form.remark"></el-input>-->
             <!--</el-form-item>-->
+            <el-form-item label="报价日期">
+                <el-date-picker
+                        v-model="form.date"
+                        type="daterange"
+                        range-separator="至"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期">
+                </el-date-picker>
+            </el-form-item>
             <el-form-item label="单据状态">
                 <el-input placeholder="请输入单据状态" size="small" v-model="form.status"></el-input>
             </el-form-item>
@@ -113,12 +122,12 @@
                     id: null,// 主键
                     cus_id: null,// 客户id
                     date: null,// 报价日期
-                    prod_id: null,// 产品id
-                    total: null,// 总价
-                    price: null,// 单价
+//                    prod_id: null,// 产品id
+//                    total: null,// 总价
+//                    price: null,// 单价
                     remark: null,// 备注
                     status: null,// 单据状态
-                    num: null,// 数量
+//                    num: null,// 数量
                 },
                 loading: false
             }
@@ -132,6 +141,11 @@
                 const that = this;
                 that.loading = true;
                 const requestData = {...that.form, page: that.page - 1, size: that.size};
+                if(requestData.date != null && requestData.date.length == 2){
+                    requestData.start = requestData.date[0];
+                    requestData.end = requestData.date[1];
+                }
+                requestData.date = null;
                 that.$http.post("/api/quote/queryPage", JSON.stringify(requestData)).then(res => {
                     that.loading = false;
                     that.dataList = res.data.content;

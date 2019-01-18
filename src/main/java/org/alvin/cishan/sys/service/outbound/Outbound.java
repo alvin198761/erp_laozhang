@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.alvin.cishan.sys.service.prodrecord.ProdRecord;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,6 +42,8 @@ public class Outbound {
 	@ApiModelProperty(value = "备注", dataType = "String")
 	private String remark;//  备注
 
+	@ApiModelProperty(value = "出库时间", dataType = "Date")
+	private Date date;//  备注
 	//此处可添加查询显示辅助字段
 
 	private String cus_name;

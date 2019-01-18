@@ -382,8 +382,9 @@ CREATE TABLE `outbound` (
   `cus_id` bigint(20) DEFAULT NULL COMMENT '客户id',
   `status` varchar(50) DEFAULT NULL COMMENT '送货状态',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='出库记录';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='出库记录';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -392,7 +393,7 @@ CREATE TABLE `outbound` (
 
 LOCK TABLES `outbound` WRITE;
 /*!40000 ALTER TABLE `outbound` DISABLE KEYS */;
-INSERT INTO `outbound` VALUES (2,7,'已送','adsf');
+INSERT INTO `outbound` VALUES (2,7,'已送','adsf',NULL),(3,9,'未送货','sdf',NULL);
 /*!40000 ALTER TABLE `outbound` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +440,7 @@ CREATE TABLE `prod_record` (
   `bus_id` bigint(20) DEFAULT NULL COMMENT '业务ID',
   `bus_type` tinyint(4) DEFAULT NULL COMMENT '业务类型',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='产品信息记录';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='产品信息记录';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -448,7 +449,7 @@ CREATE TABLE `prod_record` (
 
 LOCK TABLES `prod_record` WRITE;
 /*!40000 ALTER TABLE `prod_record` DISABLE KEYS */;
-INSERT INTO `prod_record` VALUES (5,6,105,21,5,2,1),(6,6,2,1,2,2,1),(7,6,12,12,1,1,2),(8,6,92,23,4,1,2),(13,5,713,23,31,2,2),(14,6,460,23,20,2,2),(16,6,252,12,21,1,3),(17,6,299,23,13,1,3),(18,6,6,2,3,2,3),(19,6,968,22,44,2,3);
+INSERT INTO `prod_record` VALUES (5,6,105,21,5,2,1),(6,6,2,1,2,2,1),(7,6,12,12,1,1,2),(8,6,92,23,4,1,2),(13,5,713,23,31,2,2),(14,6,460,23,20,2,2),(16,6,252,12,21,1,3),(17,6,299,23,13,1,3),(18,6,6,2,3,2,3),(19,6,968,22,44,2,3),(20,6,72252,223,324,3,1),(21,6,2,1,2,3,1),(22,6,0,0,1,3,2);
 /*!40000 ALTER TABLE `prod_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,7 +506,7 @@ CREATE TABLE `quote` (
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   `status` varchar(50) DEFAULT NULL COMMENT '单据状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='报价';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='报价';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -514,7 +515,7 @@ CREATE TABLE `quote` (
 
 LOCK TABLES `quote` WRITE;
 /*!40000 ALTER TABLE `quote` DISABLE KEYS */;
-INSERT INTO `quote` VALUES (2,8,'2019-01-18 15:31:28','adsfads','完成');
+INSERT INTO `quote` VALUES (2,8,'2019-01-18 15:31:28','adsfads','完成'),(3,9,'2019-01-18 17:08:10','sdffds','完成');
 /*!40000 ALTER TABLE `quote` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -637,4 +638,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-18 17:07:03
+-- Dump completed on 2019-01-18 17:54:01
