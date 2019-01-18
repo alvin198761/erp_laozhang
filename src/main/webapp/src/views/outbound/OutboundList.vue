@@ -18,7 +18,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="出库日期">
-                <el-date-picker
+                <el-date-picker  size="small"
                         v-model="form.date"
                         type="daterange"
                         range-separator="至"

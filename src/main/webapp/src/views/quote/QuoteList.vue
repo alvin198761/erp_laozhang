@@ -26,7 +26,7 @@
             <!--</el-form-item>-->
             <el-form-item label="报价日期">
                 <el-date-picker
-                        v-model="form.date"
+                        v-model="form.date"  size="small"
                         type="daterange"
                         range-separator="至"
                         start-placeholder="开始日期"
