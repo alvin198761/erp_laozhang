@@ -1,7 +1,6 @@
 /*产品管理,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <div>
-        <h3>产品信息管理</h3><br/>
         <el-form :inline="true">
             <el-form-item label="货号">
                 <el-input placeholder="请输入货号" size="small" v-model="form.prod_no"></el-input>
@@ -94,7 +93,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <ProductDialog ref="dialog" :refresh="refresh"></ProductDialog>
+        <ProductDialog ref="dialog" :refresh="refresh"></ProductDialog><br/>
     </div>
 </template>
 <script>

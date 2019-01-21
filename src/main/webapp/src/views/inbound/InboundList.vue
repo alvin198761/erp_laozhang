@@ -1,7 +1,6 @@
 /*入库记录管理,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <div>
-        <h3>入库记录</h3><br/>
         <el-form :inline="true">
             <!--<el-form-item label="主键">-->
             <!--<el-input placeholder="请输入主键" size="small" v-model="form.id"></el-input>-->
@@ -19,7 +18,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="入库日期">
-                <el-date-picker
+                <el-date-picker size="small"
                         v-model="form.date"
                         type="daterange"
                         range-separator="至"
@@ -107,7 +106,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <InboundDialog ref="dialog" :refresh="refresh"></InboundDialog>
+        <InboundDialog ref="dialog" :refresh="refresh"></InboundDialog><br/>
     </div>
 </template>
 <script>

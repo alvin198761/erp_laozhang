@@ -66,4 +66,10 @@ public class TicketCond extends BaseCondition {
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类
+
+	private String prod_name;//产品名称
+	private String spec_no;//产品规格
+	private String price; //单价
+	private String num; //数量
+	private List<Long> prod_ids;
 }

@@ -1,6 +1,5 @@
 package org.alvin.cishan.sys.service.ticket;
 
-import org.alvin.cishan.sys.service.outbound.Outbound;
 import org.alvin.cishan.sys.service.prodrecord.ProdRecord;
 import org.alvin.cishan.sys.service.prodrecord.ProdRecordCond;
 import org.alvin.cishan.sys.service.prodrecord.ProdRecordDao;
@@ -28,6 +27,7 @@ public class TicketService {
 	private TicketDao dao; //注入进销项发票录入数据访问层
 	@Autowired
 	private ProdRecordDao recordDao;
+
 
 	/**
 	 * @方法说明： 新增[进销项发票录入]记录
@@ -121,5 +121,35 @@ public class TicketService {
 	 */
 	public long queryCount(TicketCond cond) {
 		return dao.queryCount(cond);
+	}
+
+	/**
+	 * 统计的查法
+	 *
+	 * @param cond
+	 * @return
+	 */
+	public List<Ticket> queryInList(TicketCond cond) {
+		List<Ticket> list = this.dao.queryInList(cond);
+		List<Long> ids = list.stream().map(Ticket::getId).distinct().collect(Collectors.toList());
+		List<ProdRecord> prodRecords = this.recordDao.queryTicketList(cond, ids);
+		list.stream().forEach(item -> {
+			item.setProds(prodRecords.stream().filter(r -> {
+				return r.getBus_id().longValue() == item.getId().longValue();
+			}).collect(Collectors.toList()));
+		});
+		return list;
+	}
+
+	public List<Ticket> queryOutList(TicketCond cond) {
+		List<Ticket> list = this.dao.queryOutList(cond);
+		List<Long> ids = list.stream().map(Ticket::getId).distinct().collect(Collectors.toList());
+		List<ProdRecord> prodRecords = this.recordDao.queryTicketList(cond, ids);
+		list.stream().forEach(item -> {
+			item.setProds(prodRecords.stream().filter(r -> {
+				return r.getBus_id().longValue() == item.getId().longValue();
+			}).collect(Collectors.toList()));
+		});
+		return list;
 	}
 }

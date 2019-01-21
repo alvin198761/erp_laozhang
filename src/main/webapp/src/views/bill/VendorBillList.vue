@@ -50,7 +50,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <VendorBillDialog ref="dialog" :refresh="refresh"></VendorBillDialog>
+        <VendorBillDialog ref="dialog" :refresh="refresh"></VendorBillDialog><br/>
     </div>
 </template>
 <script>

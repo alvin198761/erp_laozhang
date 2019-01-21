@@ -242,7 +242,7 @@
                 }).then(res => {
                     that.shuiShouLeixingList = res.data;
                 }).catch(err => {
-                    that.$message.error("获取送货类型出错:" + err)
+                    that.$message.error("获取税收分类出错:" + err)
                 });
             },
             loadShouhuoList(){

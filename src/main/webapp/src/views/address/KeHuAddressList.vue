@@ -76,7 +76,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <KeHuAddressDialog ref="dialog" :refresh="refresh"></KeHuAddressDialog>
+        <KeHuAddressDialog ref="dialog" :refresh="refresh"></KeHuAddressDialog><br/>
     </div>
 </template>
 <script>

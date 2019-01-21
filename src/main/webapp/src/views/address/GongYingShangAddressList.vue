@@ -76,7 +76,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <GongYingShangDialog ref="dialog" :refresh="refresh"></GongYingShangDialog>
+        <GongYingShangDialog ref="dialog" :refresh="refresh"></GongYingShangDialog><br/>
     </div>
 </template>
 <script>

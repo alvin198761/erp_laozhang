@@ -65,7 +65,7 @@
         </div>
         <VendorDialog ref="dialog" :refresh="refresh"></VendorDialog>
         <VendorPersonListDialog ref="personListDialog"></VendorPersonListDialog>
-
+        <br/>
     </div>
 </template>
 <script>

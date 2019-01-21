@@ -1,7 +1,6 @@
 /*报价管理,作者:唐植超,日期:2018-11-27 14:04:59*/
 <template>
     <div>
-        <h3>报价管理</h3><br/>
         <el-form :inline="true">
             <!--<el-form-item label="主键">-->
             <!--<el-input placeholder="请输入主键" size="small" v-model="form.id"></el-input>-->
@@ -88,11 +87,12 @@
             <!--<el-table-column prop="remark" label="备注"></el-table-column>-->
             <el-table-column prop="status" label="单据状态" width="150"></el-table-column>
             <!--<el-table-column prop="num" label="数量" width="100"></el-table-column>-->
-            <el-table-column label="操作" width="150">
+            <el-table-column label="操作" width="200">
                 <template slot-scope="props">
                     <div>
                         <el-button type="text" @click="doEdit(props.row)">编辑</el-button>
                         <el-button type="text" @click="doDelete(props.row)">删除</el-button>
+                        <a :href="'/preview/quote/'+ props.row.id" class="el-button el-button--text" target="_blank">打印预览</a>
                     </div>
                 </template>
             </el-table-column>
@@ -104,7 +104,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <QuoteDialog ref="dialog" :refresh="refresh"></QuoteDialog>
+        <QuoteDialog ref="dialog" :refresh="refresh"></QuoteDialog><br/>
     </div>
 </template>
 <script>

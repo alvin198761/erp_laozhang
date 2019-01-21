@@ -41,14 +41,16 @@ public class ProdRecordCond extends BaseCondition {
 		add(bus_id, " AND t.bus_id = ? ");
 		add(bus_type, " AND t.bus_type = ? ");
 		// add(ids, "AND t.id IN ");");
-		add(bus_ids, " AND t.bus_id in ");
+		add(prod_name, " AND p.prod_name like ? ", 3);
+		add(spec_no, " AND p.spec_no like ? ", 3);
+
 	}
 
 	//feilds
 	@ApiModelProperty(value = "主键", dataType = "Long")
 	private Long id;//  主键
-	@ApiModelProperty(value = "产品id", dataType = "Byte")
-	private Byte prod_id;//  产品id
+	@ApiModelProperty(value = "产品id", dataType = "Long")
+	private Long prod_id;//  产品id
 	@ApiModelProperty(value = "总价", dataType = "Float")
 	private Float total;//  总价
 	@ApiModelProperty(value = "单价", dataType = "Float")
@@ -59,6 +61,10 @@ public class ProdRecordCond extends BaseCondition {
 	private Long bus_id;//  业务ID
 	@ApiModelProperty(value = "业务类型", dataType = "Byte")
 	private Byte bus_type;//  业务类型
+
+
+	private String prod_name; //产品名称
+	private String spec_no; //产品型号
 
 	//private List<Long> ids;// 主键列表
 	private List<String> selectedFields; //暂时不放入父类

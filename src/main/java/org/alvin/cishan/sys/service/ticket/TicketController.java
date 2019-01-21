@@ -53,6 +53,17 @@ public class TicketController {
 	public Page<Ticket> queryPage(@RequestBody TicketCond cond ){
 		return service.queryPage(cond);
 	}
+    /**
+    * @方法说明： 按条件查询分页进销项发票录入列表
+    */
+	@PostMapping("queryInList")
+	public List<Ticket> queryInList(@RequestBody TicketCond cond ){
+		return service.queryInList(cond);
+	}
+	@PostMapping("queryOutList")
+	public List<Ticket> queryOutList(@RequestBody TicketCond cond ){
+		return service.queryOutList(cond);
+	}
 
     /**
     * @方法说明： 按条件查询不分页进销项发票录入列表
@@ -77,4 +88,7 @@ public class TicketController {
 	public long queryCount(@RequestBody TicketCond cond ){
 		return service.queryCount(cond);
 	}
+
+
+
 }

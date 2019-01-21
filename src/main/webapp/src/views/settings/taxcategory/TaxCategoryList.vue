@@ -37,7 +37,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <TaxCategoryDialog ref="dialog" :refresh="refresh"></TaxCategoryDialog>
+        <TaxCategoryDialog ref="dialog" :refresh="refresh"></TaxCategoryDialog><br/>
     </div>
 </template>
 <script>

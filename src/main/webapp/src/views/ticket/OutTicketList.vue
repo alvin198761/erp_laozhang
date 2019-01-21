@@ -55,13 +55,13 @@
                     <el-form>
                         <el-row :gutter="10">
                             <el-col :span="12">
-                                <el-form-item label="电话">{{props.row.address_phone_no}}</el-form-item>
+                                <el-form-item label="客户电话">{{props.row.address_phone_no}}</el-form-item>
                             </el-col>
                             <el-col :span="12">
-                                <el-form-item label="姓名">{{props.row.address_name}}</el-form-item>
+                                <el-form-item label="客户姓名">{{props.row.address_name}}</el-form-item>
                             </el-col>
                             <el-col :span="24">
-                                <el-form-item label="地址">{{props.row.address}}</el-form-item>
+                                <el-form-item label="客户地址">{{props.row.address}}</el-form-item>
                             </el-col>
                             <el-col :span="24">
                                 <el-form-item label="备注">{{props.row.remark}}</el-form-item>
@@ -120,7 +120,7 @@
                            :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}"
                            :page-size="size"></el-pagination>
         </div>
-        <OutTicketDialog ref="dialog" :refresh="refresh"></OutTicketDialog>
+        <OutTicketDialog ref="dialog" :refresh="refresh"></OutTicketDialog><br/>
     </div>
 </template>
 <script>

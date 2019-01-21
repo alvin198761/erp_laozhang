@@ -52,7 +52,7 @@
               <el-pagination small layout="total,sizes,prev, pager, next" :current-page="page" :total="total" @current-change="(curr) => {this.page = curr ; this.refresh();}"
                :page-sizes="[10, 15, 20, 100]" @size-change="(s) => {this.size = s ; this.refresh();}" :page-size="size"></el-pagination>
             </div>
-        <DictDialog ref="dialog" :refresh="refresh"></DictDialog>
+        <DictDialog ref="dialog" :refresh="refresh"></DictDialog><br/>
   </div>
 </template>
 <script>

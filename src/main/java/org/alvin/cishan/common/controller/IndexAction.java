@@ -12,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
 import java.util.HashMap;
@@ -46,10 +44,32 @@ public class IndexAction {
 	public String login() {
 		return "login";
 	}
-//	@GetMapping("/login")
-//	public String login() {
-//		return "login";
-//	}
+
+	/**
+	 * 出库打印预览
+	 *
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/preview/outbound/{id}")
+	public ModelAndView previewOutbound(@PathVariable("id") Long id) {
+		ModelAndView modelAndView = new ModelAndView("ChuKu");
+		modelAndView.addObject("data", null);
+		return modelAndView;
+	}
+
+	/**
+	 * 报价打印预览
+	 *
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/preview/quote/{id}")
+	public ModelAndView previewQuote(@PathVariable("id") Long id) {
+		ModelAndView modelAndView = new ModelAndView("BaoJia");
+		modelAndView.addObject("data", null);
+		return modelAndView;
+	}
 
 	@GetMapping("/api/heartbeat")
 	@ResponseBody

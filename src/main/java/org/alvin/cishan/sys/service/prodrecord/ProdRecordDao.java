@@ -1,7 +1,9 @@
 package org.alvin.cishan.sys.service.prodrecord;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
 import org.alvin.cishan.common.BaseDao;
+import org.alvin.cishan.sys.service.ticket.TicketCond;
 import org.alvin.cishan.sys.util.Page;
 import org.alvin.cishan.sys.util.SqlUtil;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -152,5 +154,43 @@ public class ProdRecordDao extends BaseDao {
 		String sql = "DELETE FROM prod_record WHERE bus_type=? and bus_id =?";
 		return jdbcTemplate.update(sql, new Object[]{bus_type, bus_id});
 
+	}
+
+	public List<ProdRecord> queryTicketList(TicketCond cond, List<Long> ticketIds) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(" SELECT ");
+		sb.append(" t.id, ");
+		sb.append(" t.prod_id, ");
+		sb.append(" t.total, ");
+		sb.append(" t.priice, ");
+		sb.append(" t.num, ");
+		sb.append(" t.bus_id, ");
+		sb.append(" t.bus_type, ");
+		sb.append(" p.prod_name, ");
+		sb.append(" p.spec_no, ");
+		sb.append(" p.prod_no ");
+		sb.append(" FROM ");
+		sb.append(" prod_record t ");
+		sb.append(" JOIN product p ON t.prod_id = p.id ");
+		sb.append(" WHERE 1 = 1");
+		if (!Strings.isNullOrEmpty(cond.getProd_name())) {
+			sb.append(" p.prod_name LIKE '%" + cond.getProd_name() + "%' ");
+		}
+		if (!Strings.isNullOrEmpty(cond.getSpec_no())) {
+			sb.append(" AND p.spec_no LIKE '%" + cond.getSpec_no() + "%' ");
+		}
+		sb.append(" AND t.bus_type = 3 ");
+		if (!ticketIds.isEmpty()) {
+			sb.append(" AND t.bus_id IN (" + Joiner.on(",").join(ticketIds) + ") ");
+		}
+		if (!Strings.isNullOrEmpty(cond.getNum())) {
+			sb.append(" AND t.num = " + cond.getNum() + " ");
+		}
+		if (!Strings.isNullOrEmpty(cond.getPrice())) {
+			sb.append(" AND t.priice = " + cond.getPrice() + " ");
+		}
+		sb.append(" order by t.id desc ");
+		System.out.println(sb.toString());
+		return jdbcTemplate.query(sb.toString(), cond.getArray(), new BeanPropertyRowMapper<>(ProdRecord.class));
 	}
 }

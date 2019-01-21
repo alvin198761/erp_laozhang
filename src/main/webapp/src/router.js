@@ -11,6 +11,7 @@ import ProductList from './views/product/ProductList.vue';
 import QuoteList from './views/quote/QuoteList.vue';
 import TicketView from './views/ticket/TicketView.vue';
 import VendorList from './views/vendor/VendorList.vue';
+import JinXiaoXiangFapiaoTongji from './views/statistics/JinXiaoXiangFapiaoTongji.vue';
 import CustomerList from './views/customer/CustomerList.vue';
 
 
@@ -56,7 +57,12 @@ export default new Router({
                 {
                     path: '/settings' ,component : Settings, name: '基础设置',
 
+                },
+                {
+                    path: '/jxxfptj' ,component : JinXiaoXiangFapiaoTongji, name: '进销项发票统计',
+
                 }
+
             ]
         }
     ]
