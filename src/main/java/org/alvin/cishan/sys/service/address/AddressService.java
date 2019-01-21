@@ -50,7 +50,7 @@ public class AddressService {
 	 * @方法说明： 按条件查询分页收寄信息列表
 	 */
 	public Page<Address> queryPage(AddressCond cond) {
-		if (cond.getType() == 1) {
+		if (cond.getType() == 2) {
 			return this.dao.queryKehuPage(cond);
 		} else {
 			return this.dao.queryGongYingshangPage(cond);

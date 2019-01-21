@@ -92,7 +92,7 @@
                 dataList: [],
                 form: {
                     id: null,// 主键
-                    type: 2,// 类型
+                    type: 1,// 类型
                     target_phone: null,// 电话
                     target_addr: null,// 地址
                     target_name: null,// 姓名

@@ -136,15 +136,15 @@
                                         <el-form>
                                             <el-row :gutter="10">
                                                 <el-col :span="12">
-                                                    <el-form-item label="供应商电话">{{props.row.address_phone_no}}
+                                                    <el-form-item label="客户电话">{{props.row.address_phone_no}}
                                                     </el-form-item>
                                                 </el-col>
                                                 <el-col :span="12">
-                                                    <el-form-item label="供应商姓名">{{props.row.address_name}}
+                                                    <el-form-item label="客户姓名">{{props.row.address_name}}
                                                     </el-form-item>
                                                 </el-col>
                                                 <el-col :span="24">
-                                                    <el-form-item label="供应商地址">{{props.row.address}}</el-form-item>
+                                                    <el-form-item label="客户地址">{{props.row.address}}</el-form-item>
                                                 </el-col>
                                                 <el-col :span="24">
                                                     <el-form-item label="备注">{{props.row.remark}}</el-form-item>
@@ -174,9 +174,9 @@
                                         </el-form>
                                     </template>
                                 </el-table-column>
-                                <el-table-column label="供应商">
+                                <el-table-column label="客户">
                                     <template slot-scope="props">
-                                        {{props.row.vendor_name}}({{props.row.vendor_no}})
+                                        {{props.row.cus_name}}({{props.row.cus_no}})
                                     </template>
                                 </el-table-column>
                                 <el-table-column prop="tax_type" label="税收分类" width="150"></el-table-column>

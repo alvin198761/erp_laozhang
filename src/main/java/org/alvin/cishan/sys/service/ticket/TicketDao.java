@@ -85,7 +85,7 @@ public class TicketDao extends BaseDao {
 		StringBuilder sb = new StringBuilder("SELECT ");
 		sb.append(" t.id,t.vendor_id,t.tax_type,t.target_name,t.target_id,t.remark,t.ticket_type,t.rate,t.type,t.cus_id,v.vendor_name,v.vendor_no,a.target_phone as address_phone_no,a.target_addr as address,a.target_name as address_name ");
 		sb.append(" FROM ticket t ");
-		sb.append(" join vendor v on v.id = t.vendor_id join address a on a.id = t.target_id ");
+		sb.append(" left join vendor v on v.id = t.vendor_id LEFT JOIN address a on a.target_id = v.id and a.type = 1 ");
 		sb.append(" WHERE 1=1 ");
 		sb.append(cond.getCondition());
 		sb.append(" order by id desc ");//增加排序子句;
@@ -101,7 +101,7 @@ public class TicketDao extends BaseDao {
 		StringBuilder sb = new StringBuilder("SELECT ");
 		sb.append(" t.id,t.vendor_id,t.tax_type,t.target_name,t.target_id,t.remark,t.ticket_type,t.rate,t.type,t.cus_id,c.cus_no,c.cus_name,a.target_phone as address_phone_no,a.target_addr as address,a.target_name as address_name ");
 		sb.append(" FROM ticket t ");
-		sb.append(" join customer c on c.id = t.cus_id join address a on a.id = t.target_id ");
+		sb.append(" left join customer c on c.id = t.cus_id left join address a on c.id = a.target_id and a.type = 2 ");
 		sb.append(" WHERE 1=1 ");
 		sb.append(cond.getCondition());
 		sb.append(" order by id desc ");//增加排序子句;
@@ -179,107 +179,92 @@ public class TicketDao extends BaseDao {
 	public List<Ticket> queryInList(TicketCond cond) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT ");
-		sb.append(" t.id, ");
-		sb.append(" t.vendor_id, ");
-		sb.append(" t.tax_type, ");
-		sb.append(" t.target_name, ");
-		sb.append(" t.target_id, ");
-		sb.append(" t.remark, ");
-		sb.append(" t.ticket_type, ");
-		sb.append(" t.rate, ");
-		sb.append(" t.type, ");
-		sb.append(" t.cus_id, ");
-		sb.append(" v.vendor_name, ");
+		sb.append(" t.*, v.vendor_name, ");
 		sb.append(" v.vendor_no, ");
 		sb.append(" a.target_phone AS address_phone_no, ");
 		sb.append(" a.target_addr AS address, ");
 		sb.append(" a.target_name AS address_name ");
 		sb.append(" FROM ");
 		sb.append(" ticket t ");
-		sb.append(" JOIN prod_record pr ON pr.bus_type = 3 ");
-		sb.append(" AND pr.bus_id = t.id ");
+		sb.append(" LEFT JOIN vendor v ON v.id = t.vendor_id ");
 		sb.append(" AND vendor_id IS NOT NULL ");
-		sb.append(" JOIN vendor v ON v.id = t.vendor_id ");
-		sb.append(" JOIN address a ON a.id = t.target_id ");
-		sb.append(" WHERE 1 = 1 ");
+		sb.append(" LEFT JOIN address a ON a.id = t.target_id and a.type = 1 ");
+		sb.append(" WHERE ");
+		sb.append(" 1 = 1 ");
 		if (!Strings.isNullOrEmpty(cond.getTax_type())) {
 			sb.append(" AND t.tax_type LIKE '%" + cond.getTax_type() + "%' ");
 		}
 		sb.append(" AND t.type = 1 ");
-		if (!Strings.isNullOrEmpty(cond.getPrice())) {
-			sb.append(" AND pr.priice = " + cond.getPrice() + " ");
-		}
+		sb.append(" AND t.cus_id IS NULL ");
+		sb.append(" AND t.id IN ( ");
+		sb.append(" SELECT ");
+		sb.append(" pr.bus_id ");
+		sb.append(" FROM ");
+		sb.append(" prod_record pr ");
+		sb.append(" LEFT JOIN product p ON p.id = pr.prod_id ");
+		sb.append(" WHERE ");
+		sb.append(" 1 = 1 ");
+		sb.append(" AND pr.bus_type = 3 ");
 		if (!Strings.isNullOrEmpty(cond.getNum())) {
 			sb.append(" AND pr.num = " + cond.getNum() + " ");
 		}
-		sb.append(" AND pr.prod_id IN ( ");
-		sb.append(" SELECT ");
-		sb.append(" p.id ");
-		sb.append(" FROM ");
-		sb.append(" product p ");
-		sb.append(" WHERE 1= 1 ");
+		if (!Strings.isNullOrEmpty(cond.getPrice())) {
+			sb.append(" AND pr.priice = " + cond.getPrice() + " ");
+		}
 		if (!Strings.isNullOrEmpty(cond.getProd_name())) {
-			sb.append(" AND	p.prod_name LIKE '%" + cond.getProd_name() + "%' ");
+			sb.append(" AND p.prod_name LIKE = '%" + cond.getProd_name() + "%' ");
 		}
 		if (!Strings.isNullOrEmpty(cond.getSpec_no())) {
 			sb.append(" AND p.spec_no LIKE '%" + cond.getSpec_no() + "%' ");
 		}
 		sb.append(" ) order by id desc ");
-//		System.out.println(sb.toString());
 		return jdbcTemplate.query(sb.toString(), new BeanPropertyRowMapper<>(Ticket.class));
 	}
 
 	public List<Ticket> queryOutList(TicketCond cond) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT ");
-		sb.append(" t.id, ");
-		sb.append(" t.vendor_id, ");
-		sb.append(" t.tax_type, ");
-		sb.append(" t.target_name, ");
-		sb.append(" t.target_id, ");
-		sb.append(" t.remark, ");
-		sb.append(" t.ticket_type, ");
-		sb.append(" t.rate, ");
-		sb.append(" t.type, ");
-		sb.append(" t.cus_id, ");
-		sb.append(" c.cus_name, ");
+		sb.append(" t.*, c.cus_name, ");
 		sb.append(" c.cus_no, ");
 		sb.append(" a.target_phone AS address_phone_no, ");
 		sb.append(" a.target_addr AS address, ");
 		sb.append(" a.target_name AS address_name ");
 		sb.append(" FROM ");
 		sb.append(" ticket t ");
-		sb.append(" JOIN prod_record pr ON pr.bus_type = 3 ");
-		sb.append(" AND pr.bus_id = t.id ");
-		sb.append(" AND vendor_id IS NOT NULL ");
-		sb.append(" JOIN customer c ON c.id = t.cus_id ");
-		sb.append(" JOIN address a ON a.id = t.target_id ");
-		sb.append(" WHERE 1= 1  ");
+		sb.append(" LEFT JOIN customer c ON c.id = t.cus_id ");
+		sb.append(" AND cus_id IS NOT NULL ");
+		sb.append(" LEFT JOIN address a ON a.id = t.target_id and a.type = 2 ");
+		sb.append(" AND a.type = 1 ");
+		sb.append(" WHERE ");
+		sb.append(" 1 = 1 ");
+		sb.append(" AND t.type = 2 ");
+		sb.append(" AND t.vendor_id IS NULL ");
 		if (!Strings.isNullOrEmpty(cond.getTax_type())) {
 			sb.append(" AND t.tax_type LIKE '%" + cond.getTax_type() + "%' ");
 		}
-		sb.append(" AND t.type = 2 ");
+		sb.append(" AND t.id IN ( ");
+		sb.append(" SELECT ");
+		sb.append(" pr.bus_id ");
+		sb.append(" FROM ");
+		sb.append(" prod_record pr ");
+		sb.append(" LEFT JOIN product p ON p.id = pr.prod_id ");
+		sb.append(" WHERE ");
+		sb.append(" 1 = 1 ");
+		sb.append(" AND pr.bus_type = 3 ");
+		sb.append(" AND pr.bus_type = 3 ");
+		if (!Strings.isNullOrEmpty(cond.getNum())) {
+			sb.append(" AND pr.num = " + cond.getNum() + " ");
+		}
 		if (!Strings.isNullOrEmpty(cond.getPrice())) {
 			sb.append(" AND pr.priice = " + cond.getPrice() + " ");
 		}
-		if(!Strings.isNullOrEmpty(cond.getNum())) {
-			sb.append(" AND pr.num = " + cond.getNum() + " ");
-		}
-		sb.append(" AND pr.prod_id IN ( ");
-		sb.append(" SELECT ");
-		sb.append(" p.id ");
-		sb.append(" FROM ");
-		sb.append(" product p ");
-		sb.append(" WHERE 1= 1 ");
 		if (!Strings.isNullOrEmpty(cond.getProd_name())) {
-			sb.append(" AND	p.prod_name LIKE '%" + cond.getProd_name() + "%' ");
+			sb.append(" AND p.prod_name LIKE = '%" + cond.getProd_name() + "%' ");
 		}
 		if (!Strings.isNullOrEmpty(cond.getSpec_no())) {
 			sb.append(" AND p.spec_no LIKE '%" + cond.getSpec_no() + "%' ");
 		}
 		sb.append(" ) order by id desc ");
-
-		System.out.println(sb.toString());
 		return jdbcTemplate.query(sb.toString(), new BeanPropertyRowMapper<>(Ticket.class));
 	}
 

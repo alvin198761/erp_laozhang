@@ -31,7 +31,7 @@ CREATE TABLE `address` (
   `target_id` bigint(20) DEFAULT NULL COMMENT '收寄方id',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='收寄信息';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='收寄信息';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `address` (
 
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
-INSERT INTO `address` VALUES (3,2,'123213','324adfsdsfdsf','2234',1,'gfddsfg'),(4,2,'dasdfsdsf','assdfdsf','fsdasdf',2,'asdffdssfadsf'),(6,2,'供应商联系方式003','供应商联系方式003','供应商联系方式003',2,'供应商联系方式003'),(7,1,'13552664976','北京市裕民中路6号','张春红',4,NULL);
+INSERT INTO `address` VALUES (11,2,'ka001','ka001','ka001',11,'ka001'),(13,1,'ga002','ga002','ga002',8,'ga002');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +310,6 @@ CREATE TABLE `bill` (
 
 LOCK TABLES `bill` WRITE;
 /*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-INSERT INTO `bill` VALUES (1,1,'afdssdfadfs','asdf','adsffdsdsf','adsfdfs',NULL),(2,2,'asdf','2344','fadfs','adf',NULL),(3,3,'开票--003','开票--003','开票--003','开票--003',NULL),(4,6,'12321123123213','123312123123213','123132213213231','123213213213213',1),(5,6,'sfdsdfsfd','saddsfsdf','asdsdffsd','sdafsdfdsffds',2);
 /*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,7 +328,7 @@ CREATE TABLE `customer` (
   `cus_type` tinyint(4) DEFAULT NULL COMMENT '客户性质',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='客户';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='客户';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,7 +337,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'qqq','sdf','sfddsf',7,'sdfsdfsdf'),(2,'afds','afds','adsffassdf',1,'adsfsfda'),(3,'客户——001','客户——001','客户——001',34,'客户——001'),(4,'HR001','北京市土肥工作站','北京市西城区裕民中路6号',52,NULL),(5,'HR002','北京市农业环境监测站','北京市裕民中路6号',52,NULL),(6,'HR003','北京市大兴区土肥工作站','北京市大兴区黄村镇兴政东里甲5号',52,NULL),(7,'HR004','北京市大兴区种植业服务中心','北京市大兴区永华南里16号楼',52,NULL),(8,'HR005','北京市大兴区农产品质量检测中心','北京市大兴区庞各庄镇东黑垡村东',52,NULL),(9,'123','123','123',54,'123');
+INSERT INTO `customer` VALUES (11,'001','001客户','001地址',54,'001');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +365,6 @@ CREATE TABLE `inbound` (
 
 LOCK TABLES `inbound` WRITE;
 /*!40000 ALTER TABLE `inbound` DISABLE KEYS */;
-INSERT INTO `inbound` VALUES (4,'5','2019-01-15 10:55:48','增值税专用发票','未开','asdfasdfafds'),(5,'6','2019-01-18 00:00:00','增值税专用发票','未开',NULL);
 /*!40000 ALTER TABLE `inbound` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -393,7 +391,6 @@ CREATE TABLE `outbound` (
 
 LOCK TABLES `outbound` WRITE;
 /*!40000 ALTER TABLE `outbound` DISABLE KEYS */;
-INSERT INTO `outbound` VALUES (2,7,'已送','adsf','2019-01-17 00:00:00'),(3,9,'未送货','sdf','2019-01-13 00:00:00');
 /*!40000 ALTER TABLE `outbound` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,7 +437,7 @@ CREATE TABLE `prod_record` (
   `bus_id` bigint(20) DEFAULT NULL COMMENT '业务ID',
   `bus_type` tinyint(4) DEFAULT NULL COMMENT '业务类型',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COMMENT='产品信息记录';
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='产品信息记录';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -449,7 +446,7 @@ CREATE TABLE `prod_record` (
 
 LOCK TABLES `prod_record` WRITE;
 /*!40000 ALTER TABLE `prod_record` DISABLE KEYS */;
-INSERT INTO `prod_record` VALUES (5,6,105,21,5,2,1),(6,6,2,1,2,2,1),(7,6,12,12,1,1,2),(8,6,92,23,4,1,2),(16,6,252,12,21,1,3),(17,6,299,23,13,1,3),(18,6,6,2,3,2,3),(19,6,968,22,44,2,3),(20,6,72252,223,324,3,1),(21,6,2,1,2,3,1),(25,5,713,23,31,2,2),(26,6,460,23,20,2,2),(27,6,0,0,1,3,2);
+INSERT INTO `prod_record` VALUES (30,8,276,12,23,4,3),(31,8,276,12,23,5,3);
 /*!40000 ALTER TABLE `prod_record` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,7 +476,7 @@ CREATE TABLE `product` (
   `pic3` varchar(100) DEFAULT NULL COMMENT '产品图片3',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='产品';
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='产品';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -488,7 +485,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (2,'12','税收分类2','123','1','2213wer','张',123,234,543,'含税','价格类型2',1,'891af57a-8ace-4092-a6ca-6b70087735d3.png','6ca4e891-422c-4937-9319-3b9548b7d4b6.jpg','f71cf19a-2419-4c73-bcaa-03cf19e29885.bmp','asdfdfsa'),(3,'2223','税收分类2','123','234','234','张',123,234,34,'含税','价格类型2',1,'1e7d9f35-ab2a-4dfd-a27a-7ee628de49a8.png','1db4bf5f-c93c-48b1-959d-48c3dd7b8944.gif','82b2d90d-f5dd-4bb2-a5b7-482bc5f2123c.png','345'),(4,'产品003','税收分类3--','产品003','产品003','产品003','袋',12,23,354,'含税','价格类型3--',3,'71776368-e1ed-4d76-8120-407c160a9042.bmp','92088967-487b-4128-82e0-fbd70467acd2.jpg','d0c5dcb2-9dd0-4c04-9ccb-44f9e0ef8cfb.gif','产品003产品003产品003'),(5,'SJ001','化学试剂助剂','乙酸铵','500g','AR分析纯','瓶',15,28,30,'含税','底价（含税）',5,NULL,NULL,NULL,NULL),(6,'XH001','分析仪器','进样衬管','5199-2293','单锥形超高惰性衬管，带玻璃毛，容量900ul，内径4mm','个',298.96,298.96,439.64,'含税','市场价（含税）',6,'543436e0-4790-4b11-a297-d4772d7bbf02.jpg',NULL,NULL,NULL),(7,'SB001','税收分类1','移液器架子','圆型','台式，旋转，供多个移液枪使用','个',64,128,128,'含税','底价（含税）',7,NULL,NULL,NULL,NULL);
+INSERT INTO `product` VALUES (8,'huo-001','税收分类001','huo-001','huo-001','huo-001','pk',122,133,234,'含税','售卖价（含税）',8,'f32b0e2e-8f4c-46db-be66-755c27224fe1.jpg','8b1b87ba-cbec-40b8-9813-eca656e06634.jpg','78e9d0bc-4663-41b4-ba41-9559a9613705.jpg','huo-001'),(9,'huo002','收税分类002','huo002','huo002','huo002','瓶',12,23,43,'含税','售卖价（含税）',8,NULL,NULL,NULL,'huo002');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -515,7 +512,6 @@ CREATE TABLE `quote` (
 
 LOCK TABLES `quote` WRITE;
 /*!40000 ALTER TABLE `quote` DISABLE KEYS */;
-INSERT INTO `quote` VALUES (2,8,'2019-01-18 15:31:28','adsfads','完成'),(3,9,'2019-01-18 17:08:10','sdffds','完成');
 /*!40000 ALTER TABLE `quote` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -531,7 +527,7 @@ CREATE TABLE `tax_category` (
   `name` varchar(200) DEFAULT NULL COMMENT '名称',
   `tax_code` varchar(100) DEFAULT NULL COMMENT '税收编码',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='税收分类';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='税收分类';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -540,7 +536,7 @@ CREATE TABLE `tax_category` (
 
 LOCK TABLES `tax_category` WRITE;
 /*!40000 ALTER TABLE `tax_category` DISABLE KEYS */;
-INSERT INTO `tax_category` VALUES (1,'税收分类1','001'),(2,'税收分类2','002');
+INSERT INTO `tax_category` VALUES (3,'税收分类001','001'),(4,'收税分类002','002');
 /*!40000 ALTER TABLE `tax_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -563,7 +559,7 @@ CREATE TABLE `ticket` (
   `type` varchar(50) DEFAULT NULL COMMENT '进出类型',
   `cus_id` bigint(20) DEFAULT NULL COMMENT '客户Id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='进销项发票录入';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='进销项发票录入';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -572,7 +568,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (1,5,'税收分类1','asfd',7,'sdf','增值税专用发票',0,'1',NULL),(2,NULL,'税收分类1','asdf',7,'sdf','增值税专用发票',12,'2',7);
+INSERT INTO `ticket` VALUES (4,8,'税收分类001','jinhuo',13,'ga002','增值税专用发票',0,'1',NULL),(5,NULL,'税收分类001','ka001',11,'ka001','增值税普通发票',0,'2',11);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -616,7 +612,7 @@ CREATE TABLE `vendor` (
   `level` tinyint(4) DEFAULT NULL COMMENT '供应商级别',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='供应商';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='供应商';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -625,7 +621,7 @@ CREATE TABLE `vendor` (
 
 LOCK TABLES `vendor` WRITE;
 /*!40000 ALTER TABLE `vendor` DISABLE KEYS */;
-INSERT INTO `vendor` VALUES (4,'GY001','北京博龙创新实验设备有限公司','北京博龙创新实验设备有限公司',3,NULL),(5,'GY002','北京萌发旭欣跃进科技有限公司','sdfsdf',4,NULL),(6,'GY003','北京五洲东方科技有限公司第一分公司','北京市',3,NULL),(7,'GY004','北京白鲨易生物有限公司','北京',4,NULL);
+INSERT INTO `vendor` VALUES (8,'1001','1001供应商','1001地址',35,'1001');
 /*!40000 ALTER TABLE `vendor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -638,4 +634,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-21 16:59:40
+-- Dump completed on 2019-01-21 18:31:14

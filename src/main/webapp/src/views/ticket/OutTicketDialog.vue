@@ -247,7 +247,7 @@
             loadShouhuoList(){
                 const that = this;
                 that.$http.post("/api/address/queryList",{
-                    type: 1
+                    type: 2
                 }).then(res => {
                     that.shouhuoList =res.data;
                 }).catch(err => {
