@@ -55,6 +55,24 @@
               if (!valid) {
                 return;
               }
+          if (that.dialogMode == "save") {
+              that.$http.post("/api/dict/queryCount", JSON.stringify(that.form)).then(res => {
+                  if (res.data != 0) {
+                  that.$message.error("该字典已经存在!");
+                  return;
+              }
+              that.$http.post("/api/dict/" + that.dialogMode, JSON.stringify(that.form)).then(res => {
+                  that.show = false;
+              that.$message.success(that.title + "成功!");
+              that.refresh();
+          }).catch(res => {
+                  that.$message.error(that.title + "出错!" + res);
+          });
+          }).catch(res => {
+                  that.$message.error("验证常量出错!" + res);
+          });
+              return ;
+          }
               that.$http.post("/api/dict/" + that.dialogMode, JSON.stringify(that.form)).then(res => {
                 that.show = false;
                 that.$message.success(that.title + "成功!");

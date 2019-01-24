@@ -7,3 +7,4 @@ logs
 /.settings/
 /.springBeans
 /target
+/db_backup
