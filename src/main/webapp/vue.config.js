@@ -11,20 +11,20 @@ module.exports = {
     outputDir: path.resolve(__dirname, '../resources/static'),
     configureWebpack: {
         //引入外部依赖，排除包
-           // externals: {
-                //     vue: 'Vue',
-                //     vuex:"Vuex",
-                //     "vue-router":"VueRouter",
-                //     /*'element-ui': 'ELEMENT',*/
-                //     'iview': 'iview',
-                //     jquery: 'jQuery',
-                //     "echarts": "echarts",
-                //     "moment": "moment",
-                //     "vue-echarts": "VueECharts",
-                //     "axios":"axios",
-                //     "less":"less"
-                //     // "querystring":"querystring"
-                // }
+         // externals: {
+              //     vue: 'Vue',
+              //     vuex:"Vuex",
+              //     "vue-router":"VueRouter",
+              //     /*'element-ui': 'ELEMENT',*/
+              //     'iview': 'iview',
+              //     jquery: 'jQuery',
+              //     "echarts": "echarts",
+              //     "moment": "moment",
+              //     "vue-echarts": "VueECharts",
+              //     "axios":"axios",
+              //     "less":"less"
+              //     // "querystring":"querystring"
+              // }
     },
 
     //去掉打包js里边的source map文件
@@ -34,11 +34,11 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://localhost:9092',//在线测试
+        target: 'http://localhost:8000',//开发
         // ws: true,
         changeOrigin: true,
         secure: false
-      },
+      }
     }
   },
    pages: {
@@ -56,20 +56,20 @@ module.exports = {
               // 提取出来的通用 chunk 和 vendor chunk。
               chunks: ["chunk-vendors", "chunk-common", "index"]
           },
-    //      login: {
-    //         // page 的入口
-    //          entry: "src/login/main.js",
-    //          // 模板来源
-    //          template: "public/login.html",
-    //          // 在 dist/index.html 的输出
-    //          filename: "login.html",
-    //          // 当使用 title 选项时，
-    //          // template 中的 title 标签需要是 <%= htmlWebpackPlugin.options.title %>
-    //          title: "慈善管理系统登录",
-    //          // 在这个页面中包含的块，默认情况下会包含
-    //          // 提取出来的通用 chunk 和 vendor chunk。
-    //          chunks: ["chunk-vendors", "chunk-common", "login"]
-    //      }
+//          login: {
+//              // page 的入口
+ //             entry: "src/login/main.js",
+ //             // 模板来源
+ //             template: "public/login.html",
+ //             // 在 dist/index.html 的输出
+ //             filename: "login.html",
+ //             // 当使用 title 选项时，
+ //             // template 中的 title 标签需要是 <%= htmlWebpackPlugin.options.title %>
+ //             title: "慈善管理系统登录",
+  //            // 在这个页面中包含的块，默认情况下会包含
+ //             // 提取出来的通用 chunk 和 vendor chunk。
+ //             chunks: ["chunk-vendors", "chunk-common", "login"]
+ //         }
       },
     pluginOptions:{
 /*        new webpack.optimize.CommonsChunkPlugin('common.js'),
